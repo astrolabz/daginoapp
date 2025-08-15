@@ -1,23 +1,33 @@
-# ✨ Welcome to Your Spark Template!
-You've just launched your brand-new Spark Template Codespace — everything’s fired up and ready for you to explore, build, and create with Spark!
+# Dagino App
 
-This template is your blank canvas. It comes with a minimal setup to help you get started quickly with Spark development.
+Static SPA for Ristorante Da Gino built with React + Vite + Tailwind.
 
-🚀 What's Inside?
-- A clean, minimal Spark environment
-- Pre-configured for local development
-- Ready to scale with your ideas
-  
-🧠 What Can You Do?
+## Local development
+- Install dependencies: `npm install`
+- Start dev server: `npm run dev`
+- Build: `npm run build`
 
-Right now, this is just a starting point — the perfect place to begin building and testing your Spark applications.
+## Deployment (GitHub Pages)
+- CI is configured in `.github/workflows/deploy.yml`.
+- On push to `main`, the site is built and deployed to GitHub Pages.
 
-🧹 Just Exploring?
-No problem! If you were just checking things out and don’t need to keep this code:
+### Custom domain
+- Domain: `ristorantedagino.nl`
+- `public/CNAME` contains the custom domain and will be deployed automatically.
+- After the first deploy, in GitHub → Settings → Pages, set Custom domain to `ristorantedagino.nl` and enable “Enforce HTTPS”.
 
-- Simply delete your Spark.
-- Everything will be cleaned up — no traces left behind.
+### DNS (GoDaddy)
+For apex (root) domain on GitHub Pages, add A records:
+- @ → 185.199.108.153
+- @ → 185.199.109.153
+- @ → 185.199.110.153
+- @ → 185.199.111.153
 
-📄 License For Spark Template Resources 
+Optionally add a CAA record to allow Let’s Encrypt certificates:
+- type: CAA, name: @, value: 0 issue "letsencrypt.org"
 
-The Spark Template files and resources from GitHub are licensed under the terms of the MIT license, Copyright GitHub, Inc.
+If you want `www`, add CNAME:
+- host: `www` → `astrolabz.github.io`
+
+---
+MIT License
