@@ -1,0 +1,562 @@
+@import 'tailwindcss';
+@import "tw-animate-css";
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+:root {
+  /* Modern Italian-inspired palette with enhanced contrast and depth */
+  --background: oklch(0.98 0.005 80); /* Pure warm white */
+  --foreground: oklch(0.09 0.02 40); /* Deep charcoal for excellent readability */
+
+  --card: oklch(1 0 0); /* Pure white for cards with transparency */
+  --card-foreground: oklch(0.09 0.02 40); /* Consistent with foreground */
+  
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.09 0.02 40);
+
+  /* Sophisticated Italian terracotta with modern vibrancy */
+  --primary: oklch(0.58 0.18 35); /* Rich terracotta-orange */
+  --primary-foreground: oklch(0.99 0.005 80); /* Crisp white */
+  
+  /* Elegant warm neutrals */
+  --secondary: oklch(0.94 0.008 60); /* Subtle warm gray */
+  --secondary-foreground: oklch(0.12 0.02 40); /* Dark for contrast */
+  
+  /* Refined muted tones */
+  --muted: oklch(0.96 0.006 70); /* Very light warm gray */
+  --muted-foreground: oklch(0.45 0.01 50); /* Medium gray with warmth */
+  
+  /* Golden accent with modern sophistication */
+  --accent: oklch(0.72 0.15 85); /* Warm amber gold */
+  --accent-foreground: oklch(0.08 0.02 40); /* Deep dark for contrast */
+  
+  /* Refined destructive color */
+  --destructive: oklch(0.60 0.20 15); /* Modern red */
+  --destructive-foreground: oklch(0.99 0.005 80); /* Clean white */
+
+  /* Sophisticated supporting colors */
+  --border: oklch(0.92 0.006 65); /* Subtle warm border */
+  --input: oklch(0.90 0.008 65); /* Input border with slight warmth */
+  --ring: oklch(0.58 0.18 35); /* Focus ring matches primary */
+
+  /* Modern border radius system */
+  --radius: 0.875rem;
+  
+  /* Advanced shadows and effects */
+  --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-large: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Glassmorphism variables */
+  --glass-bg: oklch(1 0 0 / 0.8);
+  --glass-border: oklch(1 0 0 / 0.2);
+  --glass-shadow: 0 8px 32px 0 rgb(0 0 0 / 0.08);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) * 1.5);
+  --radius-xl: calc(var(--radius) * 2);
+  --radius-2xl: calc(var(--radius) * 3);
+  --radius-full: 9999px;
+
+  /* Enhanced font system */
+  --font-heading: 'Playfair Display', 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Modern utility classes inspired by contemporary design */
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+  
+  /* Enhanced text shadows with modern subtlety */
+  .text-shadow-soft {
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  }
+  
+  .text-shadow-warm {
+    text-shadow: 0 2px 4px rgb(139 69 19 / 0.08);
+  }
+  
+  /* Modern gradient backgrounds */
+  .bg-gradient-warm {
+    background: linear-gradient(135deg, 
+      var(--background) 0%, 
+      oklch(0.96 0.008 75) 50%,
+      var(--secondary) 100%);
+  }
+  
+  .bg-gradient-hero {
+    background: linear-gradient(135deg,
+      oklch(0.98 0.005 80) 0%,
+      oklch(0.96 0.008 75) 30%,
+      oklch(0.94 0.012 70) 100%);
+  }
+  
+  /* Glassmorphism effects */
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--glass-shadow);
+  }
+  
+  .glass-nav {
+    background: oklch(1 0 0 / 0.85);
+    border-bottom: 1px solid oklch(0 0 0 / 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  @media (max-width: 768px) {
+    .glass-nav {
+      background: oklch(1 0 0 / 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  }
+  
+  /* Modern shadow system */
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-medium { box-shadow: var(--shadow-medium); }
+  .shadow-large { box-shadow: var(--shadow-large); }
+  .shadow-xl { box-shadow: var(--shadow-xl); }
+  
+  /* Enhanced hover effects */
+  .hover-lift {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-large);
+  }
+  
+  /* Modern card effects */
+  .card-modern {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-modern:hover {
+    box-shadow: var(--shadow-medium);
+    border-color: oklch(0.88 0.008 65);
+  }
+  
+  /* Better mobile responsiveness */
+  .container-responsive {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  @media (min-width: 640px) {
+    .container-responsive {
+      max-width: 640px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container-responsive {
+      max-width: 768px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container-responsive {
+      max-width: 1024px;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .container-responsive {
+      max-width: 1280px;
+    }
+  }
+  
+  /* Modern section spacing */
+  .section-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  @media (min-width: 640px) {
+    .section-padding {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .section-padding {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+  }
+  
+  /* Enhanced button effects */
+  .btn-modern {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(1 0 0 / 0.2),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+  
+  .btn-modern:hover::before {
+    left: 100%;
+  }
+  
+  /* Typography improvements */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .animate-pulse-soft {
+    animation: pulseSoft 2s ease-in-out infinite;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulseSoft {
+    0%, 100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+  }
+  
+  /* Review card specific styles */
+  .review-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .review-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .review-card:hover::before {
+    opacity: 1;
+  }
+  
+  .review-stars {
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1));
+  }
+  
+  /* Line clamp utility for search results */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Enhanced search highlight */
+  .search-highlight {
+    background: linear-gradient(120deg, var(--accent) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+  }
+  
+  /* Smooth category transitions */
+  .category-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Enhanced focus states for accessibility */
+  .focus-visible:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius);
+  }
+
+  /* Mobile calendar optimizations */
+  .mobile-calendar-day {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-calendar-day:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+
+  /* Mobile sheet and drawer optimizations */
+  .mobile-form-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+    min-height: 44px; /* Touch target size */
+  }
+
+  /* Enhanced mobile touch targets */
+  .mobile-touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Smooth mobile transitions */
+  .mobile-transition {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Mobile-specific scrolling improvements */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Calendar grid improvements for mobile */
+  .calendar-mobile-grid {
+    gap: 2px;
+    padding: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .calendar-mobile-grid {
+      gap: 1px;
+      padding: 2px;
+    }
+  }
+
+  /* Enhanced mobile button styles */
+  .mobile-btn-primary {
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Mobile navigation improvements */
+  .mobile-nav-item {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Mobile text overflow handling */
+  .mobile-text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .mobile-text-wrap {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Mobile card improvements */
+  .mobile-card {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  /* Mobile flex improvements */
+  .mobile-flex-fix {
+    min-width: 0; /* Allows flex items to shrink below content size */
+  }
+
+  /* Mobile button sizing */
+  .mobile-btn-category {
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  @media (max-width: 640px) {
+    .mobile-btn-category {
+      min-height: 36px;
+      padding: 6px 8px;
+      font-size: 12px;
+    }
+    
+    /* Ensure category buttons don't overflow */
+    .mobile-btn-category span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  /* Header spacing on mobile */
+  .mobile-header-spacing {
+    gap: 0.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .mobile-header-spacing {
+      gap: 0.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .mobile-header-spacing {
+      gap: 0.75rem;
+    }
+  }
+
+  /* Mobile menu item improvements */
+  .mobile-menu-item {
+    padding: 12px 16px;
+    border-radius: 8px;
+    min-height: 44px;
+  }
+
+  .mobile-menu-item-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .mobile-menu-item-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .mobile-menu-item-price {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+}
