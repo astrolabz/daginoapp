@@ -1,0 +1,31 @@
+Da Gino App - Migration Log
+
+Date: 2025-08-15
+
+Actions:
+- Decoupled GitHub Spark runtime and plugins
+- Added useKV polyfill (localStorage) mapped to @github/spark/hooks
+- Updated theme CSS root from #spark-app to :root
+- Set Vite base to '/'
+- Removed @github/spark dependency
+- Removed src/vite-end.d.ts
+- Added GitHub Pages workflow (.github/workflows/deploy.yml)
+- Added SPA fallback public/404.html
+
+Next:
+- Optionally add public/CNAME with your custom domain
+- Create GitHub repository and push (main branch)
+- Enable Pages with GitHub Actions
+- Set Custom domain in repo settings and configure DNS at GoDaddy
+
+Build and fixes (2025-08-15):
+- Resolved duplicate i18n keys in src/translations.ts and standardized form label keys (emailAddress, phoneNumber).
+- Replaced invalid Phosphor icon names across the app:
+	- AlertCircle → WarningCircle
+	- Mail/Envelope → EnvelopeSimple
+	- Settings → GearSix
+	- AlertTriangle → Warning
+	- ChevronRight → CaretRight
+	- RefreshCw → ArrowClockwise
+	- Menu → List
+- Production build succeeded (vite v6.3.5). Artifacts generated under dist/.
