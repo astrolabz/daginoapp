@@ -18,7 +18,33 @@ Log "Starting HTTPS enforcer for $Owner/$Repo (max $MaxAttempts attempts, every 
 
 for ($i = 1; $i -le $MaxAttempts; $i++) {
     Log "Attempt ${i}/${MaxAttempts}: querying Pages status..."
-    $status = gh api repos/$Owner/$Repo/pages -q ".https_enforced" 2>$null
+    # Resolve gh executable if not on PATH
+    function Resolve-GhPath {
+        $cmd = Get-Command gh -ErrorAction SilentlyContinue
+        if ($cmd) { return $cmd.Path }
+
+        $candidates = @(
+            "$env:ProgramFiles\GitHub CLI\bin\gh.exe",
+            "$env:ProgramFiles\GitHub CLI\gh.exe",
+            "$env:ProgramFiles(x86)\GitHub CLI\bin\gh.exe",
+            "$env:ProgramFiles(x86)\GitHub CLI\gh.exe",
+            "$env:ProgramW6432\GitHub CLI\bin\gh.exe"
+        )
+
+        foreach ($p in $candidates) {
+            if ($p -and (Test-Path $p)) { return $p }
+        }
+
+        return $null
+    }
+
+    $ghPath = Resolve-GhPath
+    if (-not $ghPath) {
+        Log "gh CLI not found in PATH or known locations; ensure GitHub CLI is installed and available to this session."
+        $status = $null
+    } else {
+        $status = & $ghPath api repos/$Owner/$Repo/pages -q ".https_enforced" 2>$null
+    }
 
     if ($status -eq "true") {
         Log "HTTPS already enforced. Exiting."
@@ -27,7 +53,13 @@ for ($i = 1; $i -le $MaxAttempts; $i++) {
 
     # Try to enable HTTPS. If certificate not present, the API will return an error.
     Log "Attempt ${i}: trying to enable HTTPS via API..."
-    $putOutput = gh api -X PUT repos/$Owner/$Repo/pages -f https_enforced=true 2>&1
+    if (-not $ghPath) {
+        $putOutput = "gh not available"
+        $exit = 1
+    } else {
+        $putOutput = & $ghPath api -X PUT repos/$Owner/$Repo/pages -f https_enforced=true 2>&1
+        $exit = $LASTEXITCODE
+    }
     $exit = $LASTEXITCODE
 
     if ($exit -eq 0) {
