@@ -47,34 +47,16 @@ for ($i = 1; $i -le $MaxAttempts; $i++) {
     }
 
     if ($status -eq "true") {
-        Log "HTTPS already enforced. Exiting."
+        Log "HTTPS enforced. Exiting."
         exit 0
     }
 
-    # Try to enable HTTPS. If certificate not present, the API will return an error.
-    Log "Attempt ${i}: trying to enable HTTPS via API..."
-    if (-not $ghPath) {
-        $putOutput = "gh not available"
-        $exit = 1
+    if ($status -eq "false") {
+        Log "HTTPS not yet enforced. Certificate may be provisioning. Will retry after waiting."
+    } elseif (-not $status) {
+        Log "Could not read Pages https_enforced status; ensure gh is available and repository Pages is configured."
     } else {
-    # Use a JSON payload to send a boolean for https_enforced
-    $json = '{"https_enforced": true}'
-    $putOutput = & $ghPath api -X PUT repos/$Owner/$Repo/pages -H "Accept: application/vnd.github+json" -f raw=$json 2>&1
-    $exit = $LASTEXITCODE
-    }
-    $exit = $LASTEXITCODE
-
-    if ($exit -eq 0) {
-        Log "Enable request succeeded. Verifying status..."
-        $status2 = gh api repos/$Owner/$Repo/pages -q ".https_enforced" 2>$null
-        if ($status2 -eq "true") {
-            Log "HTTPS enforced successfully. Exiting."
-            exit 0
-        } else {
-            Log "Enable request returned 0 but https_enforced is not true yet. Will retry."
-        }
-    } else {
-        Log "Enable request failed (exit $exit): $putOutput"
+        Log "Pages status: $status. Waiting..."
     }
 
     Log "Sleeping $IntervalSeconds seconds before next attempt..."
