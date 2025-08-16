@@ -57,8 +57,10 @@ for ($i = 1; $i -le $MaxAttempts; $i++) {
         $putOutput = "gh not available"
         $exit = 1
     } else {
-        $putOutput = & $ghPath api -X PUT repos/$Owner/$Repo/pages -f https_enforced=true 2>&1
-        $exit = $LASTEXITCODE
+    # Use a JSON payload to send a boolean for https_enforced
+    $json = '{"https_enforced": true}'
+    $putOutput = & $ghPath api -X PUT repos/$Owner/$Repo/pages -H "Accept: application/vnd.github+json" -f raw=$json 2>&1
+    $exit = $LASTEXITCODE
     }
     $exit = $LASTEXITCODE
 
