@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useKV } from '@/spark-polyfills/kv';
+import * as reservationClient from '@/lib/reservationClient';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -60,7 +61,38 @@ const ADVANCE_BOOKING_DAYS = 30;
 
 const ReservationSystem: React.FC<ReservationSystemProps> = ({ language }) => {
   // State for reservations
+  // State for reservations
+  // Reservations are persisted client-side for offline/dev mode. If VITE_RESERVATION_API_URL is
+  // configured, reservations will be loaded from and written to the Reservation API service.
   const [reservations, setReservations] = useKV<Reservation[]>('restaurant-reservations', []);
+  const isApiConfigured = Boolean(import.meta.env.VITE_RESERVATION_API_URL);
+
+  useEffect(() => {
+    let mounted = true;
+    if (!isApiConfigured) return;
+    (async () => {
+      try {
+        const list = await reservationClient.listReservations();
+        if (!mounted) return;
+        const mapped = list.map((r: any) => ({
+          id: r.id,
+          date: r.date,
+          time: r.time,
+          guests: r.covers || (r.guests as number) || 2,
+          name: r.name,
+          email: r.email,
+          phone: r.phone,
+          notes: r.notes || '',
+          status: r.status || 'pending',
+          createdAt: r.createdAt || new Date().toISOString(),
+        }));
+        setReservations(mapped as any);
+      } catch (err) {
+        console.warn('Reservation API load failed, falling back to localStorage', err);
+      }
+    })();
+    return () => { mounted = false; };
+  }, []);
   
   // Form state
   const [selectedDate, setSelectedDate] = useState<Date>();
@@ -304,11 +336,35 @@ const ReservationSystem: React.FC<ReservationSystemProps> = ({ language }) => {
         expiresAt
       };
       
-      // Add to reservations
-      setReservations(current => [...current, newReservation]);
+      // Add to reservations (remote when configured)
+      if (isApiConfigured) {
+        try {
+          const created = await reservationClient.createReservation({
+            name: newReservation.name,
+            email: newReservation.email,
+            phone: newReservation.phone,
+            date: newReservation.date,
+            time: newReservation.time,
+            covers: newReservation.guests,
+            notes: newReservation.notes
+          });
+          setReservations(current => [...current, {
+            ...newReservation,
+            id: created.id,
+            status: created.status || newReservation.status,
+            createdAt: created.createdAt || newReservation.createdAt
+          }]);
+        } catch (err) {
+          console.error('Failed to create reservation on API, falling back to local:', err);
+          setReservations(current => [...current, newReservation]);
+        }
+      } else {
+        setReservations(current => [...current, newReservation]);
+      }
       
-      // Send confirmation email (simulated for now)
-      await sendConfirmationEmail(newReservation);
+  // Trigger confirmation flow: when API is configured the API should send real emails.
+  // Client no longer attempts to send provider emails directly.
+  await sendConfirmationEmail(newReservation);
       
       // Reset form
       setSelectedDate(undefined);
@@ -331,50 +387,21 @@ const ReservationSystem: React.FC<ReservationSystemProps> = ({ language }) => {
 
   // Send confirmation email (functional implementation)
   const sendConfirmationEmail = async (reservation: Reservation): Promise<void> => {
+    // If remote API available, call confirmation endpoint (this is a simple hook —
+    // real email sending should be done server-side by the API or a separate mailer)
     try {
-      // Real email sending implementation
-      console.log('Processing reservation confirmation email for:', reservation.id);
-      
-      // Create email content with proper formatting
-      const emailSubject = `Conferma prenotazione - Ristorante Pizzeria Da Gino`;
-      const emailBody = `
-Gentile ${reservation.name},
-
-La sua prenotazione presso il Ristorante Pizzeria Da Gino è stata ricevuta con successo.
-
-DETTAGLI PRENOTAZIONE:
-• Data: ${reservation.date}
-• Ora: ${reservation.time}  
-• Numero ospiti: ${reservation.guests}
-• Nome: ${reservation.name}
-• Email: ${reservation.email}
-• Telefono: ${reservation.phone}
-${reservation.notes ? `• Note speciali: ${reservation.notes}` : ''}
-
-La prenotazione sarà confermata entro 24 ore. Riceverà una email di conferma definitiva.
-
-Per modifiche o cancellazioni, contatti:
-📞 0223610117 / 0645069661
-📧 info@pizzeriadagino.nl
-
-Indirizzo: Beatrixstraat 37, 1781 EM Den Helder
-
-Grazie per aver scelto Da Gino!
-
----
-Ristorante Pizzeria Da Gino
-Autentica Cucina Italiana dal 2011
-      `;
-      
-      // Store email for admin review (simulated success)
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      console.log('Reservation confirmation email processed successfully');
-      
-    } catch (error) {
-      console.error('Email processing error:', error);
-      // Don't throw error - reservation should still be created
-      console.log('Reservation created - email will be sent manually if needed');
+      if (isApiConfigured) {
+        await fetch(`${import.meta.env.VITE_RESERVATION_API_URL.replace(/\/$/, '')}/reservations/confirm`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: reservation.confirmationToken || reservation.id })
+        });
+      } else {
+        // no-op for now, keep UX consistent
+        console.log('Reservation (local) created:', reservation.id);
+      }
+    } catch (err) {
+      console.warn('Failed to trigger confirmation email/endpoint', err);
     }
   };
 

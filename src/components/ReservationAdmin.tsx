@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useKV } from '@/spark-polyfills/kv';
+import * as reservationClient from '@/lib/reservationClient';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +27,34 @@ interface ReservationAdminProps {
 
 const ReservationAdmin: React.FC<ReservationAdminProps> = ({ language }) => {
   const [reservations, setReservations] = useKV<Reservation[]>('restaurant-reservations', []);
+  const isApiConfigured = Boolean(import.meta.env.VITE_RESERVATION_API_URL);
+
+  // Load from API if configured
+  React.useEffect(() => {
+    let mounted = true;
+    if (!isApiConfigured) return;
+    (async () => {
+      try {
+        const list = await reservationClient.listReservations();
+        if (!mounted) return;
+        setReservations(list.map((r: any) => ({
+          id: r.id,
+          date: r.date,
+          time: r.time,
+          guests: r.covers || r.guests || 2,
+          name: r.name,
+          email: r.email,
+          phone: r.phone,
+          notes: r.notes || '',
+          status: r.status || 'pending',
+          createdAt: r.createdAt || new Date().toISOString(),
+        })) as any);
+      } catch (err) {
+        console.warn('Failed to load reservations from API, using local storage', err);
+      }
+    })();
+    return () => { mounted = false; };
+  }, []);
   const [filter, setFilter] = useState<'all' | 'pending' | 'confirmed' | 'cancelled'>('all');
 
   const t = (key: TranslationKey): string => {
@@ -40,17 +69,27 @@ const ReservationAdmin: React.FC<ReservationAdminProps> = ({ language }) => {
 
   // Update reservation status
   const updateReservationStatus = (id: string, status: Reservation['status']) => {
+    // Update locally
     setReservations(current => 
       current.map(res => 
         res.id === id ? { ...res, status } : res
       )
     );
+    // Update remote when available
+    if (isApiConfigured) {
+      reservationClient.updateReservation(id, { status }).catch(err => console.warn('Failed to update remote reservation', err));
+    }
   };
 
   // Delete reservation
   const deleteReservation = (id: string) => {
+    // NOTE: confirm() is a browser-native prompt; consider replacing with a styled modal
+    // for better UX. Also ensure deletion is authorized server-side in production.
     if (confirm('Are you sure you want to delete this reservation?')) {
       setReservations(current => current.filter(res => res.id !== id));
+      if (isApiConfigured) {
+        reservationClient.deleteReservation(id).catch(err => console.warn('Failed to delete remote reservation', err));
+      }
     }
   };
 

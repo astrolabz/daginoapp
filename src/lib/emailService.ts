@@ -11,6 +11,19 @@ export interface EmailProvider {
   fromName: string;
 }
 
+/* NOTE (AUDIT):
+ * This module defines the shape of an email provider but MUST NOT store or expose API keys
+ * on the client. Any use of SendGrid/AWS SES requires server-side code that keeps keys
+ * secret. Recommended approach:
+ *  - Implement a small server endpoint (Supabase edge function, Netlify Function, or a
+ *    minimal server) that accepts reservation details and triggers the email using provider
+ *    credentials stored as environment variables on the server.
+ *  - From the frontend, call that endpoint. Do not call provider APIs directly from the
+ *    browser.
+ *
+ * TODO: Create server wrapper and replace simulation mode with actual provider calls.
+ */
+
 export interface EmailTemplate {
   subject: string;
   html: string;

@@ -2,6 +2,12 @@
 // API-compatible: const [value, setValue] = useKV<T>(key, initialValue)
 import { useEffect, useState } from 'react'
 
+// NOTE (AUDIT): This file is intentionally a client-side polyfill that persists data
+// in the browser's localStorage. It's suitable for demos and local testing only.
+// In production, replace calls to `useKV` with server API calls that persist data
+// in a shared database (Supabase, Postgres, DynamoDB, etc.). Do not store any
+// sensitive data in localStorage.
+
 function readFromStorage<T>(key: string, fallback: T): T {
   try {
     const raw = localStorage.getItem(key)
