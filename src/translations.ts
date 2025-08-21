@@ -244,7 +244,13 @@ export const translations = {
     rating5Stars: "5.0 ★ Rating",
     goToMenu: "Vai al Menu",
     contactUs: "Contattaci",
-    authentic: "Autentico"
+    authentic: "Autentico",
+    
+    // Google Maps integration
+    viewOnMaps: "Visualizza su Maps",
+    getDirections: "Ottieni Indicazioni",
+    walkingDistance: "Distanza a piedi dalla Stazione Centrale di Den Helder: 8 minuti",
+    parkingInfo: "Parcheggio gratuito in strada disponibile nelle vicinanze"
   },
   
   en: {
@@ -462,7 +468,13 @@ export const translations = {
     rating5Stars: "5.0 ★ Rating",
     goToMenu: "Go to Menu",
     contactUs: "Contact Us",
-    authentic: "Authentic"
+    authentic: "Authentic",
+    
+    // Google Maps integration
+    viewOnMaps: "View on Maps",
+    getDirections: "Get Directions", 
+    walkingDistance: "Walking distance from Den Helder Centraal Station: 8 minutes",
+    parkingInfo: "Free street parking available nearby"
   },
   
   es: {
