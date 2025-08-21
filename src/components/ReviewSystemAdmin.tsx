@@ -5,11 +5,11 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { 
   Star,
-  Settings,
+  Gear,
   Eye,
-  RefreshCw,
+  ArrowsClockwise,
   CheckCircle,
-  AlertTriangle,
+  WaveTriangle,
   TrendUp
 } from "@phosphor-icons/react";
 import { Language, translations, TranslationKey } from '../translations';
@@ -106,7 +106,7 @@ const ReviewSystemAdmin: React.FC<ReviewSystemAdminProps> = ({ language }) => {
               
               <div className="flex items-center justify-between p-4 rounded-lg border">
                 <div className="flex items-center gap-3">
-                  <AlertTriangle size={20} className="text-yellow-600" />
+                  <WaveTriangle size={20} className="text-yellow-600" />
                   <div>
                     <div className="font-medium">Auto-sync Schedule</div>
                     <div className="text-sm text-muted-foreground">Reviews sync every 24 hours</div>
@@ -133,7 +133,16 @@ const ReviewSystemAdmin: React.FC<ReviewSystemAdminProps> = ({ language }) => {
               variant="outline"
               size="sm"
             >
-              <RefreshCw size={16} className={`mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+              <ArrowsClockwise size={16} className={`mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+              {isRefreshing ? 'Syncing...' : 'Sync Now'}
+            </Button>
+            <Button
+              onClick={handleRefresh}
+              disabled={isRefreshing}
+              variant="outline"
+              size="sm"
+            >
+              <ArrowsClockwise size={16} className={`mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
               {isRefreshing ? 'Syncing...' : 'Sync Now'}
             </Button>
           </div>
@@ -145,8 +154,13 @@ const ReviewSystemAdmin: React.FC<ReviewSystemAdminProps> = ({ language }) => {
               View All Reviews
             </Button>
             <Button variant="outline" className="flex items-center gap-2">
-              <Settings size={16} />
+              <Gear size={16} />
               Configure Settings
+            <Button variant="outline" className="flex items-center gap-2">
+              <Gear size={16} />
+              Configure Settings
+            </Button>
+                  <WaveTriangle size={20} className="text-yellow-600" />
             </Button>
             <Button variant="outline" className="flex items-center gap-2">
               <TrendUp size={16} />
@@ -160,7 +174,8 @@ const ReviewSystemAdmin: React.FC<ReviewSystemAdminProps> = ({ language }) => {
 
           {/* Information Alert */}
           <Alert>
-            <AlertTriangle className="h-4 w-4" />
+            <WaveTriangle className="h-4 w-4" />
+            <WaveTriangle className="h-4 w-4" />
             <AlertDescription>
               The review system automatically fetches and displays reviews from TripAdvisor. 
               This is a demonstration showing how the system would work in production.

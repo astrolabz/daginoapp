@@ -1,0 +1,64 @@
+Piano aggiornato per sistema prenotazioni (Google Forms + Sheets + Apps Script)
+
+Obiettivo
+- Implementare un flusso gratuito e sicuro usando Google Forms (frontend), Google Sheets (storage privato) e Apps Script (logica + Web App per conferma/annullamento + invio email). Solo l'admin ha accesso al Sheet; gli utenti autenticati via Google possono inviare prenotazioni.
+
+Componenti creati/forniti
+- apps-script/Code.gs : codice Apps Script pronto da incollare nel progetto Apps Script del tuo Sheet.
+- Istruzioni dettagliate per creare il calendario, il foglio e il modulo (vedi commenti nel file Code.gs e README nella parte superiore del file).
+
+Assunzioni e scelte
+- Persistenza: localizzata su Google Sheets (privato). Nessun servizio esterno richiesto.
+- Invio email: usa MailApp (Google) dall'Apps Script; non ci sono chiavi esterne da gestire.
+- Conferma via link con token univoco: link esposto tramite Web App (Apps Script) che espone solo azioni di conferma/annullamento, non dati del foglio.
+- Protezione doppie: controllo semplice basato su email e sovrapposizione oraria.
+- Admin: l'accesso al Sheet è limitato al proprietario/admin; il Web App è eseguito come proprietario e risponde ai link pubblici di conferma/annullamento.
+
+Passi successivi consigliati
+1) Crea Calendar e copia l'ID nel CONFIG del file Code.gs.
+2) Crea Google Sheet con intestazioni esatte come indicato nel Code.gs.
+3) Dal Sheet crea il Google Form collegato.
+4) Incolla il codice Apps Script in Extensions → Apps Script e deploya come Web App (Who has access: Anyone).
+5) Imposta trigger onFormSubmit per onFormSubmit.
+6) Testa invio/conferma/annulla.
+
+Note per personalizzazioni
+- Modifica CONFIG in Code.gs: SLOT_MINUTES, CAPACITY_PER_SLOT, TOKEN_EXPIRATION_MINUTES, WEB_APP_URL, ADMIN_EMAILS.
+- Per limitare gli orari disponibili, imposta la domanda "Ora" del Form su scelta multipla con i soli slot desiderati.
+
+Orari del ristorante (usati per validazione automatica nello script):
+Lunedì:    13:30 - 21:30
+Martedì:   13:30 - 21:30
+Mercoledì: Chiuso
+Giovedì:   13:30 - 21:30
+Venerdì:   13:30 - 21:30
+Sabato:    13:30 - 21:30
+Domenica:  13:30 - 21:30
+
+Parametri adottati nel file `apps-script/Code.gs`:
+- SLOT_MINUTES = 90 (durata stimata del tavolo)
+- CAPACITY_PER_SLOT = 20 (80 posti / ~4 pax per tavolo)
+
+Lista suggerita di orari da inserire nella domanda "Ora" del Form (start times a step di 30 minuti, ultimo start consentito 20:00):
+13:30
+14:00
+14:30
+15:00
+15:30
+16:00
+16:30
+17:00
+17:30
+18:00
+18:30
+19:00
+19:30
+20:00
+
+Questi slot rispettano la durata di 90 minuti e non iniziano dopo il tempo ultimo consentito (21:30 - 90min = 20:00).
+
+Se vuoi, procedo a:
+- aggiungere uno script di migrazione per importare eventuali prenotazioni locali (dal browser) nel Sheet;
+- creare un piccolo README.md con i comandi di deploy e test.
+
+Fine del piano.

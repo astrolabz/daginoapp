@@ -10,25 +10,26 @@ param(
 
 function Log($msg) {
     $ts = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    "[$ts] $msg" | Out-File -FilePath "$PSScriptRoot/enable-https.log" -Append -Encoding utf8
+    $logPath = Join-Path $PSScriptRoot "enable-https.log"
+    "[$ts] $msg" | Out-File -FilePath $logPath -Append -Encoding utf8
     Write-Output "[$ts] $msg"
 }
 
-Log "Starting HTTPS enforcer for $Owner/$Repo (max $MaxAttempts attempts, every $IntervalSeconds s)"
+Log ("Starting HTTPS enforcer for {0}/{1} (max {2} attempts, every {3} s)" -f $Owner, $Repo, $MaxAttempts, $IntervalSeconds)
 
 for ($i = 1; $i -le $MaxAttempts; $i++) {
-    Log "Attempt ${i}/${MaxAttempts}: querying Pages status..."
+    Log ("Attempt {0}/{1}: querying Pages status..." -f $i, $MaxAttempts)
     # Resolve gh executable if not on PATH
     function Resolve-GhPath {
         $cmd = Get-Command gh -ErrorAction SilentlyContinue
         if ($cmd) { return $cmd.Path }
 
         $candidates = @(
-            "$env:ProgramFiles\GitHub CLI\bin\gh.exe",
-            "$env:ProgramFiles\GitHub CLI\gh.exe",
-            "$env:ProgramFiles(x86)\GitHub CLI\bin\gh.exe",
-            "$env:ProgramFiles(x86)\GitHub CLI\gh.exe",
-            "$env:ProgramW6432\GitHub CLI\bin\gh.exe"
+            (Join-Path $env:ProgramFiles "GitHub CLI\bin\gh.exe"),
+            (Join-Path $env:ProgramFiles "GitHub CLI\gh.exe"),
+            (Join-Path ${env:ProgramFiles(x86)} "GitHub CLI\bin\gh.exe"),
+            (Join-Path ${env:ProgramFiles(x86)} "GitHub CLI\gh.exe"),
+            (Join-Path $env:ProgramW6432 "GitHub CLI\bin\gh.exe")
         )
 
         foreach ($p in $candidates) {
@@ -56,12 +57,12 @@ for ($i = 1; $i -le $MaxAttempts; $i++) {
     } elseif (-not $status) {
         Log "Could not read Pages https_enforced status; ensure gh is available and repository Pages is configured."
     } else {
-        Log "Pages status: $status. Waiting..."
+        Log ("Pages status: {0}. Waiting..." -f $status)
     }
 
-    Log "Sleeping $IntervalSeconds seconds before next attempt..."
+    Log ("Sleeping {0} seconds before next attempt..." -f $IntervalSeconds)
     Start-Sleep -Seconds $IntervalSeconds
 }
 
-Log "Max attempts reached ($MaxAttempts). Giving up. Check logs in $PSScriptRoot/enable-https.log and Pages settings."
+Log ("Max attempts reached ({0}). Giving up. Check logs in {1} and Pages settings." -f $MaxAttempts, (Join-Path $PSScriptRoot "enable-https.log"))
 exit 1

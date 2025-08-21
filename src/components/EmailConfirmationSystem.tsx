@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useKV } from '@/spark-polyfills/kv';
+import * as reservationClient from '@/lib/reservationClient';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -35,44 +36,78 @@ const EmailConfirmationSystem: React.FC<EmailConfirmationSystemProps> = ({
   };
 
   useEffect(() => {
-    if (!reservationId || !confirmationToken) {
-      setConfirmationStatus('error');
-      return;
-    }
+    let mounted = true;
+    const isApiConfigured = Boolean(import.meta.env.VITE_RESERVATION_API_URL);
+    (async () => {
+      if (!reservationId || !confirmationToken) {
+        setConfirmationStatus('error');
+        return;
+      }
 
-    // Find the reservation
-    const foundReservation = reservations.find(
-      r => r.id === reservationId && r.confirmationToken === confirmationToken
-    );
+      if (isApiConfigured) {
+        try {
+          // Call the confirm endpoint
+          const resp = await fetch(`${import.meta.env.VITE_RESERVATION_API_URL.replace(/\/$/, '')}/reservations/confirm`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: confirmationToken })
+          });
+          if (!mounted) return;
+          if (resp.ok) {
+            // fetch reservation details
+            const list = await reservationClient.listReservations();
+            const found = list.find((r: any) => r.id === reservationId);
+            if (found) {
+              setReservation(found as any);
+              setConfirmationStatus('success');
+              return;
+            }
+            setConfirmationStatus('success');
+            return;
+          } else if (resp.status === 404) {
+            setConfirmationStatus('error');
+            return;
+          } else {
+            setConfirmationStatus('error');
+            return;
+          }
+        } catch (err) {
+          console.warn('Confirmation via API failed, falling back to local', err);
+        }
+      }
 
-    if (!foundReservation) {
-      setConfirmationStatus('error');
-      return;
-    }
+      // Fallback: localStorage-based confirmation
+      const foundReservation = reservations.find(
+        r => r.id === reservationId && r.confirmationToken === confirmationToken
+      );
 
-    // Check if token is expired
-    if (foundReservation.expiresAt && new Date() > new Date(foundReservation.expiresAt)) {
-      setConfirmationStatus('expired');
-      setReservation(foundReservation);
-      return;
-    }
+      if (!foundReservation) {
+        setConfirmationStatus('error');
+        return;
+      }
 
-    // Check if already confirmed
-    if (foundReservation.status === 'confirmed') {
+      if (foundReservation.expiresAt && new Date() > new Date(foundReservation.expiresAt)) {
+        setConfirmationStatus('expired');
+        setReservation(foundReservation);
+        return;
+      }
+
+      if (foundReservation.status === 'confirmed') {
+        setConfirmationStatus('success');
+        setReservation(foundReservation);
+        return;
+      }
+
+      setReservations(current =>
+        current.map(r =>
+          r.id === reservationId ? { ...r, status: 'confirmed' } : r
+        )
+      );
+
+      setReservation({ ...foundReservation, status: 'confirmed' });
       setConfirmationStatus('success');
-      setReservation(foundReservation);
-      return;
-    }
-
-    // Confirm the reservation
-    setReservations(current =>
-      current.map(r =>
-        r.id === reservationId ? { ...r, status: 'confirmed' } : r
-      )
-    );
-
-    setReservation({ ...foundReservation, status: 'confirmed' });
-    setConfirmationStatus('success');
+    })();
+    return () => { mounted = false; };
   }, [reservationId, confirmationToken, reservations]);
 
   const renderContent = () => {

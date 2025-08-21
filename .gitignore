@@ -31,3 +31,11 @@ packages
 .devcontainer/
 
 .spark-workbench-id
+
+# Local runtime artifacts
+pids/
+*.pid
+
+# Build outputs and nested node_modules that can cause noise
+dist/assets/*
+services/*/node_modules

@@ -88,6 +88,9 @@ export const translations = {
     totalReviews: "Recensioni Totali",
     ratingDistribution: "Distribuzione Valutazioni",
     latestReviews: "Recensioni Recenti",
+  showMoreReviews: "Mostra altre recensioni",
+  viewAllReviews: "Vedi tutte le recensioni",
+  reviewsBy: "Recensioni di",
     
     // Additional info
     allergyNotice: "Gestiamo le vostre allergie o intolleranze alimentari con la massima attenzione durante la preparazione dei nostri piatti. La contaminazione incrociata di allergeni non può mai essere completamente esclusa nella nostra cucina. Vi preghiamo di indicare chiaramente le vostre allergie o intolleranze al momento dell'ordine!",
@@ -314,6 +317,9 @@ export const translations = {
     totalReviews: "Total Reviews",
     ratingDistribution: "Rating Distribution",
     latestReviews: "Latest Reviews",
+  showMoreReviews: "Show more reviews",
+  viewAllReviews: "View all reviews",
+  reviewsBy: "Reviews by",
     
     // Additional info
     allergyNotice: "We handle your allergies or food intolerances with the utmost care during the preparation of our dishes. Cross-contamination of allergens can never be completely excluded in our kitchen. Please clearly indicate your allergies or intolerances when ordering!",
