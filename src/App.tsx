@@ -34,6 +34,8 @@ import ReservationSystem from './components/ReservationSystem';
 import SearchSystem from './components/SearchSystem';
 import CategoryNavigation from './components/CategoryNavigation';
 import Breadcrumb from './components/Breadcrumb';
+import StructuredData from './components/StructuredData';
+import GoogleMaps from './components/GoogleMaps';
 import { translations, Language, TranslationKey, getTranslation } from './translations';
 
 // Menu descriptions in all languages
@@ -2231,6 +2233,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-hero">
+      <StructuredData language={selectedLanguage} />
       <Toaster position="top-right" />
       {/* Modern Navigation with glassmorphism */}
       <header className="sticky top-0 z-50 glass-nav">
@@ -2613,29 +2616,8 @@ function App() {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-            <Card className="card-modern hover-lift">
-              <CardHeader className="pb-6">
-                <CardTitle className="font-heading flex items-center gap-3 text-xl md:text-2xl">
-                  <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <MapPin size={24} className="text-primary" />
-                  </div>
-                  {t('whereWeAre')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <p className="font-body text-base md:text-lg text-foreground leading-relaxed">
-                  {t('address')}
-                </p>
-                <Button 
-                  onClick={handleDirections}
-                  variant="outline"
-                  className="w-full h-12 text-base hover-lift hover:bg-primary hover:text-primary-foreground"
-                >
-                  <MapPin size={20} className="mr-3" />
-                  {t('directions')}
-                </Button>
-              </CardContent>
-            </Card>
+            {/* Google Maps Integration */}
+            <GoogleMaps language={selectedLanguage} />
 
             <Card className="card-modern hover-lift">
               <CardHeader className="pb-6">
