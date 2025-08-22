@@ -14,7 +14,16 @@ import {
   Star,
   CalendarCheck,
   ChatCircle,
-  Envelope
+  Envelope,
+  Coffee,
+  BeerBottle,
+  Drop,
+  ForkKnife,
+  Martini,
+  Truck,
+  Storefront,
+  BookOpen,
+  ClockClockwise
 } from "@phosphor-icons/react";
 import { Language, TranslationKey, getTranslation } from '../translations';
 
@@ -44,11 +53,11 @@ const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
       borderColor: 'border-primary/20',
       hoverColor: 'hover:border-primary hover:bg-primary/5',
       subcategories: [
-        { id: 'antipasti', name: t('antipasti'), icon: <ChefHat size={16} /> },
+        { id: 'antipasti', name: t('antipasti'), icon: <ForkKnife size={16} /> },
         { id: 'pizze', name: t('pizze'), icon: <ChefHat size={16} /> },
-        { id: 'pasta', name: t('pasta'), icon: <Wine size={16} /> },
-        { id: 'risotti', name: t('risotti'), icon: <Wine size={16} /> },
-        { id: 'secondi', name: t('secondi'), icon: <Users size={16} /> },
+        { id: 'pasta', name: t('pasta'), icon: <ForkKnife size={16} /> },
+        { id: 'risotti', name: t('risotti'), icon: <ForkKnife size={16} /> },
+        { id: 'secondi', name: t('secondi'), icon: <ForkKnife size={16} /> },
         { id: 'dolci', name: t('dolci'), icon: <Heart size={16} /> }
       ]
     },
@@ -61,11 +70,11 @@ const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
       borderColor: 'border-accent/20',
       hoverColor: 'hover:border-accent hover:bg-accent/5',
       subcategories: [
-        { id: 'aperitivi', name: t('aperitivi'), icon: <Wine size={16} /> },
+        { id: 'aperitivi', name: t('aperitivi'), icon: <Martini size={16} /> },
         { id: 'vini', name: t('vini'), icon: <Wine size={16} /> },
-        { id: 'birre', name: t('birre'), icon: <Users size={16} /> },
-        { id: 'caffe', name: t('caffe'), icon: <Heart size={16} /> },
-        { id: 'bibite', name: t('bibite'), icon: <Sparkle size={16} /> },
+        { id: 'birre', name: t('birre'), icon: <BeerBottle size={16} /> },
+        { id: 'caffe', name: t('caffe'), icon: <Coffee size={16} /> },
+        { id: 'bibite', name: t('bibite'), icon: <Drop size={16} /> },
         { id: 'distillati', name: t('distillati'), icon: <Wine size={16} /> }
       ]
     },
@@ -79,8 +88,8 @@ const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
       hoverColor: 'hover:border-primary hover:bg-primary/5',
       subcategories: [
         { id: 'reservations', name: t('reservations'), icon: <CalendarCheck size={16} /> },
-        { id: 'delivery', name: t('delivery'), icon: <MapPin size={16} /> },
-        { id: 'takeaway', name: t('takeaway'), icon: <Users size={16} /> }
+        { id: 'delivery', name: t('delivery'), icon: <Truck size={16} /> },
+        { id: 'takeaway', name: t('takeaway'), icon: <Storefront size={16} /> }
       ]
     },
     {
@@ -92,10 +101,10 @@ const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
       borderColor: 'border-accent/20',
       hoverColor: 'hover:border-accent hover:bg-accent/5',
       subcategories: [
-        { id: 'about', name: t('ourStory'), icon: <Heart size={16} /> },
+        { id: 'about', name: t('ourStory'), icon: <BookOpen size={16} /> },
         { id: 'contact', name: t('contacts'), icon: <Phone size={16} /> },
         { id: 'reviews', name: t('ourReviews'), icon: <ChatCircle size={16} /> },
-        { id: 'hours', name: t('hours'), icon: <Clock size={16} /> }
+        { id: 'hours', name: t('hours'), icon: <ClockClockwise size={16} /> }
       ]
     }
   ];

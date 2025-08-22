@@ -29,7 +29,7 @@ const GoogleMaps: React.FC<GoogleMapsProps> = ({ language }) => {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title={getTranslation('whereWeAre', language)}
+            title={getTranslation(language, 'whereWeAre')}
             className="rounded-t-xl"
           />
         </div>
@@ -63,7 +63,7 @@ const GoogleMaps: React.FC<GoogleMapsProps> = ({ language }) => {
             onClick={() => window.open(googleMapsUrl, '_blank', 'noopener,noreferrer')}
           >
             <MapPin size={16} className="mr-2" />
-            {getTranslation('viewOnMaps', language) || 'View on Maps'}
+            {getTranslation(language, 'viewOnMaps') || 'View on Maps'}
           </Button>
           
           <Button 
@@ -72,14 +72,14 @@ const GoogleMaps: React.FC<GoogleMapsProps> = ({ language }) => {
             onClick={() => window.open(directionsUrl, '_blank', 'noopener,noreferrer')}
           >
             <ArrowUpRight size={16} className="mr-2" />
-            {getTranslation('getDirections', language) || 'Get Directions'}
+            {getTranslation(language, 'getDirections') || 'Get Directions'}
           </Button>
         </div>
         
         {/* Quick info */}
         <div className="text-xs text-muted-foreground space-y-1">
-          <p>📍 {getTranslation('walkingDistance', language) || 'Walking distance from Den Helder Centraal Station: 8 minutes'}</p>
-          <p>🚗 {getTranslation('parkingInfo', language) || 'Free street parking available nearby'}</p>
+          <p>📍 {getTranslation(language, 'walkingDistance') || 'Walking distance from Den Helder Centraal Station: 8 minutes'}</p>
+          <p>🚗 {getTranslation(language, 'parkingInfo') || 'Free street parking available nearby'}</p>
         </div>
       </CardContent>
     </Card>
