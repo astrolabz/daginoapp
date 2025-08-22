@@ -19,6 +19,12 @@ Reservation API (optional PoC)
 		$env:VITE_RESERVATION_API_URL = "http://localhost:3001"
 	- Then run the frontend dev server as usual.
 
+## Prenotazioni (Google)
+
+Sistema di prenotazioni completamente gratuito basato su Google Forms + Google Sheets + Apps Script + Google Calendar. 
+
+Per configurare il sistema di prenotazioni, segui la guida completa: [docs/GOOGLE_BOOKING_SETUP.md](docs/GOOGLE_BOOKING_SETUP.md)
+
 ## Deployment (GitHub Pages)
 - CI is configured in `.github/workflows/deploy.yml`.
 - On push to `main`, the site is built and deployed to GitHub Pages.
