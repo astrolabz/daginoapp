@@ -1,13 +1,13 @@
 // Service Worker for Ristorante Da Gino PWA
 // Note: bump CACHE_VERSION to invalidate old caches when deploying breaking updates
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const CACHE_NAME = `da-gino-${CACHE_VERSION}`;
 const OFFLINE_URL = '/';
 
 // List of resources to cache for offline access
 const CACHE_URLS = [
   // Do NOT pre-cache '/': it causes stale index.html issues. Let the browser/network fetch it fresh.
-  '/manifest.json',
+  // Avoid caching manifest.json to ensure the latest is always fetched by the browser.
   // Add other core, version-agnostic assets here if needed (icons, etc.)
 ];
 
