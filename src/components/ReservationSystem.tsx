@@ -14,7 +14,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { toast } from 'sonner';
-import { 
+import {
   Calendar as CalendarIcon,
   Clock,
   Users,
@@ -26,7 +26,7 @@ import {
   MapPin,
   CaretLeft,
   CaretRight
-} from "@phosphor-icons/react";
+} from "@/components/icons";
 import { format, isBefore, isAfter, addDays, startOfDay, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay } from 'date-fns';
 import { Language, translations, TranslationKey, getTranslation } from '../translations';
 
