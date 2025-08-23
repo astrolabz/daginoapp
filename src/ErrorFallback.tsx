@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Warning, ArrowClockwise } from "@/components/icons";
+import { Warning, ArrowClockwise } from "@phosphor-icons/react";
 
 interface ErrorFallbackProps {
   error: Error;

@@ -6,18 +6,18 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { 
-  MagnifyingGlass,
-  X,
-  ChefHat,
-  Wine,
-  Users,
-  Heart,
-  Sparkle,
-  MapPin,
-  Phone,
-  Clock,
-  Star
-} from "@/components/icons";
+  MagnifyingGlass, 
+  X, 
+  ChefHat, 
+  Wine, 
+  Users, 
+  Heart, 
+  Sparkle, 
+  MapPin, 
+  Phone, 
+  Clock, 
+  Star 
+} from "@phosphor-icons/react";
 import { Language, TranslationKey, getTranslation } from '../translations';
 
 interface SearchItem {
@@ -347,7 +347,7 @@ const SearchSystem: React.FC<SearchSystemProps> = ({
                               </Badge>
                               {item.popular && (
                                 <Badge className="bg-gradient-to-r from-accent/20 to-primary/20 text-primary border-primary/20 text-xs">
-                                  <Star size={10} className="mr-1" />
+                                  <Star size={10} className="mr-1" weight="fill" />
                                   {t('popular')}
                                 </Badge>
                               )}

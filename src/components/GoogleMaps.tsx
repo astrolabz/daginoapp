@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, ArrowUpRight } from "@/components/icons";
+import { MapPin, ArrowUpRight } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Language, getTranslation } from '../translations';
@@ -38,7 +38,7 @@ const GoogleMaps: React.FC<GoogleMapsProps> = ({ language }) => {
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
           <div className="text-white">
             <div className="flex items-start gap-3">
-              <MapPin size={20} className="text-accent mt-1 flex-shrink-0" />
+              <MapPin size={20} className="text-accent mt-1 flex-shrink-0" weight="fill" />
               <div className="flex-1">
                 <p className="font-semibold text-sm md:text-base mb-1">
                   Ristorante Pizzeria Da Gino

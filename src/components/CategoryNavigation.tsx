@@ -3,14 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
-  ChefHat,
-  Wine,
-  Users,
-  Heart,
-  Sparkle,
-  MapPin,
-  Phone,
-  Clock,
+  ChefHat, 
+  Wine, 
+  Users, 
+  Heart, 
+  Sparkle, 
+  MapPin, 
+  Phone, 
+  Clock, 
   Star,
   CalendarCheck,
   ChatCircle,
@@ -24,7 +24,7 @@ import {
   Storefront,
   BookOpen,
   ClockClockwise
-} from "@/components/icons";
+} from "@phosphor-icons/react";
 import { Language, TranslationKey, getTranslation } from '../translations';
 
 interface CategoryNavigationProps {
