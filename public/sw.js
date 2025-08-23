@@ -1,13 +1,14 @@
 // Service Worker for Ristorante Da Gino PWA
-const CACHE_NAME = 'da-gino-v1';
+// Note: bump CACHE_VERSION to invalidate old caches when deploying breaking updates
+const CACHE_VERSION = 'v3';
+const CACHE_NAME = `da-gino-${CACHE_VERSION}`;
 const OFFLINE_URL = '/';
 
 // List of resources to cache for offline access
 const CACHE_URLS = [
-  '/',
+  // Do NOT pre-cache '/': it causes stale index.html issues. Let the browser/network fetch it fresh.
   '/manifest.json',
-  // Add core assets that should be cached
-  // Note: CSS and JS files will be added dynamically
+  // Add other core, version-agnostic assets here if needed (icons, etc.)
 ];
 
 // Install event - cache core resources
@@ -49,50 +50,50 @@ self.addEventListener('activate', (event) => {
 // Fetch event - serve from cache with network fallback
 self.addEventListener('fetch', (event) => {
   // Only handle GET requests
-  if (event.request.method !== 'GET') {
-    return;
-  }
-
+  if (event.request.method !== 'GET') return;
   // Skip non-HTTP requests
-  if (!event.request.url.startsWith('http')) {
+  if (!event.request.url.startsWith('http')) return;
+
+  const acceptHeader = event.request.headers.get('accept') || '';
+  const isHTMLNavigation = event.request.mode === 'navigate' || acceptHeader.includes('text/html');
+
+  if (isHTMLNavigation) {
+    // Network-first for HTML to avoid stale index.html
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          // Optionally cache a copy for offline usage
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy).catch(() => {}));
+          return response;
+        })
+        .catch(async () => {
+          const cached = await caches.match(event.request);
+          if (cached) return cached;
+          // Fallback to previously cached OFFLINE_URL if available
+          const offline = await caches.match(OFFLINE_URL);
+          return offline || new Response('Offline', { status: 503, statusText: 'Offline' });
+        })
+    );
     return;
   }
 
+  // For non-HTML assets, use cache-first with background revalidation
   event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        // Return cached version if available
-        if (cachedResponse) {
-          return cachedResponse;
-        }
+    caches.match(event.request).then((cachedResponse) => {
+      const networkFetch = fetch(event.request)
+        .then((response) => {
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy).catch(() => {}));
+          }
+          return response;
+        })
+        .catch(() => cachedResponse); // if network fails, use cache if present
 
-        // Fetch from network
-        return fetch(event.request)
-          .then((response) => {
-            // Don't cache non-successful responses
-            if (!response.ok) {
-              return response;
-            }
-
-            // Clone the response as it can only be consumed once
-            const responseToCache = response.clone();
-
-            // Cache successful responses
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          })
-          .catch(() => {
-            // Network failed - return offline page for navigation requests
-            if (event.request.mode === 'navigate') {
-              return caches.match(OFFLINE_URL);
-            }
-            throw new Error('Network failed and no cache available');
-          });
-      })
+      // Return cache immediately if present, else wait for network
+      return cachedResponse || networkFetch;
+    })
   );
 });
 
