@@ -1,6 +1,6 @@
 // Service Worker for Ristorante Da Gino PWA
 // Note: bump CACHE_VERSION to invalidate old caches when deploying breaking updates
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
 const CACHE_NAME = `da-gino-${CACHE_VERSION}`;
 const OFFLINE_URL = '/';
 
