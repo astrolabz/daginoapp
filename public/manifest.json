@@ -10,61 +10,28 @@
   "scope": "/",
   "lang": "it",
   "categories": ["food", "restaurant", "lifestyle"],
-  "icons": [
-    {
-      "src": "/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    }
-  ],
+  "icons": [],
   "shortcuts": [
     {
       "name": "Menu",
       "short_name": "Menu",
       "description": "Visualizza il nostro menu completo",
       "url": "/?section=menu",
-      "icons": [
-        {
-          "src": "/icon-192x192.png",
-          "sizes": "192x192"
-        }
-      ]
+  "icons": []
     },
     {
       "name": "Prenota",
       "short_name": "Prenota",
       "description": "Prenota un tavolo online",
       "url": "/?section=reservations",
-      "icons": [
-        {
-          "src": "/icon-192x192.png",
-          "sizes": "192x192"
-        }
-      ]
+  "icons": []
     },
     {
       "name": "Contatti",
       "short_name": "Contatti",
       "description": "Informazioni di contatto e posizione",
       "url": "/?section=contact",
-      "icons": [
-        {
-          "src": "/icon-192x192.png",
-          "sizes": "192x192"
-        }
-      ]
+  "icons": []
     }
   ]
 }
