@@ -4,13 +4,7 @@ import * as reservationClient from '@/lib/reservationClient';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { 
-  CheckCircle,
-  XCircle,
-  Clock,
-  ArrowLeft,
-  EnvelopeSimple
-} from "@phosphor-icons/react";
+import { CheckCircle, XCircle, Clock, ArrowLeft, EnvelopeSimple } from "@/components/icons";
 import { Language, translations, TranslationKey } from '../translations';
 import { Reservation } from './ReservationSystem';
 

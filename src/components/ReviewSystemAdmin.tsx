@@ -3,15 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Star,
-  Gear,
-  Eye,
-  ArrowsClockwise,
-  CheckCircle,
-  WaveTriangle,
-  TrendUp
-} from "@phosphor-icons/react";
+import { Star, Gear, Eye, ArrowsClockwise, CheckCircle, WaveTriangle, TrendUp } from "@/components/icons";
 import { Language, translations, TranslationKey } from '../translations';
 
 interface ReviewSystemAdminProps {

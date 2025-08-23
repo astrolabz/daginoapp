@@ -11,7 +11,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ language }) => {
     "@type": "Restaurant",
     "name": "Ristorante Pizzeria Da Gino",
     "alternateName": "Da Gino",
-    "description": getTranslation('description', language),
+  "description": getTranslation(language, 'description'),
     "image": [
       "https://www.ristorantedagino.nl/restaurant-interior.jpg",
       "https://www.ristorantedagino.nl/pizza-margherita.jpg",
@@ -98,11 +98,11 @@ const StructuredData: React.FC<StructuredDataProps> = ({ language }) => {
     "hasMenu": {
       "@type": "Menu",
       "name": "Main Menu",
-      "description": getTranslation('menuDescription', language),
+  "description": getTranslation(language, 'menuDescription'),
       "hasMenuSection": [
         {
           "@type": "MenuSection",
-          "name": getTranslation('antipasti', language),
+          "name": getTranslation(language, 'antipasti'),
           "description": "Traditional Italian appetizers",
           "hasMenuItem": [
             {
@@ -119,7 +119,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ language }) => {
         },
         {
           "@type": "MenuSection", 
-          "name": getTranslation('pizze', language),
+          "name": getTranslation(language, 'pizze'),
           "description": "Wood-fired pizzas with fresh ingredients",
           "hasMenuItem": [
             {
@@ -136,7 +136,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ language }) => {
         },
         {
           "@type": "MenuSection",
-          "name": getTranslation('pasta', language), 
+          "name": getTranslation(language, 'pasta'), 
           "description": "Fresh pasta with traditional sauces",
           "hasMenuItem": [
             {
