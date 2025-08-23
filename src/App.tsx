@@ -8,12 +8,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { Toaster } from 'sonner';
 import { 
-  List, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Star, 
-  ChefHat, 
+  List,
+  Phone,
+  MapPin,
+  Clock,
+  Star,
+  ChefHat,
   Wine,
   Users,
   Heart,
@@ -25,7 +25,7 @@ import {
   ArrowUpRight,
   EnvelopeSimple,
   CalendarCheck
-} from "@phosphor-icons/react";
+} from "@/components/icons";
 import LanguageSelector from './components/LanguageSelector';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import ReviewCard from './components/ReviewCard';
@@ -2240,8 +2240,8 @@ function App() {
         <div className="container-responsive h-16 md:h-18 flex items-center justify-between">
           <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
             <div className="h-8 w-8 md:h-10 md:w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <ChefHat size={16} className="md:hidden text-primary-foreground" weight="bold" />
-              <ChefHat size={20} className="hidden md:block text-primary-foreground" weight="bold" />
+              <ChefHat size={16} className="md:hidden text-primary-foreground" />
+              <ChefHat size={20} className="hidden md:block text-primary-foreground" />
             </div>
             <h1 className="font-heading text-lg md:text-xl lg:text-2xl font-bold text-gradient">Da Gino</h1>
           </div>
@@ -2390,12 +2390,12 @@ function App() {
           {/* Decorative elements */}
           <div className="flex justify-center gap-6 pt-12 opacity-60">
             <div className="flex items-center gap-2">
-              <Star size={20} className="text-accent" weight="fill" />
+              <Star size={20} className="text-accent" />
               <span className="font-body text-sm text-muted-foreground">{t('since2011')}</span>
             </div>
             <div className="w-px h-6 bg-border"></div>
             <div className="flex items-center gap-2">
-              <Heart size={20} className="text-primary" weight="fill" />
+              <Heart size={20} className="text-primary" />
               <span className="font-body text-sm text-muted-foreground">Den Helder</span>
             </div>
             <div className="w-px h-6 bg-border"></div>
@@ -2478,7 +2478,7 @@ function App() {
                           </div>
                           {item.popular && (
                             <Badge className="bg-gradient-to-r from-accent/20 to-primary/20 text-primary border-primary/20 w-fit">
-                              <Star size={12} className="mr-1" weight="fill" />
+                              <Star size={12} className="mr-1" />
                               <span className="text-xs font-medium">{t('popular')}</span>
                             </Badge>
                           )}
@@ -2528,7 +2528,7 @@ function App() {
         <div className="container-responsive max-w-6xl mx-auto text-center">
           <div className="mb-16 space-y-6">
             <div className="inline-flex items-center gap-3 bg-accent/10 text-accent px-6 py-3 rounded-full">
-              <Heart size={20} weight="fill" />
+              <Heart size={20} />
               <span className="font-body text-sm font-medium">{t('ourStory')}</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-6xl font-bold text-foreground text-balance">
@@ -2544,12 +2544,12 @@ function App() {
                 description: t('traditionDesc')
               },
               {
-                icon: <Heart size={48} className="text-accent" weight="fill" />,
+                icon: <Heart size={48} className="text-accent" />,
                 title: t('passion'),
                 description: t('passionDesc')
               },
               {
-                icon: <Star size={48} className="text-primary" weight="fill" />,
+                icon: <Star size={48} className="text-primary" />,
                 title: t('quality'),
                 description: t('qualityDesc')
               }
@@ -2583,7 +2583,7 @@ function App() {
         <div className="container-responsive max-w-6xl mx-auto">
           <div className="text-center mb-16 space-y-6">
             <div className="inline-flex items-center gap-3 bg-primary/10 text-primary px-6 py-3 rounded-full">
-              <ChatCircle size={20} weight="fill" />
+              <ChatCircle size={20} />
               <span className="font-body text-sm font-medium">TripAdvisor</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-6xl font-bold text-foreground text-balance">
@@ -2720,7 +2720,7 @@ function App() {
             <div className="space-y-4">
               <div className="flex justify-center">
                 <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                  <ChefHat size={32} className="text-primary-foreground" weight="bold" />
+                  <ChefHat size={32} className="text-primary-foreground" />
                 </div>
               </div>
               <h3 className="font-heading text-2xl md:text-4xl font-bold text-gradient">

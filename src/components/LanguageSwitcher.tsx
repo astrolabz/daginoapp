@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Globe, CaretDown } from "@phosphor-icons/react";
+import { Globe, CaretDown } from "@/components/icons";
 import { Language, languages } from '../translations';
 import {
   DropdownMenu,
