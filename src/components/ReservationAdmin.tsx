@@ -5,18 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { 
-  Calendar,
-  Clock,
-  Users,
-  Phone,
-  EnvelopeSimple,
-  CheckCircle,
-  XCircle,
-  WarningCircle,
-  Trash,
-  
-} from "@phosphor-icons/react";
+import { Calendar, Clock, Users, Phone, EnvelopeSimple, CheckCircle, XCircle, WarningCircle, Trash } from "@/components/icons";
 import { format } from 'date-fns';
 import { Language, translations, TranslationKey } from '../translations';
 import { Reservation } from './ReservationSystem';
