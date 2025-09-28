@@ -3,6 +3,7 @@ import fs from "fs";
 /** @type {import('tailwindcss').Config} */
 
 let theme = {};
+// Enable dark mode with class strategy
 try {
   const themePath = "./theme.json";
 
@@ -138,7 +139,7 @@ const defaultTheme = {
     80: "var(--size-80)",
     96: "var(--size-96)",
   },
-  darkMode: ["selector", '[data-appearance="dark"]'],
+  darkMode: "class",
 }
 
 export default {

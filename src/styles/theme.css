@@ -255,9 +255,30 @@
   }
 
   :root.dark-theme,
-  [data-appearance="dark"] {
+  [data-appearance="dark"],
+  .dark {
     --color-bg: var(--color-neutral-1);
     --color-bg-inset: #000000;
     --color-bg-overlay: var(--color-neutral-3);
+  }
+  
+  /* Enhanced dark mode styles */
+  .dark {
+    color-scheme: dark;
+  }
+  
+  .dark .glass-nav {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .glass-card {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .bg-gradient-hero {
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #0f0f0f 100%);
   }
 }

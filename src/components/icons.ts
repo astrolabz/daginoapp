@@ -57,6 +57,9 @@ export {
 	PiForkKnife as Pizza,
 	PiBowlFood as BowlFood,
 	PiPintGlass as WineGlass,
+	// Theme
+	PiSun as Sun,
+	PiMoon as Moon,
 	// Search
 	PiMagnifyingGlass as MagnifyingGlass,
 } from 'react-icons/pi';

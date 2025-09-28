@@ -27,7 +27,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
       <CardContent className="p-6 space-y-4">
         <div className="flex items-center gap-2 review-stars">
           {[...Array(rating)].map((_, i) => (
-            <Star key={i} size={16} className="text-accent" />
+            <Star key={`star-${title}-${i}`} size={16} className="text-accent" />
           ))}
         </div>
         <h3 className="font-heading text-lg font-semibold text-foreground">

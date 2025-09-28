@@ -30,6 +30,7 @@ import {
 } from "./components/icons";
 import LanguageSelector from './components/LanguageSelector';
 import LanguageSwitcher from './components/LanguageSwitcher';
+import { ThemeToggle } from './components/ThemeToggle';
 import TripAdvisorReviews from './components/TripAdvisorReviews';
 import ReservationSystem from './components/ReservationSystem';
 import SearchSystem from './components/SearchSystem';
@@ -2240,6 +2241,7 @@ function App() {
                 onNavigate={scrollToSection}
               />
             </div>
+            <ThemeToggle size="md" className="mr-1" />
             <LanguageSwitcher 
               currentLanguage={selectedLanguage}
               onLanguageChange={setSelectedLanguage}
