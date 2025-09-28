@@ -1,34 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { useKV } from '@/spark-polyfills/kv';
-// import { spark } from '@/spark';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { Toaster } from 'sonner';
-import { 
-  List, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Star, 
-  ChefHat, 
+import { Toaster } from "sonner";
+import {
+  List,
+  Phone,
+  MapPin,
+  Clock,
+  Star,
+  ChefHat,
   Wine,
-  Users,
   Heart,
   InstagramLogo,
   FacebookLogo,
   Sparkle,
   ChatCircle,
-  PencilSimple,
-  ArrowUpRight,
   EnvelopeSimple,
-  CalendarCheck
-} from "@phosphor-icons/react";
+  CalendarCheck,
+  Pizza,
+  BowlFood,
+  ForkKnife,
+  WineGlass,
+  Coffee,
+  BeerBottle,
+} from "./components/icons";
 import LanguageSelector from './components/LanguageSelector';
 import LanguageSwitcher from './components/LanguageSwitcher';
-import ReviewCard from './components/ReviewCard';
 import TripAdvisorReviews from './components/TripAdvisorReviews';
 import ReservationSystem from './components/ReservationSystem';
 import SearchSystem from './components/SearchSystem';
@@ -36,7 +37,7 @@ import CategoryNavigation from './components/CategoryNavigation';
 import Breadcrumb from './components/Breadcrumb';
 import StructuredData from './components/StructuredData';
 import GoogleMaps from './components/GoogleMaps';
-import { translations, Language, TranslationKey, getTranslation } from './translations';
+import { Language, TranslationKey, getTranslation } from './translations';
 
 // Menu descriptions in all languages
 const menuDescriptions: Record<string, Record<number, string>> = {
@@ -1230,7 +1231,7 @@ const menuCategories = [
   {
     id: 'antipasti',
     name: 'Antipasti',
-    icon: <ChefHat size={20} />,
+    icon: <ForkKnife size={20} />,
     items: [
       {
         id: 1,
@@ -1319,7 +1320,7 @@ const menuCategories = [
   {
     id: 'pizze',
     name: 'Pizze',
-    icon: <ChefHat size={20} />,
+    icon: <Pizza size={20} />,
     items: [
       {
         id: 17,
@@ -1389,7 +1390,7 @@ const menuCategories = [
   {
     id: 'pasta',
     name: 'Pasta',
-    icon: <Wine size={20} />,
+    icon: <BowlFood size={20} />,
     items: [
       {
         id: 29,
@@ -1478,7 +1479,7 @@ const menuCategories = [
   {
     id: 'risotti',
     name: 'Risotti e Lasagne',
-    icon: <Wine size={20} />,
+    icon: <BowlFood size={20} />,
     items: [
       {
         id: 45,
@@ -1526,7 +1527,7 @@ const menuCategories = [
   {
     id: 'secondi',
     name: 'Secondi di Carne e Pesce',
-    icon: <Users size={20} />,
+    icon: <ChefHat size={20} />,
     items: [
       {
         id: 53,
@@ -1659,7 +1660,7 @@ const menuCategories = [
   {
     id: 'aperitivi',
     name: 'Aperitivi',
-    icon: <Wine size={20} />,
+    icon: <WineGlass size={20} />,
     items: [
       {
         id: 76,
@@ -1718,7 +1719,7 @@ const menuCategories = [
   {
     id: 'caffe',
     name: 'Caffè',
-    icon: <Heart size={20} />,
+    icon: <Coffee size={20} />,
     items: [
       {
         id: 86,
@@ -1920,7 +1921,7 @@ const menuCategories = [
   {
     id: 'birre',
     name: 'Birre',
-    icon: <Users size={20} />,
+    icon: <BeerBottle size={20} />,
     items: [
       {
         id: 123,
@@ -2050,7 +2051,7 @@ const menuCategories = [
   {
     id: 'distillati',
     name: 'Distillati',
-    icon: <Wine size={20} />,
+    icon: <WineGlass size={20} />,
     items: [
       {
         id: 146,
@@ -2142,20 +2143,7 @@ function App() {
   const [activeCategory, setActiveCategory] = useState('antipasti');
   const [activeSection, setActiveSection] = useState('hero');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [userInfo, setUserInfo] = useState<any>(null);
 
-  // Check if user is owner on mount
-  useEffect(() => {
-    const checkUserPermissions = async () => {
-      try {
-        // const user = await spark.user();
-        // setUserInfo(user);
-      } catch (error) {
-        console.log('User not authenticated');
-      }
-    };
-    checkUserPermissions();
-  }, []);
 
   // Scroll detection to update active section
   useEffect(() => {
@@ -2226,10 +2214,7 @@ function App() {
     window.open(`tel:${cleanPhone}`, '_self');
   };
 
-  const handleDirections = () => {
-    const encodedAddress = encodeURIComponent(t('address'));
-    window.open(`https://maps.google.com/?q=${encodedAddress}`, '_blank');
-  };
+
 
   return (
     <div className="min-h-screen bg-gradient-hero">
@@ -2240,8 +2225,8 @@ function App() {
         <div className="container-responsive h-16 md:h-18 flex items-center justify-between">
           <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
             <div className="h-8 w-8 md:h-10 md:w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <ChefHat size={16} className="md:hidden text-primary-foreground" weight="bold" />
-              <ChefHat size={20} className="hidden md:block text-primary-foreground" weight="bold" />
+              <ChefHat size={16} className="md:hidden text-primary-foreground" />
+              <ChefHat size={20} className="hidden md:block text-primary-foreground" />
             </div>
             <h1 className="font-heading text-lg md:text-xl lg:text-2xl font-bold text-gradient">Da Gino</h1>
           </div>
@@ -2390,12 +2375,12 @@ function App() {
           {/* Decorative elements */}
           <div className="flex justify-center gap-6 pt-12 opacity-60">
             <div className="flex items-center gap-2">
-              <Star size={20} className="text-accent" weight="fill" />
+              <Star size={20} className="text-accent" />
               <span className="font-body text-sm text-muted-foreground">{t('since2011')}</span>
             </div>
             <div className="w-px h-6 bg-border"></div>
             <div className="flex items-center gap-2">
-              <Heart size={20} className="text-primary" weight="fill" />
+              <Heart size={20} className="text-primary" />
               <span className="font-body text-sm text-muted-foreground">Den Helder</span>
             </div>
             <div className="w-px h-6 bg-border"></div>
@@ -2478,7 +2463,7 @@ function App() {
                           </div>
                           {item.popular && (
                             <Badge className="bg-gradient-to-r from-accent/20 to-primary/20 text-primary border-primary/20 w-fit">
-                              <Star size={12} className="mr-1" weight="fill" />
+                              <Star size={12} className="mr-1" />
                               <span className="text-xs font-medium">{t('popular')}</span>
                             </Badge>
                           )}
@@ -2528,7 +2513,7 @@ function App() {
         <div className="container-responsive max-w-6xl mx-auto text-center">
           <div className="mb-16 space-y-6">
             <div className="inline-flex items-center gap-3 bg-accent/10 text-accent px-6 py-3 rounded-full">
-              <Heart size={20} weight="fill" />
+              <Heart size={20} />
               <span className="font-body text-sm font-medium">{t('ourStory')}</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-6xl font-bold text-foreground text-balance">
@@ -2544,12 +2529,12 @@ function App() {
                 description: t('traditionDesc')
               },
               {
-                icon: <Heart size={48} className="text-accent" weight="fill" />,
+                icon: <Heart size={48} className="text-accent" />,
                 title: t('passion'),
                 description: t('passionDesc')
               },
               {
-                icon: <Star size={48} className="text-primary" weight="fill" />,
+                icon: <Star size={48} className="text-primary" />,
                 title: t('quality'),
                 description: t('qualityDesc')
               }
@@ -2583,7 +2568,7 @@ function App() {
         <div className="container-responsive max-w-6xl mx-auto">
           <div className="text-center mb-16 space-y-6">
             <div className="inline-flex items-center gap-3 bg-primary/10 text-primary px-6 py-3 rounded-full">
-              <ChatCircle size={20} weight="fill" />
+              <ChatCircle size={20} />
               <span className="font-body text-sm font-medium">TripAdvisor</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-6xl font-bold text-foreground text-balance">
@@ -2720,7 +2705,7 @@ function App() {
             <div className="space-y-4">
               <div className="flex justify-center">
                 <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                  <ChefHat size={32} className="text-primary-foreground" weight="bold" />
+                  <ChefHat size={32} className="text-primary-foreground" />
                 </div>
               </div>
               <h3 className="font-heading text-2xl md:text-4xl font-bold text-gradient">

@@ -9,12 +9,9 @@ import {
   Heart, 
   Sparkle, 
   MapPin, 
-  Phone, 
-  Clock, 
-  Star,
+  Phone,
   CalendarCheck,
   ChatCircle,
-  Envelope,
   Coffee,
   BeerBottle,
   Drop,
@@ -24,7 +21,7 @@ import {
   Storefront,
   BookOpen,
   ClockClockwise
-} from "@phosphor-icons/react";
+} from "@/components/icons";
 import { Language, TranslationKey, getTranslation } from '../translations';
 
 interface CategoryNavigationProps {

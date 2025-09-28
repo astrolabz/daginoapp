@@ -7,17 +7,9 @@ Static SPA for Ristorante Da Gino built with React + Vite + Tailwind.
 - Start dev server: `npm run dev`
 - Build: `npm run build`
 
-Reservation API (optional PoC)
-- A minimal Express + SQLite PoC backend is included in `services/reservation-api`.
-- To run locally:
-	- cd services/reservation-api
-	- npm install
-	- npm run dev
-	- The service listens on port 3001 by default.
-- To have the frontend use the API, set an environment variable before starting the frontend:
-	- PowerShell:
-		$env:VITE_RESERVATION_API_URL = "http://localhost:3001"
-	- Then run the frontend dev server as usual.
+## Reservations
+- Online bookings are now handled entirely via the official TheFork widget embedded in the frontend.
+- The legacy Express/SQLite proof-of-concept in `services/reservation-api` has been retired and kept only as an empty placeholder for historical reference.
 
 ## Prenotazioni (Google)
 

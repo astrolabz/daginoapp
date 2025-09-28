@@ -1,14 +1,14 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Warning, ArrowClockwise } from "@phosphor-icons/react";
+import { Warning, ArrowClockwise } from "./components/icons";
 
 interface ErrorFallbackProps {
   error: Error;
   resetErrorBoundary: () => void;
 }
 
-export function ErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
+export function ErrorFallback({ error, resetErrorBoundary }: Readonly<ErrorFallbackProps>) {
   return (
     <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
       <Card className="w-full max-w-md">

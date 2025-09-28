@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Globe, ArrowRight, Sparkle } from "@phosphor-icons/react";
+import { Globe, ArrowRight, Sparkle } from "@/components/icons";
 import { Language, languages } from '../translations';
 
 interface LanguageSelectorProps {
@@ -21,7 +21,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageSelect })
               <div className="h-24 w-24 rounded-2xl glass-card flex items-center justify-center hover-lift">
                 <Globe size={40} className="text-primary" />
                 <div className="absolute -top-1 -right-1">
-                  <Sparkle size={16} className="text-accent" weight="fill" />
+                  <Sparkle size={16} className="text-accent" />
                 </div>
               </div>
             </div>

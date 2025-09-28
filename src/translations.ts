@@ -1,15 +1,16 @@
 // Helper function to get translation with fallback to English or Italian
 const getTranslation = (language: Language, key: TranslationKey): string => {
   // Try the requested language first
-  if (translations[language] && translations[language][key]) {
-    return translations[language][key];
+  const languagePack = translations[language];
+  if (languagePack?.[key]) {
+    return languagePack[key];
   }
   // Fall back to English
-  if (translations.en && translations.en[key]) {
+  if (translations.en?.[key]) {
     return translations.en[key];
   }
   // Fall back to Italian
-  if (translations.it && translations.it[key]) {
+  if (translations.it?.[key]) {
     return translations.it[key];
   }
   // Return the key itself as last resort
@@ -120,7 +121,9 @@ export const translations = {
     
     // Reservation System
     makeReservation: "Prenota un Tavolo",
-    reservationDescription: "Prenota il tuo tavolo online e vieni a gustare la nostra autentica cucina italiana",
+  reservationDescription: "Prenota il tuo tavolo tramite il nostro widget ufficiale TheFork e assicurati il posto in pochi secondi.",
+  reservationTheForkDisclaimer: "Le prenotazioni vengono gestite direttamente da TheFork; riceverai conferma immediata dal loro sistema.",
+  reservationWidgetTitle: "Prenotazioni online con TheFork",
     reservationFormDescription: "Compila il modulo per prenotare il tuo tavolo",
     selectDate: "Seleziona Data",
     pickDate: "Scegli una data",
@@ -355,7 +358,9 @@ export const translations = {
     
     // Reservation System
     makeReservation: "Book a Table",
-    reservationDescription: "Book your table online and come taste our authentic Italian cuisine",
+  reservationDescription: "Book your table through our official TheFork widget and secure your seat in seconds.",
+  reservationTheForkDisclaimer: "Reservations are handled directly by TheFork; you'll receive an instant confirmation from their system.",
+  reservationWidgetTitle: "Online reservations powered by TheFork",
     selectDate: "Select Date",
     pickDate: "Pick a date",
     numberOfGuests: "Number of Guests",
@@ -576,7 +581,9 @@ export const translations = {
     
     // Reservation System
     makeReservation: "Reservar Mesa",
-    reservationDescription: "Reserva tu mesa online y ven a degustar nuestra auténtica cocina italiana",
+  reservationDescription: "Reserva tu mesa mediante nuestro widget oficial de TheFork y asegura tu lugar en segundos.",
+  reservationTheForkDisclaimer: "Las reservas se gestionan directamente en TheFork; recibirás confirmación inmediata desde su sistema.",
+  reservationWidgetTitle: "Reservas en línea con TheFork",
     selectDate: "Seleccionar Fecha",
     pickDate: "Elegir una fecha",
     numberOfGuests: "Número de Comensales",
@@ -791,7 +798,9 @@ export const translations = {
     
     // Reservation System
     makeReservation: "Réserver une Table",
-    reservationDescription: "Réservez votre table en ligne et venez déguster notre cuisine italienne authentique",
+  reservationDescription: "Réservez votre table via notre widget officiel TheFork et assurez votre place en quelques secondes.",
+  reservationTheForkDisclaimer: "Les réservations sont gérées directement par TheFork ; vous recevrez une confirmation instantanée depuis leur système.",
+  reservationWidgetTitle: "Réservations en ligne avec TheFork",
     selectDate: "Sélectionner la Date",
     pickDate: "Choisir une date",
     numberOfGuests: "Nombre de Convives",
@@ -1006,7 +1015,9 @@ export const translations = {
     
     // Reservation System
     makeReservation: "Tisch Reservieren",
-    reservationDescription: "Reservieren Sie Ihren Tisch online und kommen Sie, um unsere authentische italienische Küche zu probieren",
+  reservationDescription: "Reservieren Sie Ihren Tisch über unser offizielles TheFork-Widget und sichern Sie sich Ihren Platz in wenigen Sekunden.",
+  reservationTheForkDisclaimer: "Die Reservierungen werden direkt von TheFork verwaltet; Sie erhalten sofort eine Bestätigung von deren System.",
+  reservationWidgetTitle: "Online-Reservierungen mit TheFork",
     selectDate: "Datum Auswählen",
     pickDate: "Datum wählen",
     numberOfGuests: "Anzahl der Gäste",
@@ -1219,7 +1230,9 @@ export const translations = {
     
     // Reservation System
     makeReservation: "Tafel Reserveren",
-    reservationDescription: "Reserveer je tafel online en kom onze authentieke Italiaanse keuken proeven",
+  reservationDescription: "Reserveer je tafel via onze officiële TheFork-widget en verzeker je plek in enkele seconden.",
+  reservationTheForkDisclaimer: "Reserveringen worden rechtstreeks door TheFork afgehandeld; je ontvangt meteen een bevestiging vanuit hun systeem.",
+  reservationWidgetTitle: "Online reserveren met TheFork",
     selectDate: "Datum Selecteren",
     pickDate: "Kies een datum",
     numberOfGuests: "Aantal Gasten",
@@ -1442,7 +1455,9 @@ export const translations = {
     
     // Reservation System
     makeReservation: "Reservar Mesa",
-    reservationDescription: "Reserve sua mesa online e venha saborear nossa autêntica culinária italiana",
+  reservationDescription: "Reserve sua mesa pelo nosso widget oficial TheFork e garanta seu lugar em segundos.",
+  reservationTheForkDisclaimer: "As reservas são gerenciadas diretamente pelo TheFork; você receberá uma confirmação imediata do sistema deles.",
+  reservationWidgetTitle: "Reservas on-line com TheFork",
     selectDate: "Selecionar Data",
     pickDate: "Escolher uma data",
     numberOfGuests: "Número de Convidados",

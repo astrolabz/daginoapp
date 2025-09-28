@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, ArrowUpRight, PencilSimple } from "@phosphor-icons/react";
-import { Language, translations, TranslationKey, getTranslation } from '../translations';
+import { Star, ArrowUpRight, PencilSimple } from "./icons";
+import { Language, TranslationKey, getTranslation } from '../translations';
 
 interface TripAdvisorReviewsProps {
   language: Language;
@@ -79,8 +79,7 @@ const TripAdvisorReviews: React.FC<TripAdvisorReviewsProps> = ({ language }) => 
       <Star
         key={i}
         size={16}
-        weight={i < rating ? "fill" : "regular"}
-        className={i < rating ? "text-amber-500" : "text-gray-300"}
+        className={i < rating ? "text-amber-500 fill-current" : "text-gray-300"}
       />
     ));
   };

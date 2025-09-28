@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useKV } from '@/spark-polyfills/kv';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -9,15 +9,13 @@ import {
   MagnifyingGlass, 
   X, 
   ChefHat, 
-  Wine, 
-  Users, 
-  Heart, 
+  Users,
   Sparkle, 
   MapPin, 
   Phone, 
   Clock, 
   Star 
-} from "@phosphor-icons/react";
+} from "@/components/icons";
 import { Language, TranslationKey, getTranslation } from '../translations';
 
 interface SearchItem {
@@ -347,7 +345,7 @@ const SearchSystem: React.FC<SearchSystemProps> = ({
                               </Badge>
                               {item.popular && (
                                 <Badge className="bg-gradient-to-r from-accent/20 to-primary/20 text-primary border-primary/20 text-xs">
-                                  <Star size={10} className="mr-1" weight="fill" />
+                                  <Star size={10} className="mr-1" />
                                   {t('popular')}
                                 </Badge>
                               )}

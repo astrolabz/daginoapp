@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { CaretRight, House } from "@phosphor-icons/react";
+import { CaretRight, House } from "@/components/icons";
 import { Language, TranslationKey, getTranslation } from '../translations';
 
 interface BreadcrumbProps {
