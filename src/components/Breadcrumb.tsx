@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { Button } from "@/components/ui/button";
 import { CaretRight, House } from "@/components/icons";
 import { Language, TranslationKey, getTranslation } from '../translations';
@@ -9,11 +9,11 @@ interface BreadcrumbProps {
   onNavigate: (sectionId: string) => void;
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> = ({
+const Breadcrumb = ({
   language,
   currentSection,
   onNavigate
-}) => {
+}: BreadcrumbProps) => {
   // Translation helper
   const t = (key: TranslationKey): string => {
     return getTranslation(language, key);
@@ -87,7 +87,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
           {/* Breadcrumb items */}
           {breadcrumb.map((item, index) => (
-            <React.Fragment key={item.id}>
+            <Fragment key={item.id}>
               <Button
                 variant="ghost"
                 size="sm"
@@ -104,7 +104,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
               {index < breadcrumb.length - 1 && (
                 <CaretRight size={14} className="text-muted-foreground" />
               )}
-            </React.Fragment>
+            </Fragment>
           ))}
         </nav>
       </div>

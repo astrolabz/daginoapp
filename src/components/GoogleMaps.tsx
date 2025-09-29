@@ -1,4 +1,3 @@
-import React from 'react';
 import { MapPin, ArrowUpRight } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,7 +7,7 @@ interface GoogleMapsProps {
   language: Language;
 }
 
-const GoogleMaps: React.FC<GoogleMapsProps> = ({ language }) => {
+const GoogleMaps = ({ language }: GoogleMapsProps) => {
   const address = "Beatrixstraat 37, 1781 EM Den Helder, Netherlands";
   const coordinates = "52.954783,4.759416";
   

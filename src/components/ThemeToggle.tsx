@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Sun, Moon } from '@/components/icons';
 import { useTheme } from './ThemeProvider';

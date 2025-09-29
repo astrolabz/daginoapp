@@ -33,7 +33,7 @@ export const translations = {
     continue: "Continua",
     
     // Hero section
-    tagline: "Autentica Cucina Italiana dal 2011",
+    tagline: "Autentica Cucina Italiana dal 2010",
     description: "Benvenuti sul sito web della Pizzeria Da Gino a Den Helder! Qui potete gustare l'autentica cucina italiana con ingredienti freschi.",
     discoverMenu: "Scopri il Menu",
     bookTable: "Prenota Tavolo",
@@ -60,7 +60,7 @@ export const translations = {
     // About section
     ourStory: "La Nostra Storia",
     tradition: "Tradizione",
-    traditionDesc: "Dal 2011 portiamo a Den Helder l'autentica tradizione culinaria italiana con ricette tramandate",
+    traditionDesc: "Dal 2010 portiamo a Den Helder l'autentica tradizione culinaria italiana con ricette tramandate",
     passion: "Passione", 
     passionDesc: "Ogni piatto è preparato con amore e dedizione per offrire un'esperienza unica",
     quality: "Ingredienti Freschi",
@@ -112,10 +112,9 @@ export const translations = {
     deliverySchedule: "16:30 - 21:00",
     
     // Restaurant info
-    restaurantName: "Ristorante Pizzeria Da Gino",
-    phone: "0223610117 / 0645069661",
-    email: "info@pizzeriadagino.nl",
-    address: "Beatrixstraat 37, 1781 EM Den Helder",
+  restaurantName: "Ristorante Pizzeria Da Gino",
+  phone: "0223610117 / 0645069661",
+  address: "Beatrixstraat 37, 1781 EM Den Helder",
     hours: "Lunedì-Martedì, Giovedì-Domenica: 13:30-21:30 | Mercoledì: Chiuso",
     deliveryHours: "16:30-21:00",
     
@@ -145,7 +144,6 @@ export const translations = {
   // Use phoneNumber for label; keep top-level 'phone' for contact number
     phoneNumber: "Numero di Telefono",
     enterPhone: "Inserisci il tuo telefono",
-  // Use emailAddress for label; keep top-level 'email' for contact address
     emailAddress: "Indirizzo Email",
     enterEmail: "Inserisci la tua email",
     enterNotes: "Inserisci eventuali note o richieste speciali",
@@ -243,7 +241,7 @@ export const translations = {
     italianWines: "Vini Italiani",
     onlineReservations: "Prenotazioni Online",
     homeDelivery: "Consegna a Domicilio",
-    since2011: "Dal 2011",
+    since2010: "Dal 2010",
     rating5Stars: "5.0 ★ Rating",
     goToMenu: "Vai al Menu",
     contactUs: "Contattaci",
@@ -270,7 +268,7 @@ export const translations = {
     continue: "Continue",
     
     // Hero section
-    tagline: "Authentic Italian Cuisine since 2011",
+    tagline: "Authentic Italian Cuisine since 2010",
     description: "Welcome to Pizzeria Da Gino in Den Helder! Here you can enjoy authentic Italian cuisine with fresh ingredients.",
     discoverMenu: "Discover Menu",
     bookTable: "Book Table",
@@ -297,7 +295,7 @@ export const translations = {
     // About section
     ourStory: "Our Story",
     tradition: "Tradition",
-    traditionDesc: "Since 2011, we bring authentic Italian culinary tradition to Den Helder with time-honored recipes",
+    traditionDesc: "Since 2010, we bring authentic Italian culinary tradition to Den Helder with time-honored recipes",
     passion: "Passion",
     passionDesc: "Every dish is prepared with love and dedication to offer a unique experience",
     quality: "Fresh Ingredients",
@@ -349,10 +347,9 @@ export const translations = {
     deliverySchedule: "16:30 - 21:00",
     
     // Restaurant info
-    restaurantName: "Ristorante Pizzeria Da Gino",
-    phone: "0223610117 / 0645069661",
-    email: "info@pizzeriadagino.nl",
-    address: "Beatrixstraat 37, 1781 EM Den Helder",
+  restaurantName: "Ristorante Pizzeria Da Gino",
+  phone: "0223610117 / 0645069661",
+  address: "Beatrixstraat 37, 1781 EM Den Helder",
     hours: "Monday-Tuesday, Thursday-Sunday: 13:30-21:30 | Wednesday: Closed",
     deliveryHours: "16:30-21:00",
     
@@ -469,7 +466,7 @@ export const translations = {
     italianWines: "Italian Wines",
     onlineReservations: "Online Reservations",
     homeDelivery: "Home Delivery",
-    since2011: "Since 2011",
+    since2010: "Since 2010",
     rating5Stars: "5.0 ★ Rating",
     goToMenu: "Go to Menu",
     contactUs: "Contact Us",
@@ -496,7 +493,7 @@ export const translations = {
     continue: "Continuar",
     
     // Hero section
-    tagline: "Auténtica Cocina Italiana desde 2011",
+    tagline: "Auténtica Cocina Italiana desde 2010",
     description: "¡Bienvenidos al sitio web de la Pizzería Da Gino en Den Helder! Aquí pueden disfrutar de la auténtica cocina italiana con ingredientes frescos.",
     discoverMenu: "Descubrir Menú",
     bookTable: "Reservar Mesa",
@@ -523,7 +520,7 @@ export const translations = {
     // About section
     ourStory: "Nuestra Historia",
     tradition: "Tradición",
-    traditionDesc: "Desde 2011 llevamos a Den Helder la auténtica tradición culinaria italiana con recetas tradicionales",
+    traditionDesc: "Desde 2010 llevamos a Den Helder la auténtica tradición culinaria italiana con recetas tradicionales",
     passion: "Pasión",
     passionDesc: "Cada plato se prepara con amor y dedicación para ofrecer una experiencia única",
     quality: "Ingredientes Frescos",
@@ -572,10 +569,9 @@ export const translations = {
     deliverySchedule: "16:30 - 21:00",
     
     // Restaurant info
-    restaurantName: "Ristorante Pizzeria Da Gino",
-    phone: "0223610117 / 0645069661",
-    email: "info@pizzeriadagino.nl",
-    address: "Beatrixstraat 37, 1781 EM Den Helder",
+  restaurantName: "Ristorante Pizzeria Da Gino",
+  phone: "0223610117 / 0645069661",
+  address: "Beatrixstraat 37, 1781 EM Den Helder",
     hours: "Lunes-Martes, Jueves-Domingo: 13:30-21:30 | Miércoles: Cerrado",
     deliveryHours: "16:30-21:00",
     
@@ -692,7 +688,7 @@ export const translations = {
     italianWines: "Vinos Italianos",
     onlineReservations: "Reservas Online",
     homeDelivery: "Entrega a Domicilio",
-    since2011: "Desde 2011",
+    since2010: "Desde 2010",
     rating5Stars: "5.0 ★ Rating",
     goToMenu: "Ir al Menú",
     contactUs: "Contáctanos",
@@ -713,7 +709,7 @@ export const translations = {
     continue: "Continuer",
     
     // Hero section
-    tagline: "Cuisine Italienne Authentique depuis 2011",
+    tagline: "Cuisine Italienne Authentique depuis 2010",
     description: "Bienvenue sur le site web de la Pizzeria Da Gino à Den Helder ! Ici vous pouvez déguster une cuisine italienne authentique avec des ingrédients frais.",
     discoverMenu: "Découvrir le Menu",
     bookTable: "Réserver une Table",
@@ -740,7 +736,7 @@ export const translations = {
     // About section
     ourStory: "Notre Histoire",
     tradition: "Tradition",
-    traditionDesc: "Depuis 2011, nous apportons à Den Helder l'authentique tradition culinaire italienne avec des recettes traditionnelles",
+    traditionDesc: "Depuis 2010, nous apportons à Den Helder l'authentique tradition culinaire italienne avec des recettes traditionnelles",
     passion: "Passion",
     passionDesc: "Chaque plat est préparé avec amour et dévouement pour offrir une expérience unique",
     quality: "Ingrédients Frais",
@@ -789,10 +785,9 @@ export const translations = {
     deliverySchedule: "16:30 - 21:00",
     
     // Restaurant info
-    restaurantName: "Ristorante Pizzeria Da Gino",
-    phone: "0223610117 / 0645069661",
-    email: "info@pizzeriadagino.nl",
-    address: "Beatrixstraat 37, 1781 EM Den Helder",
+  restaurantName: "Ristorante Pizzeria Da Gino",
+  phone: "0223610117 / 0645069661",
+  address: "Beatrixstraat 37, 1781 EM Den Helder",
     hours: "Lundi-Mardi, Jeudi-Dimanche: 13:30-21:30 | Mercredi: Fermé",
     deliveryHours: "16:30-21:00",
     
@@ -909,7 +904,7 @@ export const translations = {
     italianWines: "Vins Italiens",
     onlineReservations: "Réservations en Ligne",
     homeDelivery: "Livraison à Domicile",
-    since2011: "Depuis 2011",
+    since2010: "Depuis 2010",
     rating5Stars: "5.0 ★ Note",
     goToMenu: "Aller au Menu",
     contactUs: "Nous Contacter",
@@ -930,7 +925,7 @@ export const translations = {
     continue: "Weiter",
     
     // Hero section
-    tagline: "Authentische Italienische Küche seit 2011",
+    tagline: "Authentische Italienische Küche seit 2010",
     description: "Willkommen auf der Website der Pizzeria Da Gino in Den Helder! Hier können Sie authentische italienische Küche mit frischen Zutaten genießen.",
     discoverMenu: "Speisekarte Entdecken",
     bookTable: "Tisch Reservieren",
@@ -957,7 +952,7 @@ export const translations = {
     // About section
     ourStory: "Unsere Geschichte",
     tradition: "Tradition",
-    traditionDesc: "Seit 2011 bringen wir nach Den Helder die authentische italienische kulinarische Tradition mit traditionellen Rezepten",
+    traditionDesc: "Seit 2010 bringen wir nach Den Helder die authentische italienische kulinarische Tradition mit traditionellen Rezepten",
     passion: "Leidenschaft",
     passionDesc: "Jedes Gericht wird mit Liebe und Hingabe zubereitet, um ein einzigartiges Erlebnis zu bieten",
     quality: "Frische Zutaten",
@@ -1006,10 +1001,9 @@ export const translations = {
     deliverySchedule: "16:30 - 21:00",
     
     // Restaurant info
-    restaurantName: "Ristorante Pizzeria Da Gino",
-    phone: "0223610117 / 0645069661",
-    email: "info@pizzeriadagino.nl",
-    address: "Beatrixstraat 37, 1781 EM Den Helder",
+  restaurantName: "Ristorante Pizzeria Da Gino",
+  phone: "0223610117 / 0645069661",
+  address: "Beatrixstraat 37, 1781 EM Den Helder",
     hours: "Montag-Dienstag, Donnerstag-Sonntag: 13:30-21:30 | Mittwoch: Geschlossen",
     deliveryHours: "16:30-21:00",
     
@@ -1114,7 +1108,7 @@ export const translations = {
   italianWines: "Italienische Weine",
   onlineReservations: "Online-Reservierungen",
   homeDelivery: "Hauslieferung",
-  since2011: "Seit 2011",
+  since2010: "Seit 2010",
   rating5Stars: "5.0 ★ Bewertung",
   goToMenu: "Zur Speisekarte",
   contactUs: "Kontaktieren Sie Uns",
@@ -1145,7 +1139,7 @@ export const translations = {
     continue: "Doorgaan",
     
     // Hero section
-    tagline: "Authentieke Italiaanse Keuken sinds 2011",
+    tagline: "Authentieke Italiaanse Keuken sinds 2010",
     description: "Welkom op de website van Pizzeria Da Gino in Den Helder! Hier kunt u genieten van authentieke Italiaanse keuken met verse ingrediënten.",
     discoverMenu: "Menu Ontdekken",
     bookTable: "Tafel Reserveren",
@@ -1172,7 +1166,7 @@ export const translations = {
     // About section
     ourStory: "Ons Verhaal",
     tradition: "Traditie",
-    traditionDesc: "Sinds 2011 brengen we naar Den Helder de authentieke Italiaanse culinaire traditie met traditionele recepten",
+    traditionDesc: "Sinds 2010 brengen we naar Den Helder de authentieke Italiaanse culinaire traditie met traditionele recepten",
     passion: "Passie",
     passionDesc: "Elk gerecht wordt met liefde en toewijding bereid om een unieke ervaring te bieden",
     quality: "Verse Ingrediënten",
@@ -1221,10 +1215,9 @@ export const translations = {
     deliverySchedule: "16:30 - 21:00",
     
     // Restaurant info
-    restaurantName: "Ristorante Pizzeria Da Gino",
-    phone: "0223610117 / 0645069661",
-    email: "info@pizzeriadagino.nl",
-    address: "Beatrixstraat 37, 1781 EM Den Helder",
+  restaurantName: "Ristorante Pizzeria Da Gino",
+  phone: "0223610117 / 0645069661",
+  address: "Beatrixstraat 37, 1781 EM Den Helder",
     hours: "Maandag-Dinsdag, Donderdag-Zondag: 13:30-21:30 | Woensdag: Gesloten",
     deliveryHours: "16:30-21:00",
     
@@ -1337,7 +1330,7 @@ export const translations = {
     italianWines: "Italiaanse Wijnen",
     onlineReservations: "Online Reserveringen",
     homeDelivery: "Thuisbezorging",
-    since2011: "Sinds 2011",
+    since2010: "Sinds 2010",
     rating5Stars: "5.0 ★ Beoordeling",
     goToMenu: "Naar Menu",
     contactUs: "Neem Contact Op",
@@ -1370,7 +1363,7 @@ export const translations = {
     continue: "Continuar",
     
     // Hero section
-    tagline: "Cozinha Italiana Autêntica desde 2011",
+    tagline: "Cozinha Italiana Autêntica desde 2010",
     description: "Bem-vindos ao site web da Pizzeria Da Gino em Den Helder! Aqui podem saborear a autêntica cozinha italiana com ingredientes frescos.",
     discoverMenu: "Descobrir Menu",
     bookTable: "Reservar Mesa",
@@ -1397,7 +1390,7 @@ export const translations = {
     // About section
     ourStory: "Nossa História",
     tradition: "Tradição",
-    traditionDesc: "Desde 2011 trazemos para Den Helder a autêntica tradição culinária italiana com receitas tradicionais",
+    traditionDesc: "Desde 2010 trazemos para Den Helder a autêntica tradição culinária italiana com receitas tradicionais",
     passion: "Paixão",
     passionDesc: "Cada prato é preparado com amor e dedicação para oferecer uma experiência única",
     quality: "Ingredientes Frescos",
@@ -1446,10 +1439,9 @@ export const translations = {
     deliverySchedule: "16:30 - 21:00",
     
     // Restaurant info
-    restaurantName: "Ristorante Pizzeria Da Gino",
-    phone: "0223610117 / 0645069661",
-    email: "info@pizzeriadagino.nl",
-    address: "Beatrixstraat 37, 1781 EM Den Helder",
+  restaurantName: "Ristorante Pizzeria Da Gino",
+  phone: "0223610117 / 0645069661",
+  address: "Beatrixstraat 37, 1781 EM Den Helder",
     hours: "Segunda-Terça, Quinta-Domingo: 13:30-21:30 | Quarta: Fechado",
     deliveryHours: "16:30-21:00",
     
@@ -1576,7 +1568,7 @@ export const translations = {
     italianWines: "Vinhos Italianos",
     onlineReservations: "Reservas Online",
     homeDelivery: "Entrega em Domicílio",
-    since2011: "Desde 2011",
+    since2010: "Desde 2010",
     rating5Stars: "5.0 ★ Avaliação",
     goToMenu: "Ir ao Cardápio",
     contactUs: "Entre em Contato",

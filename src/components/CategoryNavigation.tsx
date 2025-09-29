@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -30,11 +29,11 @@ interface CategoryNavigationProps {
   activeSection?: string;
 }
 
-const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
+const CategoryNavigation = ({
   language,
   onNavigate,
   activeSection
-}) => {
+}: CategoryNavigationProps) => {
   // Translation helper
   const t = (key: TranslationKey): string => {
     return getTranslation(language, key);
@@ -227,7 +226,7 @@ const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
                     {category.id === 'info' && (
                       <>
                         <Badge variant="secondary" className="text-xs">
-                          {t('since2011')}
+                          {t('since2010')}
                         </Badge>
                         <Badge variant="secondary" className="text-xs">
                           {t('rating5Stars')}

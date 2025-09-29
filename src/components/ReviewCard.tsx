@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "@/components/icons";
 
@@ -11,14 +10,14 @@ interface ReviewCardProps {
   animationDelay?: string;
 }
 
-export const ReviewCard: React.FC<ReviewCardProps> = ({
+export const ReviewCard = ({
   rating,
   title,
   text,
   author,
   date,
   animationDelay = '0s'
-}) => {
+}: ReviewCardProps) => {
   return (
     <Card 
       className="card-modern hover-lift animate-slide-up review-card"

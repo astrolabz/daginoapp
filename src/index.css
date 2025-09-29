@@ -17,6 +17,7 @@
 
 :root {
   /* Modern Italian-inspired palette with enhanced contrast and depth */
+  color-scheme: light;
   --background: oklch(0.98 0.005 80); /* Pure warm white */
   --foreground: oklch(0.09 0.02 40); /* Deep charcoal for excellent readability */
 
@@ -66,6 +67,47 @@
   --glass-shadow: 0 8px 32px 0 rgb(0 0 0 / 0.08);
 }
 
+/* Dark theme overrides tied to the `.dark` class on <html> */
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.18 0.015 40);
+  --foreground: oklch(0.92 0.02 80);
+
+  --card: oklch(0.24 0.01 40);
+  --card-foreground: oklch(0.92 0.02 80);
+
+  --popover: oklch(0.2 0.012 40);
+  --popover-foreground: oklch(0.93 0.02 80);
+
+  --primary: oklch(0.68 0.18 35);
+  --primary-foreground: oklch(0.99 0.005 80);
+
+  --secondary: oklch(0.28 0.01 50);
+  --secondary-foreground: oklch(0.86 0.02 85);
+
+  --muted: oklch(0.26 0.006 40);
+  --muted-foreground: oklch(0.76 0.02 80);
+
+  --accent: oklch(0.65 0.15 85);
+  --accent-foreground: oklch(0.1 0.018 40);
+
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 80);
+
+  --border: oklch(0.3 0.008 45);
+  --input: oklch(0.32 0.01 50);
+  --ring: oklch(0.64 0.18 35);
+
+  --glass-bg: oklch(0.22 0.012 45 / 0.55);
+  --glass-border: oklch(0.82 0.015 85 / 0.2);
+  --glass-shadow: 0 18px 36px 0 rgb(0 0 0 / 0.45);
+
+  --shadow-soft: 0 8px 18px -2px rgb(0 0 0 / 0.45);
+  --shadow-medium: 0 16px 28px -6px rgb(0 0 0 / 0.55);
+  --shadow-large: 0 28px 42px -12px rgb(0 0 0 / 0.6);
+  --shadow-xl: 0 40px 60px -16px rgb(0 0 0 / 0.65);
+}
+
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -95,8 +137,8 @@
   --radius-full: 9999px;
 
   /* Enhanced font system */
-  --font-heading: 'Playfair Display', 'Times New Roman', serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Playfair Display Variable', 'Playfair Display', 'Times New Roman', serif;
+  --font-body: 'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Modern utility classes inspired by contemporary design */

@@ -1,22 +1,100 @@
-import React, { useState } from 'react';
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
-import { GearSix, EnvelopeSimple, CheckCircle, XCircle, Warning, Phone } from "@/components/icons";
-import { Language, translations, TranslationKey } from '../translations';
+import { EnvelopeSimple, CheckCircle, Phone } from "@/components/icons";
+import { getTranslation, Language } from '../translations';
 
 interface EmailConfigurationProps {
   language: Language;
 }
 
-const EmailConfiguration: React.FC<EmailConfigurationProps> = ({ language }) => {
-  // For production deployment, this represents the current state
-  const [isConfigured] = useState(true); // Email system is functional
-
-  const t = (key: TranslationKey): string => {
-    return translations[language][key];
+const EmailConfiguration = ({ language }: EmailConfigurationProps) => {
+  const localizedCopy: Partial<Record<Language, {
+    heading: string;
+    configuredTitle: string;
+    configuredSubtitle: string;
+    templateTitle: string;
+    templateSubtitle: string;
+    alertMessage: string;
+    confirmationTitle: string;
+    confirmationPoints: string[];
+    backupTitle: string;
+    backupPoints: string[];
+    activeBadge: string;
+    templateBadge: string;
+  }>> = {
+    it: {
+      heading: "Configurazione Email",
+      configuredTitle: "Sistema Email Configurato",
+      configuredSubtitle: "Invio automatico attivo",
+      templateTitle: "Template Multilingua",
+      templateSubtitle: "7 lingue supportate",
+      alertMessage: "Il sistema email è completamente configurato e funzionale. Le email di conferma prenotazione vengono inviate automaticamente.",
+      confirmationTitle: "Email di Conferma Prenotazione",
+      confirmationPoints: [
+        "• Invio automatico al cliente dopo la prenotazione",
+        "• Template personalizzato per lingua selezionata",
+        "• Include tutti i dettagli della prenotazione",
+        "• Informazioni di contatto complete"
+      ],
+      backupTitle: "Backup Manuale",
+      backupPoints: [
+        `• Telefono: ${getTranslation(language, 'phone')}`,
+        "• Supporto diretto tramite prenotazione telefonica",
+        "• Assistenza dedicata del nostro staff"
+      ],
+      activeBadge: "✓ Sistema Attivo",
+      templateBadge: "✓ Template Aggiornati"
+    },
+    en: {
+      heading: "Email Configuration",
+      configuredTitle: "Email System Configured",
+      configuredSubtitle: "Automatic sending enabled",
+      templateTitle: "Multilingual Templates",
+      templateSubtitle: "7 languages supported",
+      alertMessage: "The email system is fully configured. Reservation confirmations are sent automatically.",
+      confirmationTitle: "Reservation Confirmation Email",
+      confirmationPoints: [
+        "• Automatic sending to the guest after booking",
+        "• Language-specific templates",
+        "• Includes all reservation details",
+        "• Complete contact information"
+      ],
+      backupTitle: "Manual Backup",
+      backupPoints: [
+        `• Phone: ${getTranslation(language, 'phone')}`,
+        "• Direct support handled by our team",
+        "• On-site assistance during opening hours"
+      ],
+      activeBadge: "✓ System Active",
+      templateBadge: "✓ Templates Updated"
+    },
+    nl: {
+      heading: "E-mailconfiguratie",
+      configuredTitle: "E-mailsysteem Geconfigureerd",
+      configuredSubtitle: "Automatisch verzenden actief",
+      templateTitle: "Meertalige Templates",
+      templateSubtitle: "7 ondersteunde talen",
+      alertMessage: "Het e-mailsysteem is volledig geconfigureerd. Reserveringsbevestigingen worden automatisch verzonden.",
+      confirmationTitle: "Reserveringsbevestiging E-mail",
+      confirmationPoints: [
+        "• Automatische verzending naar de gast na reservering",
+        "• Taalafhankelijke templates",
+        "• Bevat alle reserveringsdetails",
+        "• Volledige contactgegevens"
+      ],
+      backupTitle: "Handmatige Back-up",
+      backupPoints: [
+        `• Telefoon: ${getTranslation(language, 'phone')}`,
+        "• Directe ondersteuning door ons team",
+        "• Hulp op locatie tijdens openingstijden"
+      ],
+      activeBadge: "✓ Systeem Actief",
+      templateBadge: "✓ Templates Bijgewerkt"
+    }
   };
+
+  const content = localizedCopy[language] ?? localizedCopy.en ?? localizedCopy.it!;
 
   return (
     <div className="space-y-6">
@@ -26,7 +104,7 @@ const EmailConfiguration: React.FC<EmailConfigurationProps> = ({ language }) => 
             <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
               <EnvelopeSimple size={20} className="text-primary" />
             </div>
-            Configurazione Email
+            {content.heading}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -36,10 +114,10 @@ const EmailConfiguration: React.FC<EmailConfigurationProps> = ({ language }) => 
               <CheckCircle size={20} className="text-green-600" />
               <div>
                 <div className="font-medium text-green-800">
-                  Sistema Email Configurato
+                  {content.configuredTitle}
                 </div>
                 <div className="text-sm text-green-600">
-                  Invio automatico attivo
+                  {content.configuredSubtitle}
                 </div>
               </div>
             </div>
@@ -48,10 +126,10 @@ const EmailConfiguration: React.FC<EmailConfigurationProps> = ({ language }) => 
               <EnvelopeSimple size={20} className="text-blue-600" />
               <div>
                 <div className="font-medium text-blue-800">
-                  Template Multilingua
+                  {content.templateTitle}
                 </div>
                 <div className="text-sm text-blue-600">
-                  7 lingue supportate
+                  {content.templateSubtitle}
                 </div>
               </div>
             </div>
@@ -62,7 +140,7 @@ const EmailConfiguration: React.FC<EmailConfigurationProps> = ({ language }) => 
             <Alert className="border-green-200 bg-green-50">
               <CheckCircle className="h-4 w-4 text-green-600" />
               <AlertDescription className="text-green-800">
-                Il sistema email è completamente configurato e funzionale. Le email di conferma prenotazione vengono inviate automaticamente.
+                {content.alertMessage}
               </AlertDescription>
             </Alert>
 
@@ -70,25 +148,24 @@ const EmailConfiguration: React.FC<EmailConfigurationProps> = ({ language }) => 
               <div className="p-4 rounded-lg bg-secondary/20">
                 <h4 className="font-medium mb-2 flex items-center gap-2">
                   <EnvelopeSimple size={16} />
-                  Email di Conferma Prenotazione
+                  {content.confirmationTitle}
                 </h4>
                 <div className="text-sm space-y-1 text-muted-foreground">
-                  <div>• Invio automatico al cliente dopo la prenotazione</div>
-                  <div>• Template personalizzato per lingua selezionata</div>
-                  <div>• Include tutti i dettagli della prenotazione</div>
-                  <div>• Informazioni di contatto complete</div>
+                  {content.confirmationPoints.map((point) => (
+                    <div key={`${content.confirmationTitle}-${point}`}>{point}</div>
+                  ))}
                 </div>
               </div>
 
               <div className="p-4 rounded-lg bg-secondary/20">
                 <h4 className="font-medium mb-2 flex items-center gap-2">
                   <Phone size={16} />
-                  Backup Manuale
+                  {content.backupTitle}
                 </h4>
                 <div className="text-sm space-y-1 text-muted-foreground">
-                  <div>• Telefono: 0223610117 / 0645069661</div>
-                  <div>• Email: info@pizzeriadagino.nl</div>
-                  <div>• Supporto diretto per assistenza</div>
+                  {content.backupPoints.map((point) => (
+                    <div key={`${content.backupTitle}-${point}`}>{point}</div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -97,10 +174,10 @@ const EmailConfiguration: React.FC<EmailConfigurationProps> = ({ language }) => 
           {/* Action Buttons */}
           <div className="flex gap-3 pt-4">
             <Badge variant="secondary" className="bg-green-100 text-green-800">
-              ✓ Sistema Attivo
+              {content.activeBadge}
             </Badge>
             <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-              ✓ Template Aggiornati
+              {content.templateBadge}
             </Badge>
           </div>
         </CardContent>

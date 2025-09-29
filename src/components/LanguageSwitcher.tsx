@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from "@/components/ui/button";
 import { CaretDown } from "@/components/icons";
 import { Language, languages } from '../translations';
@@ -14,10 +13,10 @@ interface LanguageSwitcherProps {
   onLanguageChange: (language: Language) => void;
 }
 
-const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ 
+const LanguageSwitcher = ({ 
   currentLanguage, 
   onLanguageChange 
-}) => {
+}: LanguageSwitcherProps) => {
   const currentLang = languages.find(lang => lang.code === currentLanguage);
 
   return (

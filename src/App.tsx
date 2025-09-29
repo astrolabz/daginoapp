@@ -19,7 +19,6 @@ import {
   FacebookLogo,
   Sparkle,
   ChatCircle,
-  EnvelopeSimple,
   CalendarCheck,
   Pizza,
   BowlFood,
@@ -2215,6 +2214,12 @@ function App() {
     window.open(`tel:${cleanPhone}`, '_self');
   };
 
+  const handleDirections = () => {
+    const location = t('address');
+    const encodedLocation = encodeURIComponent(location);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedLocation}`, '_blank');
+  };
+
 
 
   return (
@@ -2378,7 +2383,7 @@ function App() {
           <div className="flex justify-center gap-6 pt-12 opacity-60">
             <div className="flex items-center gap-2">
               <Star size={20} className="text-accent" />
-              <span className="font-body text-sm text-muted-foreground">{t('since2011')}</span>
+              <span className="font-body text-sm text-muted-foreground">{t('since2010' as TranslationKey)}</span>
             </div>
             <div className="w-px h-6 bg-border"></div>
             <div className="flex items-center gap-2">
@@ -2637,19 +2642,22 @@ function App() {
                     ))}
                   </div>
                   
-                  {/* Email Section */}
+                  {/* Address Section */}
                   <div className="flex items-center justify-between p-3 rounded-xl bg-secondary/30">
                     <div className="flex items-center gap-3">
-                      <EnvelopeSimple size={20} className="text-primary" />
-                      <span className="font-body text-base md:text-lg text-foreground">{t('email')}</span>
+                      <MapPin size={20} className="text-primary" />
+                      <div className="flex flex-col">
+                        <span className="font-body text-base md:text-lg text-foreground">{t('address')}</span>
+                        <span className="font-body text-xs text-muted-foreground">{t('walkingDistance' as TranslationKey)}</span>
+                      </div>
                     </div>
-                    <Button 
+                    <Button
                       size="sm"
-                      onClick={() => window.open(`mailto:${t('email')}`, '_self')}
+                      onClick={handleDirections}
                       className="bg-primary hover:bg-primary/90 text-primary-foreground"
                     >
-                      <EnvelopeSimple size={16} className="mr-1" />
-                      Email
+                      <MapPin size={16} className="mr-1" />
+                      {t('getDirections')}
                     </Button>
                   </div>
                   

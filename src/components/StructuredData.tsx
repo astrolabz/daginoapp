@@ -1,11 +1,10 @@
-import React from 'react';
 import { Language, getTranslation } from '../translations';
 
 interface StructuredDataProps {
   language: Language;
 }
 
-const StructuredData: React.FC<StructuredDataProps> = ({ language }) => {
+const StructuredData = ({ language }: StructuredDataProps) => {
   const businessData = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
@@ -19,8 +18,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ language }) => {
     ],
     "logo": "https://www.ristorantedagino.nl/logo.png",
     "url": "https://www.ristorantedagino.nl",
-    "telephone": "+31223610117",
-    "email": "info@pizzeriadagino.nl",
+  "telephone": "+31223610117",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Beatrixstraat 37",
@@ -46,7 +44,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ language }) => {
     "priceRange": "€€",
     "currenciesAccepted": "EUR",
     "paymentAccepted": ["Cash", "Credit Card", "Debit Card"],
-    "foundingDate": "2011",
+    "foundingDate": "2010",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",

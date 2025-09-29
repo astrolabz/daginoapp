@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Language, TranslationKey, getTranslation } from "../translations";
 
@@ -6,7 +5,7 @@ interface ReservationSystemProps {
   language: Language;
 }
 
-const ReservationSystem: React.FC<ReservationSystemProps> = ({ language }) => {
+const ReservationSystem = ({ language }: ReservationSystemProps) => {
   const t = (key: TranslationKey): string => getTranslation(language, key);
 
   return (

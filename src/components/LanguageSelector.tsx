@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,7 +8,7 @@ interface LanguageSelectorProps {
   onLanguageSelect: (language: Language) => void;
 }
 
-const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageSelect }) => {
+const LanguageSelector = ({ onLanguageSelect }: LanguageSelectorProps) => {
   return (
     <div className="min-h-screen bg-gradient-hero flex items-center justify-center px-4 py-8 animate-fade-in">
       <div className="container-responsive max-w-4xl mx-auto text-center space-y-12">

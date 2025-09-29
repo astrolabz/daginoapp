@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useKV } from '@/spark-polyfills/kv';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -37,12 +37,12 @@ interface SearchSystemProps {
   onNavigate: (sectionId: string) => void;
 }
 
-const SearchSystem: React.FC<SearchSystemProps> = ({
+const SearchSystem = ({
   language,
   menuCategories,
   menuDescriptions,
   onNavigate
-}) => {
+}: SearchSystemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchHistory, setSearchHistory] = useKV<string[]>('search-history', []);
@@ -182,11 +182,22 @@ const SearchSystem: React.FC<SearchSystemProps> = ({
   }, [searchQuery, searchableItems]);
 
   // Handle search
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    if (query.trim() && !searchHistory.includes(query)) {
-      setSearchHistory(prev => [query, ...prev.slice(0, 4)]);
+  const handleSearch = (rawQuery: string) => {
+    setSearchQuery(rawQuery);
+
+    const normalizedQuery = rawQuery.trim();
+    if (!normalizedQuery) {
+      return;
     }
+
+    setSearchHistory(prev => {
+      const normalizedLower = normalizedQuery.toLowerCase();
+      const filteredHistory = prev.filter(
+        (entry) => entry.trim().toLowerCase() !== normalizedLower
+      );
+
+      return [normalizedQuery, ...filteredHistory].slice(0, 5);
+    });
   };
 
   // Handle result click
@@ -283,9 +294,9 @@ const SearchSystem: React.FC<SearchSystemProps> = ({
               {t('recentSearches')}
             </h3>
             <div className="flex flex-wrap gap-2">
-              {searchHistory.map((query, index) => (
+              {searchHistory.map((query) => (
                 <Button
-                  key={index}
+                  key={query}
                   variant="outline"
                   size="sm"
                   onClick={() => handleSearch(query)}

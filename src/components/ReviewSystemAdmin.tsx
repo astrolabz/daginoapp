@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -10,7 +10,7 @@ interface ReviewSystemAdminProps {
   language: Language;
 }
 
-const ReviewSystemAdmin: React.FC<ReviewSystemAdminProps> = ({ language }) => {
+const ReviewSystemAdmin = ({ language }: ReviewSystemAdminProps) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [lastSync, setLastSync] = useState(new Date().toISOString());
 

@@ -5,6 +5,8 @@ import App from './App.tsx'
 import { ErrorFallback } from './ErrorFallback.tsx'
 import { ThemeProvider } from './components/ThemeProvider.tsx'
 
+import "@fontsource-variable/inter";
+import "@fontsource-variable/playfair-display";
 import "./main.css"
 import "./index.css"
 

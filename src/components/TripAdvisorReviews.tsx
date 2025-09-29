@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -67,7 +67,7 @@ const realTripAdvisorReviews = [
   }
 ];
 
-const TripAdvisorReviews: React.FC<TripAdvisorReviewsProps> = ({ language }) => {
+const TripAdvisorReviews = ({ language }: TripAdvisorReviewsProps) => {
   const [displayCount, setDisplayCount] = useState(3);
 
   const t = (key: TranslationKey): string => {
