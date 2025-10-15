@@ -31,6 +31,7 @@ packages
 .devcontainer/
 
 .spark-workbench-id
+.spark-initial-sha
 
 # Local runtime artifacts
 pids/
@@ -39,3 +40,34 @@ pids/
 # Build outputs and nested node_modules that can cause noise
 dist/assets/*
 services/*/node_modules
+
+# Development documentation (temporary - not for production)
+COMPLETION_SUMMARY.md
+IMPLEMENTATION_SUMMARY.md
+STATUS_REPORT.md
+REBUILD_TRIGGER.md
+ICON_MIGRATION_GUIDE.md
+PHOSPHOR_MIGRATION_GUIDE_COMPLETE.md
+PHOSPHOR_MIGRATION_PLAN.md
+PHOSPHOR_MIGRATION_SCRIPT.md
+REACT_19_QUICK_FIX.md
+REACT19_PHOSPHOR_COMPATIBILITY.md
+EMAIL_INTEGRATION.md
+REVIEW_SYSTEM_DOCS.md
+PROJECT_LOG.txt
+GOOGLE_FORMS_RESERVATION_PLAN.txt
+chat.md
+GIT_CLEANUP_PLAN.md
+CLEANUP_SUMMARY.md
+
+# Internal development files
+src/prd.md
+docs/PHOSPHOR_ICONS_MIGRATION.md
+
+# Empty migration scripts (legacy)
+fix-phosphor-*.js
+fix-phosphor-*.ps1
+fix-phosphor-*.bat
+scripts/fix-phosphor-*
+scripts/migrate-phosphor*
+cleanup-files.txt

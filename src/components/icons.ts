@@ -62,5 +62,8 @@ export {
 	PiMoon as Moon,
 	// Search
 	PiMagnifyingGlass as MagnifyingGlass,
+	// Privacy & Security
+	PiShield as Shield,
+	PiCookie as Cookie,
 } from 'react-icons/pi';
 

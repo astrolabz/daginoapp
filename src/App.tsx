@@ -37,6 +37,8 @@ import CategoryNavigation from './components/CategoryNavigation';
 import Breadcrumb from './components/Breadcrumb';
 import StructuredData from './components/StructuredData';
 import GoogleMaps from './components/GoogleMaps';
+import GoogleAnalytics from './components/GoogleAnalytics';
+import CookieConsent from './components/CookieConsent';
 import { Language, TranslationKey, getTranslation } from './translations';
 
 // Menu descriptions in all languages
@@ -2225,6 +2227,8 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-hero">
       <StructuredData language={selectedLanguage} />
+      <GoogleAnalytics />
+      <CookieConsent language={selectedLanguage} />
       <Toaster position="top-right" />
       {/* Modern Navigation with glassmorphism */}
       <header className="sticky top-0 z-50 glass-nav">
@@ -2731,15 +2735,31 @@ function App() {
                 variant="outline" 
                 size="icon" 
                 className="h-12 w-12 rounded-xl hover-lift bg-background/50 border-border/50"
+                asChild
               >
-                <InstagramLogo size={20} />
+                <a 
+                  href="https://www.instagram.com/ristorantepizzeriadagino?igsh=bTl6NDdsa3FldHZp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram Ristorante Pizzeria Da Gino"
+                >
+                  <InstagramLogo size={20} />
+                </a>
               </Button>
               <Button 
                 variant="outline" 
                 size="icon" 
                 className="h-12 w-12 rounded-xl hover-lift bg-background/50 border-border/50"
+                asChild
               >
-                <FacebookLogo size={20} />
+                <a 
+                  href="https://www.facebook.com/ristorantepizzeriadagino"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook Ristorante Pizzeria Da Gino"
+                >
+                  <FacebookLogo size={20} />
+                </a>
               </Button>
             </div>
             
