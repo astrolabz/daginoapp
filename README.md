@@ -1,5 +1,10 @@
 # Dagino App
 
+[![CI](https://github.com/astrolabz/daginoapp/actions/workflows/ci.yml/badge.svg)](https://github.com/astrolabz/daginoapp/actions/workflows/ci.yml)
+[![Deploy](https://github.com/astrolabz/daginoapp/actions/workflows/deploy.yml/badge.svg)](https://github.com/astrolabz/daginoapp/actions/workflows/deploy.yml)
+[![CodeQL](https://github.com/astrolabz/daginoapp/actions/workflows/codeql.yml/badge.svg)](https://github.com/astrolabz/daginoapp/actions/workflows/codeql.yml)
+[![Security Scan](https://github.com/astrolabz/daginoapp/actions/workflows/security-scan.yml/badge.svg)](https://github.com/astrolabz/daginoapp/actions/workflows/security-scan.yml)
+
 Static SPA for Ristorante Da Gino built with React + Vite + Tailwind.
 
 ## Local development
