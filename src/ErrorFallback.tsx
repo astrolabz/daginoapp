@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Warning, ArrowClockwise } from "./components/icons";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Warning, ArrowClockwise } from './components/icons';
 
 interface ErrorFallbackProps {
   error: Error;
@@ -22,16 +22,13 @@ export function ErrorFallback({ error, resetErrorBoundary }: Readonly<ErrorFallb
             Si è verificato un errore imprevisto. Prova a ricaricare la pagina.
           </p>
           <div className="flex flex-col gap-2">
-            <Button 
-              onClick={resetErrorBoundary}
-              className="w-full"
-            >
+            <Button onClick={resetErrorBoundary} className="w-full">
               <ArrowClockwise size={16} className="mr-2" />
               Ricarica pagina
             </Button>
-            <Button 
+            <Button
               variant="outline"
-              onClick={() => window.location.href = '/'}
+              onClick={() => (window.location.href = '/')}
               className="w-full"
             >
               Torna alla home
@@ -42,9 +39,7 @@ export function ErrorFallback({ error, resetErrorBoundary }: Readonly<ErrorFallb
               <summary className="text-xs text-muted-foreground cursor-pointer">
                 Dettagli errore (sviluppo)
               </summary>
-              <pre className="text-xs mt-2 p-2 bg-muted rounded overflow-auto">
-                {error.message}
-              </pre>
+              <pre className="text-xs mt-2 p-2 bg-muted rounded overflow-auto">{error.message}</pre>
             </details>
           )}
         </CardContent>

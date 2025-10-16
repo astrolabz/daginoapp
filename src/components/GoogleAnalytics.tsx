@@ -29,15 +29,13 @@ interface GoogleAnalyticsProps {
   measurementId?: string;
 }
 
-const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({
-  measurementId = GA_MEASUREMENT_ID
-}) => {
+const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ measurementId = GA_MEASUREMENT_ID }) => {
   useEffect(() => {
     // Only initialize analytics if we have a valid measurement ID
     // and we're not in development mode (unless explicitly enabled)
     const isDevelopment = import.meta.env.DEV;
     const enableInDev = import.meta.env.VITE_GA_ENABLE_IN_DEV === 'true';
-    
+
     if (!measurementId || measurementId === 'G-XXXXXXXXXX') {
       console.warn('Google Analytics: No valid measurement ID provided');
       return;
@@ -91,10 +89,7 @@ const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({
 };
 
 // Utility functions for tracking events
-export const trackEvent = (
-  eventName: string,
-  parameters?: Record<string, any>
-) => {
+export const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, parameters);
   }
@@ -105,7 +100,7 @@ export const trackReservation = (method: 'thefork' | 'google' | 'phone') => {
   trackEvent('reservation_attempt', {
     event_category: 'engagement',
     event_label: method,
-    value: 1
+    value: 1,
   });
 };
 
@@ -113,7 +108,7 @@ export const trackMenuView = (category: string) => {
   trackEvent('menu_view', {
     event_category: 'engagement',
     event_label: category,
-    value: 1
+    value: 1,
   });
 };
 
@@ -121,7 +116,7 @@ export const trackLanguageChange = (language: string) => {
   trackEvent('language_change', {
     event_category: 'user_preference',
     event_label: language,
-    value: 1
+    value: 1,
   });
 };
 
@@ -129,7 +124,7 @@ export const trackThemeChange = (theme: 'light' | 'dark') => {
   trackEvent('theme_change', {
     event_category: 'user_preference',
     event_label: theme,
-    value: 1
+    value: 1,
   });
 };
 
@@ -137,7 +132,7 @@ export const trackSocialClick = (platform: 'instagram' | 'facebook' | 'tripadvis
   trackEvent('social_click', {
     event_category: 'engagement',
     event_label: platform,
-    value: 1
+    value: 1,
   });
 };
 
@@ -145,7 +140,7 @@ export const trackContactClick = (method: 'phone' | 'maps' | 'email') => {
   trackEvent('contact_click', {
     event_category: 'engagement',
     event_label: method,
-    value: 1
+    value: 1,
   });
 };
 

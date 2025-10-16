@@ -1,9 +1,17 @@
 import { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
-import { Star, Gear, Eye, ArrowsClockwise, CheckCircle, WaveTriangle, TrendUp } from "@/components/icons";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Badge } from '@/components/ui/badge';
+import {
+  Star,
+  Gear,
+  Eye,
+  ArrowsClockwise,
+  CheckCircle,
+  WaveTriangle,
+  TrendUp,
+} from '@/components/icons';
 import { Language, translations, TranslationKey } from '../translations';
 
 interface ReviewSystemAdminProps {
@@ -31,7 +39,7 @@ const ReviewSystemAdmin = ({ language }: ReviewSystemAdminProps) => {
     totalReviews: 127,
     averageRating: 4.6,
     newThisWeek: 8,
-    responseRate: 85
+    responseRate: 85,
   };
 
   return (
@@ -82,7 +90,7 @@ const ReviewSystemAdmin = ({ language }: ReviewSystemAdminProps) => {
                   Active
                 </Badge>
               </div>
-              
+
               <div className="flex items-center justify-between p-4 rounded-lg border">
                 <div className="flex items-center gap-3">
                   <CheckCircle size={20} className="text-green-600" />
@@ -95,7 +103,7 @@ const ReviewSystemAdmin = ({ language }: ReviewSystemAdminProps) => {
                   Operational
                 </Badge>
               </div>
-              
+
               <div className="flex items-center justify-between p-4 rounded-lg border">
                 <div className="flex items-center gap-3">
                   <WaveTriangle size={20} className="text-yellow-600" />
@@ -119,21 +127,11 @@ const ReviewSystemAdmin = ({ language }: ReviewSystemAdminProps) => {
                 {new Date(lastSync).toLocaleString()}
               </div>
             </div>
-            <Button
-              onClick={handleRefresh}
-              disabled={isRefreshing}
-              variant="outline"
-              size="sm"
-            >
+            <Button onClick={handleRefresh} disabled={isRefreshing} variant="outline" size="sm">
               <ArrowsClockwise size={16} className={`mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
               {isRefreshing ? 'Syncing...' : 'Sync Now'}
             </Button>
-            <Button
-              onClick={handleRefresh}
-              disabled={isRefreshing}
-              variant="outline"
-              size="sm"
-            >
+            <Button onClick={handleRefresh} disabled={isRefreshing} variant="outline" size="sm">
               <ArrowsClockwise size={16} className={`mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
               {isRefreshing ? 'Syncing...' : 'Sync Now'}
             </Button>
@@ -148,11 +146,11 @@ const ReviewSystemAdmin = ({ language }: ReviewSystemAdminProps) => {
             <Button variant="outline" className="flex items-center gap-2">
               <Gear size={16} />
               Configure Settings
-            <Button variant="outline" className="flex items-center gap-2">
-              <Gear size={16} />
-              Configure Settings
-            </Button>
-                  <WaveTriangle size={20} className="text-yellow-600" />
+              <Button variant="outline" className="flex items-center gap-2">
+                <Gear size={16} />
+                Configure Settings
+              </Button>
+              <WaveTriangle size={20} className="text-yellow-600" />
             </Button>
             <Button variant="outline" className="flex items-center gap-2">
               <TrendUp size={16} />
@@ -169,8 +167,8 @@ const ReviewSystemAdmin = ({ language }: ReviewSystemAdminProps) => {
             <WaveTriangle className="h-4 w-4" />
             <WaveTriangle className="h-4 w-4" />
             <AlertDescription>
-              The review system automatically fetches and displays reviews from TripAdvisor. 
-              This is a demonstration showing how the system would work in production.
+              The review system automatically fetches and displays reviews from TripAdvisor. This is
+              a demonstration showing how the system would work in production.
             </AlertDescription>
           </Alert>
         </CardContent>

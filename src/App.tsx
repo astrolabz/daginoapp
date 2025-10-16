@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useKV } from '@/spark-polyfills/kv';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Separator } from "@/components/ui/separator";
-import { Toaster } from "sonner";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Separator } from '@/components/ui/separator';
+import { Toaster } from 'sonner';
 import {
   List,
   Phone,
@@ -26,7 +26,7 @@ import {
   WineGlass,
   Coffee,
   BeerBottle,
-} from "./components/icons";
+} from './components/icons';
 import LanguageSelector from './components/LanguageSelector';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import { ThemeToggle } from './components/ThemeToggle';
@@ -105,10 +105,10 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     59: 'bistecche di vitello con prosciutto crudo in salsa al vino bianco e salvia',
     60: 'tagliata di manzo con rucola e scaglie di Parmigiano Reggiano',
     61: 'bistecca di vitello con funghi selvatici in salsa di panna',
-    62: 'bistecca alla griglia servita con salsa all\'aglio',
+    62: "bistecca alla griglia servita con salsa all'aglio",
     63: 'bistecca di vitello con salsa al pepe verde',
     64: 'bistecca con salsa ai funghi, pepe e gorgonzola mescolate insieme',
-    65: 'gamberoni alla griglia serviti con salsa all\'aglio',
+    65: "gamberoni alla griglia serviti con salsa all'aglio",
     66: 'gamberoni in salsa di pomodoro piccante',
     67: 'filetto di salmone con pepe verde e salsa al cognac',
     68: 'filetto di salmone fresco con salsa rosé',
@@ -129,7 +129,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     82: 'cocktail amaro classico',
     83: 'aperitivo amaro con ghiaccio',
     84: 'aperitivo amaro con soda',
-    85: 'aperitivo amaro con succo d\'arancia',
+    85: "aperitivo amaro con succo d'arancia",
     // Caffè
     86: 'bevande calde tradizionali',
     87: 'tè alla menta fresca o allo zenzero',
@@ -147,7 +147,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     98: 'vino rosso robusto del sud Italia',
     99: 'bicchiere di Primitivo',
     100: 'vino rosso siciliano',
-    101: 'bicchiere di Nero d\'Avola',
+    101: "bicchiere di Nero d'Avola",
     102: 'vino rosso della Sardegna',
     103: 'bicchiere di Cannonau',
     104: 'vino rosso toscano classico',
@@ -182,14 +182,14 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     // Bibite Analcoliche
     132: 'bevanda gassata alla cola',
     133: 'bevanda gassata al limone',
-    134: 'bevanda gassata all\'arancia',
+    134: "bevanda gassata all'arancia",
     135: 'sciroppo di ribes nero',
     136: 'acqua minerale gassata rossa',
     137: 'acqua minerale naturale blu',
     138: 'bevanda gassata amara al limone',
     139: 'acqua tonica',
     140: 'succo naturale di mela',
-    141: 'succo naturale d\'arancia',
+    141: "succo naturale d'arancia",
     142: 'tè freddo',
     143: 'tè verde freddo',
     144: 'bevanda lattea al cioccolato',
@@ -197,20 +197,20 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     // Distillati
     146: 'rum bianco caraibico',
     147: 'rum scuro',
-    148: 'liquore all\'anice italiano',
+    148: "liquore all'anice italiano",
     149: 'cognac italiano',
     150: 'liquore al limone italiano',
     151: 'liquore alle mandorle italiano',
     152: 'grappa italiana',
     153: 'liquore cremoso al limone',
-    154: 'liquore all\'arancia francese',
-    155: 'liquore all\'arancia francese',
+    154: "liquore all'arancia francese",
+    155: "liquore all'arancia francese",
     156: 'whisky scozzese o irlandese',
     157: 'liquore al caffè',
     158: 'liquore scozzese al miele',
     159: 'liquore spagnolo alla vaniglia',
     160: 'amaro italiano alle erbe',
-    161: 'amaro siciliano alle erbe'
+    161: 'amaro siciliano alle erbe',
   },
   en: {
     1: 'thinly sliced beef with arugula and parmesan',
@@ -316,7 +316,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     98: 'robust red wine from southern Italy',
     99: 'glass of Primitivo',
     100: 'Sicilian red wine',
-    101: 'glass of Nero d\'Avola',
+    101: "glass of Nero d'Avola",
     102: 'red wine from Sardinia',
     103: 'glass of Cannonau',
     104: 'classic Tuscan red wine',
@@ -379,7 +379,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     158: 'Scottish honey liqueur',
     159: 'Spanish vanilla liqueur',
     160: 'Italian herbal bitter',
-    161: 'Sicilian herbal bitter'
+    161: 'Sicilian herbal bitter',
   },
   es: {
     1: 'filete cortado fino con rúcula y parmesano',
@@ -485,7 +485,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     98: 'vino tinto robusto del sur de Italia',
     99: 'copa de Primitivo',
     100: 'vino tinto siciliano',
-    101: 'copa de Nero d\'Avola',
+    101: "copa de Nero d'Avola",
     102: 'vino tinto de Cerdeña',
     103: 'copa de Cannonau',
     104: 'vino tinto toscano clásico',
@@ -548,7 +548,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     158: 'licor escocés de miel',
     159: 'licor español de vainilla',
     160: 'amargo italiano de hierbas',
-    161: 'amargo siciliano de hierbas'
+    161: 'amargo siciliano de hierbas',
   },
   fr: {
     1: 'filet coupé finement avec roquette et parmesan',
@@ -612,10 +612,10 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     59: 'steaks de veau avec jambon cru en sauce au vin blanc et sauge',
     60: 'tagliata de bœuf avec roquette et copeaux de Parmigiano Reggiano',
     61: 'steak de veau avec champignons sauvages en sauce crème',
-    62: 'steak grillé servi avec sauce à l\'ail',
+    62: "steak grillé servi avec sauce à l'ail",
     63: 'steak de veau avec sauce au poivre vert',
     64: 'steak avec sauce aux champignons, poivre et gorgonzola mélangées',
-    65: 'crevettes grillées servies avec sauce à l\'ail',
+    65: "crevettes grillées servies avec sauce à l'ail",
     66: 'crevettes en sauce tomate piquante',
     67: 'filet de saumon avec poivre vert et sauce au cognac',
     68: 'filet de saumon frais avec sauce rosé',
@@ -636,7 +636,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     82: 'cocktail amer classique',
     83: 'apéritif amer avec glace',
     84: 'apéritif amer avec soda',
-    85: 'apéritif amer avec jus d\'orange',
+    85: "apéritif amer avec jus d'orange",
     // Caffè
     86: 'boissons chaudes traditionnelles',
     87: 'thé à la menthe fraîche ou au gingembre',
@@ -651,10 +651,10 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     95: 'vin de la maison rouge, blanc ou rosé',
     96: 'demi-litre du vin de la maison',
     97: 'un litre du vin de la maison',
-    98: 'vin rouge robuste du sud de l\'Italie',
+    98: "vin rouge robuste du sud de l'Italie",
     99: 'verre de Primitivo',
     100: 'vin rouge sicilien',
-    101: 'verre de Nero d\'Avola',
+    101: "verre de Nero d'Avola",
     102: 'vin rouge de Sardaigne',
     103: 'verre de Cannonau',
     104: 'vin rouge toscan classique',
@@ -668,7 +668,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     112: 'verre de Prosecco',
     113: 'vin blanc des Marches',
     114: 'verre de Verdicchio',
-    115: 'vin blanc du nord-est de l\'Italie',
+    115: "vin blanc du nord-est de l'Italie",
     116: 'verre de Pinot Grigio',
     117: 'vin blanc de Bourgogne',
     118: 'verre de Chardonnay',
@@ -689,14 +689,14 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     // Bibite Analcoliche
     132: 'boisson gazeuse au cola',
     133: 'boisson gazeuse au citron',
-    134: 'boisson gazeuse à l\'orange',
+    134: "boisson gazeuse à l'orange",
     135: 'sirop de cassis',
     136: 'eau minérale gazeuse rouge',
     137: 'eau minérale naturelle bleue',
     138: 'boisson gazeuse amère au citron',
     139: 'eau tonique',
     140: 'jus naturel de pomme',
-    141: 'jus naturel d\'orange',
+    141: "jus naturel d'orange",
     142: 'thé glacé',
     143: 'thé vert glacé',
     144: 'boisson lactée au chocolat',
@@ -704,20 +704,20 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     // Distillati
     146: 'rhum blanc des Caraïbes',
     147: 'rhum brun',
-    148: 'liqueur d\'anis italienne',
+    148: "liqueur d'anis italienne",
     149: 'cognac italien',
     150: 'liqueur de citron italienne',
-    151: 'liqueur d\'amande italienne',
+    151: "liqueur d'amande italienne",
     152: 'grappa italienne',
     153: 'liqueur crémeuse au citron',
-    154: 'liqueur d\'orange française',
-    155: 'liqueur d\'orange française',
+    154: "liqueur d'orange française",
+    155: "liqueur d'orange française",
     156: 'whisky écossais ou irlandais',
     157: 'liqueur de café',
     158: 'liqueur écossaise au miel',
     159: 'liqueur espagnole à la vanille',
     160: 'amer italien aux herbes',
-    161: 'amer sicilien aux herbes'
+    161: 'amer sicilien aux herbes',
   },
   de: {
     1: 'dünn geschnittenes Rinderfilet mit Rucola und Parmesan',
@@ -823,7 +823,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     98: 'kräftiger Rotwein aus Süditalien',
     99: 'Glas Primitivo',
     100: 'sizilianischer Rotwein',
-    101: 'Glas Nero d\'Avola',
+    101: "Glas Nero d'Avola",
     102: 'Rotwein aus Sardinien',
     103: 'Glas Cannonau',
     104: 'klassischer toskanischer Rotwein',
@@ -886,7 +886,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     158: 'schottischer Honiglikör',
     159: 'spanischer Vanillelikör',
     160: 'italienischer Kräuterbitter',
-    161: 'sizilianischer Kräuterbitter'
+    161: 'sizilianischer Kräuterbitter',
   },
   nl: {
     1: 'dun gesneden rundvlees met rucola en parmezaan',
@@ -992,7 +992,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     98: 'krachtige rode wijn uit Zuid-Italië',
     99: 'glas Primitivo',
     100: 'Siciliaanse rode wijn',
-    101: 'glas Nero d\'Avola',
+    101: "glas Nero d'Avola",
     102: 'rode wijn uit Sardinië',
     103: 'glas Cannonau',
     104: 'klassieke Toscaanse rode wijn',
@@ -1055,7 +1055,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     158: 'Schotse honinglikeur',
     159: 'Spaanse vanillelikeur',
     160: 'Italiaanse kruidenbitter',
-    161: 'Siciliaanse kruidenbitter'
+    161: 'Siciliaanse kruidenbitter',
   },
   pt: {
     1: 'filé cortado fino com rúcula e parmesão',
@@ -1161,7 +1161,7 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     98: 'vinho tinto robusto do sul da Itália',
     99: 'taça de Primitivo',
     100: 'vinho tinto siciliano',
-    101: 'taça de Nero d\'Avola',
+    101: "taça de Nero d'Avola",
     102: 'vinho tinto da Sardenha',
     103: 'taça de Cannonau',
     104: 'vinho tinto toscano clássico',
@@ -1224,8 +1224,8 @@ const menuDescriptions: Record<string, Record<number, string>> = {
     158: 'licor escocês com mel',
     159: 'licor espanhol de baunilha',
     160: 'bitter italiano de ervas',
-    161: 'bitter siciliano de ervas'
-  }
+    161: 'bitter siciliano de ervas',
+  },
 };
 
 // Menu data from Ristorante Dagino
@@ -1239,85 +1239,85 @@ const menuCategories = [
         id: 1,
         name: 'Carpaccio',
         price: '€13.50',
-        popular: true
+        popular: true,
       },
       {
         id: 2,
         name: 'Carpaccio Speciale',
-        price: '€15.00'
+        price: '€15.00',
       },
       {
         id: 3,
         name: 'Vitello Tonnato',
-        price: '€13.50'
+        price: '€13.50',
       },
       {
         id: 4,
         name: 'Antipasto Italiano',
-        price: '€16.00'
+        price: '€16.00',
       },
       {
         id: 5,
         name: 'Antipasto Speciale',
         price: '€17.50',
-        popular: true
+        popular: true,
       },
       {
         id: 6,
         name: 'Prosciutto e Mozzarella',
-        price: '€13.00'
+        price: '€13.00',
       },
       {
         id: 7,
         name: 'Bruschette Pomodoro',
-        price: '€12.00'
+        price: '€12.00',
       },
       {
         id: 8,
         name: 'Bruschette Speciale',
-        price: '€15.50'
+        price: '€15.50',
       },
       {
         id: 9,
         name: 'Burrata',
-        price: '€16.00'
+        price: '€16.00',
       },
       {
         id: 10,
         name: 'Insalata Caprese',
-        price: '€12.00'
+        price: '€12.00',
       },
       {
         id: 11,
         name: 'Funghi Trifolati',
-        price: '€12.00'
+        price: '€12.00',
       },
       {
         id: 12,
         name: 'Crostini Gorgonzola',
-        price: '€14.50'
+        price: '€14.50',
       },
       {
         id: 13,
         name: 'Focaccia e burro',
-        price: '€10.00'
+        price: '€10.00',
       },
       {
         id: 14,
         name: 'Cozze e Gamberi',
-        price: '€17.50'
+        price: '€17.50',
       },
       {
         id: 15,
         name: 'Pane e Burro (medium)',
-        price: '€4.50'
+        price: '€4.50',
       },
       {
         id: 16,
         name: 'Pane e Burro (grande)',
-        price: '€6.50'
-      }
-    ]
+        price: '€6.50',
+      },
+    ],
   },
   {
     id: 'pizze',
@@ -1328,66 +1328,66 @@ const menuCategories = [
         id: 17,
         name: 'Margherita',
         price: '€12.00',
-        popular: true
+        popular: true,
       },
       {
         id: 18,
         name: 'Hawaii',
-        price: '€15.00'
+        price: '€15.00',
       },
       {
         id: 19,
         name: 'Salame',
-        price: '€13.50'
+        price: '€13.50',
       },
       {
         id: 20,
         name: 'Vegetaria',
-        price: '€16.50'
+        price: '€16.50',
       },
       {
         id: 21,
         name: 'Stagioni',
-        price: '€17.00'
+        price: '€17.00',
       },
       {
         id: 22,
         name: 'Formaggi',
-        price: '€16.00'
+        price: '€16.00',
       },
       {
         id: 23,
         name: 'Pescatora',
-        price: '€16.00'
+        price: '€16.00',
       },
       {
         id: 24,
         name: 'Burrata',
         price: '€18.50',
-        popular: true
+        popular: true,
       },
       {
         id: 25,
         name: 'Ortolana',
-        price: '€18.50'
+        price: '€18.50',
       },
       {
         id: 26,
         name: 'Rucola',
-        price: '€16.00'
+        price: '€16.00',
       },
       {
         id: 27,
         name: 'Parma',
-        price: '€18.00'
+        price: '€18.00',
       },
       {
         id: 28,
         name: 'Tartufo',
         price: '€19.50',
-        popular: true
-      }
-    ]
+        popular: true,
+      },
+    ],
   },
   {
     id: 'pasta',
@@ -1398,85 +1398,85 @@ const menuCategories = [
         id: 29,
         name: 'Bolognese',
         price: '€13.00',
-        popular: true
+        popular: true,
       },
       {
         id: 30,
         name: 'Pomodoro e Burrata',
-        price: '€15.00'
+        price: '€15.00',
       },
       {
         id: 31,
         name: 'Carbonara',
         price: '€14.00',
-        popular: true
+        popular: true,
       },
       {
         id: 32,
         name: 'Ai Porcini',
-        price: '€15.00'
+        price: '€15.00',
       },
       {
         id: 33,
         name: 'Frutti di Mare',
-        price: '€17.50'
+        price: '€17.50',
       },
       {
         id: 34,
         name: 'Al Salmone',
-        price: '€16.50'
+        price: '€16.50',
       },
       {
         id: 35,
         name: 'Vegetariana',
-        price: '€16.00'
+        price: '€16.00',
       },
       {
         id: 36,
         name: 'Pesto e Pollo',
-        price: '€16.50'
+        price: '€16.50',
       },
       {
         id: 37,
         name: 'Pollo e Tartufo',
-        price: '€17.50'
+        price: '€17.50',
       },
       {
         id: 38,
         name: 'Gamberi e Caviale',
-        price: '€18.00'
+        price: '€18.00',
       },
       {
         id: 39,
         name: 'Gamberi e Salmone',
-        price: '€19.50'
+        price: '€19.50',
       },
       {
         id: 40,
         name: 'Ravioli Freschi',
-        price: '€17.00'
+        price: '€17.00',
       },
       {
         id: 41,
         name: 'Ravioli Freschi Burro e Salvia',
-        price: '€16.00'
+        price: '€16.00',
       },
       {
         id: 42,
         name: 'Cannelloni',
-        price: '€15.00'
+        price: '€15.00',
       },
       {
         id: 43,
         name: 'Tortellini alla Panna',
-        price: '€16.00'
+        price: '€16.00',
       },
       {
         id: 44,
         name: 'Tris Speciale',
-        price: '€18.00'
-      }
-    ]
+        price: '€18.00',
+      },
+    ],
   },
   {
     id: 'risotti',
@@ -1487,44 +1487,44 @@ const menuCategories = [
         id: 45,
         name: 'Risotto ai Porcini',
         price: '€15.50',
-        popular: true
+        popular: true,
       },
       {
         id: 46,
         name: 'Risotto al Tartufo',
-        price: '€18.00'
+        price: '€18.00',
       },
       {
         id: 47,
         name: 'Risotto del Pescatora',
-        price: '€16.50'
+        price: '€16.50',
       },
       {
         id: 48,
         name: 'Risotto Scampi e Zucchine',
-        price: '€18.50'
+        price: '€18.50',
       },
       {
         id: 49,
         name: 'Lasagna',
-        price: '€14.00'
+        price: '€14.00',
       },
       {
         id: 50,
         name: 'Lasagna ai Formaggi',
-        price: '€15.00'
+        price: '€15.00',
       },
       {
         id: 51,
         name: 'Lasagna Spinaci e Zola',
-        price: '€17.50'
+        price: '€17.50',
       },
       {
         id: 52,
         name: 'Lasagna ai Porcini',
-        price: '€17.50'
-      }
-    ]
+        price: '€17.50',
+      },
+    ],
   },
   {
     id: 'secondi',
@@ -1535,85 +1535,85 @@ const menuCategories = [
         id: 53,
         name: 'Pollo in Salsa Rosa',
         price: '€27.00',
-        popular: true
+        popular: true,
       },
       {
         id: 54,
         name: 'Pollo Roquefort',
-        price: '€27.50'
+        price: '€27.50',
       },
       {
         id: 55,
         name: 'Pollo ai Funghi',
-        price: '€27.50'
+        price: '€27.50',
       },
       {
         id: 56,
         name: 'Pollo alla Cacciatora',
-        price: '€27.50'
+        price: '€27.50',
       },
       {
         id: 57,
         name: 'Scaloppa Gorgonzola',
-        price: '€29.50'
+        price: '€29.50',
       },
       {
         id: 58,
         name: 'Scaloppa ai Porcini',
-        price: '€30.00'
+        price: '€30.00',
       },
       {
         id: 59,
         name: 'Saltimbocca alla Romana',
-        price: '€30.00'
+        price: '€30.00',
       },
       {
         id: 60,
         name: 'Tagliata di Vitella',
         price: '€33.50',
-        popular: true
+        popular: true,
       },
       {
         id: 61,
         name: 'Bistecca ai Porcini',
-        price: '€34.50'
+        price: '€34.50',
       },
       {
         id: 62,
         name: 'Bistecca ai Ferri',
-        price: '€32.00'
+        price: '€32.00',
       },
       {
         id: 63,
         name: 'Bistecca al Pepe',
-        price: '€33.00'
+        price: '€33.00',
       },
       {
         id: 64,
         name: 'Bistecca Ciccio Bello',
-        price: '€35.00'
+        price: '€35.00',
       },
       {
         id: 65,
         name: 'Scampi alla Griglia',
-        price: '€31.00'
+        price: '€31.00',
       },
       {
         id: 66,
         name: 'Scampi alla Diavola',
-        price: '€32.00'
+        price: '€32.00',
       },
       {
         id: 67,
         name: 'Salmone al Pepe e Cognac',
-        price: '€31.00'
+        price: '€31.00',
       },
       {
         id: 68,
         name: 'Salmone in Salsa Rosa',
-        price: '€30.00'
-      }
-    ]
+        price: '€30.00',
+      },
+    ],
   },
   {
     id: 'dolci',
@@ -1624,40 +1624,40 @@ const menuCategories = [
         id: 69,
         name: 'Dama Bianca',
         price: '€7.00',
-        popular: true
+        popular: true,
       },
       {
         id: 70,
         name: 'Gelato Italiano',
-        price: '€7.00'
+        price: '€7.00',
       },
       {
         id: 71,
         name: 'Tiramisù',
         price: '€7.50',
-        popular: true
+        popular: true,
       },
       {
         id: 72,
         name: 'Tartufo al Cioccolato',
-        price: '€7.00'
+        price: '€7.00',
       },
       {
         id: 73,
         name: 'Tartufo Bianco',
-        price: '€7.00'
+        price: '€7.00',
       },
       {
         id: 74,
         name: 'Gelato alle Fragole',
-        price: '€8.50'
+        price: '€8.50',
       },
       {
         id: 75,
         name: 'Coppa al Pistacchio',
-        price: '€7.50'
-      }
-    ]
+        price: '€7.50',
+      },
+    ],
   },
   {
     id: 'aperitivi',
@@ -1668,55 +1668,55 @@ const menuCategories = [
         id: 76,
         name: 'Calice di Prosecco',
         price: '€8.00',
-        popular: true
+        popular: true,
       },
       {
         id: 77,
         name: 'Porto Rosso',
-        price: '€5.00'
+        price: '€5.00',
       },
       {
         id: 78,
         name: 'Martini Rosso o Bianco',
-        price: '€5.00'
+        price: '€5.00',
       },
       {
         id: 79,
         name: 'Aperol Spritz',
         price: '€8.00',
-        popular: true
+        popular: true,
       },
       {
         id: 80,
         name: 'Limoncello Spritz',
-        price: '€8.00'
+        price: '€8.00',
       },
       {
         id: 81,
         name: 'Meloncello Spritz',
-        price: '€8.00'
+        price: '€8.00',
       },
       {
         id: 82,
         name: 'Negroni',
-        price: '€7.50'
+        price: '€7.50',
       },
       {
         id: 83,
         name: 'Campari con ghiaccio',
-        price: '€4.50'
+        price: '€4.50',
       },
       {
         id: 84,
         name: 'Campari con soda',
-        price: '€6.00'
+        price: '€6.00',
       },
       {
         id: 85,
-        name: 'Campari con succo d\'arancia',
-        price: '€6.50'
-      }
-    ]
+        name: "Campari con succo d'arancia",
+        price: '€6.50',
+      },
+    ],
   },
   {
     id: 'caffe',
@@ -1726,50 +1726,50 @@ const menuCategories = [
       {
         id: 86,
         name: 'Tè, Caffè o Espresso',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 87,
         name: 'Tè alla menta fresca o allo zenzero',
-        price: '€4.00'
+        price: '€4.00',
       },
       {
         id: 88,
         name: 'Latte Macchiato',
-        price: '€4.00'
+        price: '€4.00',
       },
       {
         id: 89,
         name: 'Cappuccino',
         price: '€4.00',
-        popular: true
+        popular: true,
       },
       {
         id: 90,
         name: 'Espresso Doppio',
-        price: '€4.50'
+        price: '€4.50',
       },
       {
         id: 91,
         name: 'Irish Coffee',
-        price: '€8.00'
+        price: '€8.00',
       },
       {
         id: 92,
         name: 'French Coffee',
-        price: '€8.00'
+        price: '€8.00',
       },
       {
         id: 93,
         name: 'Spanish Coffee',
-        price: '€8.00'
+        price: '€8.00',
       },
       {
         id: 94,
         name: 'Italian Coffee',
-        price: '€8.00'
-      }
-    ]
+        price: '€8.00',
+      },
+    ],
   },
   {
     id: 'vini',
@@ -1779,146 +1779,146 @@ const menuCategories = [
       {
         id: 95,
         name: 'Vino della casa per bicchiere (rosso, bianco, rosé)',
-        price: '€5.00'
+        price: '€5.00',
       },
       {
         id: 96,
         name: 'Vino della casa caraffa ½ litro',
-        price: '€15.00'
+        price: '€15.00',
       },
       {
         id: 97,
         name: 'Vino della casa caraffa 1 litro',
-        price: '€25.00'
+        price: '€25.00',
       },
       {
         id: 98,
         name: 'Primitivo (bottiglia)',
         price: '€30.00',
-        popular: true
+        popular: true,
       },
       {
         id: 99,
         name: 'Primitivo (bicchiere)',
-        price: '€7.50'
+        price: '€7.50',
       },
       {
         id: 100,
-        name: 'Nero d\'Avola (bottiglia)',
-        price: '€30.00'
+        name: "Nero d'Avola (bottiglia)",
+        price: '€30.00',
       },
       {
         id: 101,
-        name: 'Nero d\'Avola (bicchiere)',
-        price: '€7.50'
+        name: "Nero d'Avola (bicchiere)",
+        price: '€7.50',
       },
       {
         id: 102,
         name: 'Cannonau (bottiglia)',
-        price: '€32.00'
+        price: '€32.00',
       },
       {
         id: 103,
         name: 'Cannonau (bicchiere)',
-        price: '€7.50'
+        price: '€7.50',
       },
       {
         id: 104,
         name: 'Chianti Classico (bottiglia)',
         price: '€32.00',
-        popular: true
+        popular: true,
       },
       {
         id: 105,
         name: 'Chianti Classico (bicchiere)',
-        price: '€8.00'
+        price: '€8.00',
       },
       {
         id: 106,
         name: 'Barbera (bottiglia)',
-        price: '€36.00'
+        price: '€36.00',
       },
       {
         id: 107,
         name: 'Barbera (bicchiere)',
-        price: '€9.00'
+        price: '€9.00',
       },
       {
         id: 108,
         name: 'Montepulciano (bottiglia)',
-        price: '€30.00'
+        price: '€30.00',
       },
       {
         id: 109,
         name: 'Montepulciano (bicchiere)',
-        price: '€7.50'
+        price: '€7.50',
       },
       {
         id: 110,
         name: 'Barolo (bottiglia)',
-        price: '€60.00'
+        price: '€60.00',
       },
       {
         id: 111,
         name: 'Prosecco (bottiglia)',
-        price: '€27.50'
+        price: '€27.50',
       },
       {
         id: 112,
         name: 'Prosecco (bicchiere)',
-        price: '€8.00'
+        price: '€8.00',
       },
       {
         id: 113,
         name: 'Verdicchio (bottiglia)',
-        price: '€27.50'
+        price: '€27.50',
       },
       {
         id: 114,
         name: 'Verdicchio (bicchiere)',
-        price: '€7.00'
+        price: '€7.00',
       },
       {
         id: 115,
         name: 'Pinot Grigio (bottiglia)',
-        price: '€27.50'
+        price: '€27.50',
       },
       {
         id: 116,
         name: 'Pinot Grigio (bicchiere)',
-        price: '€7.00'
+        price: '€7.00',
       },
       {
         id: 117,
         name: 'Chardonnay (bottiglia)',
-        price: '€27.50'
+        price: '€27.50',
       },
       {
         id: 118,
         name: 'Chardonnay (bicchiere)',
-        price: '€7.00'
+        price: '€7.00',
       },
       {
         id: 119,
         name: 'Vermentino (bottiglia)',
-        price: '€30.00'
+        price: '€30.00',
       },
       {
         id: 120,
         name: 'Vermentino (bicchiere)',
-        price: '€7.00'
+        price: '€7.00',
       },
       {
         id: 121,
         name: 'Terre Sabeli Rosé (bottiglia)',
-        price: '€27.50'
+        price: '€27.50',
       },
       {
         id: 122,
         name: 'Terre Sabeli Rosé (bicchiere)',
-        price: '€7.00'
-      }
-    ]
+        price: '€7.00',
+      },
+    ],
   },
   {
     id: 'birre',
@@ -1929,49 +1929,49 @@ const menuCategories = [
         id: 123,
         name: 'Moretti alla spina 0,25',
         price: '€4.25',
-        popular: true
+        popular: true,
       },
       {
         id: 124,
         name: 'Moretti alla spina 0,50',
-        price: '€8.50'
+        price: '€8.50',
       },
       {
         id: 125,
         name: 'Skuumkoppe alla spina',
-        price: '€5.50'
+        price: '€5.50',
       },
       {
         id: 126,
         name: 'Heineken alla spina 0.0',
-        price: '€4.50'
+        price: '€4.50',
       },
       {
         id: 127,
         name: 'Amstel bottiglia',
-        price: '€3.50'
+        price: '€3.50',
       },
       {
         id: 128,
         name: 'Heineken bottiglia',
-        price: '€3.50'
+        price: '€3.50',
       },
       {
         id: 129,
         name: 'Radler 2.0',
-        price: '€4.50'
+        price: '€4.50',
       },
       {
         id: 130,
         name: 'Radler 0.0',
-        price: '€4.50'
+        price: '€4.50',
       },
       {
         id: 131,
         name: 'Desperados',
-        price: '€6.00'
-      }
-    ]
+        price: '€6.00',
+      },
+    ],
   },
   {
     id: 'bibite',
@@ -1981,74 +1981,74 @@ const menuCategories = [
       {
         id: 132,
         name: 'Cola',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 133,
         name: 'Sprite',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 134,
         name: 'Fanta',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 135,
         name: 'Cassis',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 136,
         name: 'Spa Red',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 137,
         name: 'Spa Blue',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 138,
         name: 'Bitter Lemon',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 139,
         name: 'Tonic',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 140,
         name: 'Succo di Mela',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 141,
-        name: 'Succo d\'Arancia',
-        price: '€3.00'
+        name: "Succo d'Arancia",
+        price: '€3.00',
       },
       {
         id: 142,
         name: 'Tè Freddo',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 143,
         name: 'Tè Freddo Verde',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 144,
         name: 'Latte al Cioccolato',
-        price: '€3.00'
+        price: '€3.00',
       },
       {
         id: 145,
         name: 'Fristi',
-        price: '€3.00'
-      }
-    ]
+        price: '€3.00',
+      },
+    ],
   },
   {
     id: 'distillati',
@@ -2058,86 +2058,86 @@ const menuCategories = [
       {
         id: 146,
         name: 'Bacardi',
-        price: '€5.00'
+        price: '€5.00',
       },
       {
         id: 147,
         name: 'Rum Nero',
-        price: '€5.00'
+        price: '€5.00',
       },
       {
         id: 148,
         name: 'Sambuca',
-        price: '€5.00'
+        price: '€5.00',
       },
       {
         id: 149,
         name: 'Cognac Italiano',
-        price: '€6.00'
+        price: '€6.00',
       },
       {
         id: 150,
         name: 'Limoncello',
         price: '€5.00',
-        popular: true
+        popular: true,
       },
       {
         id: 151,
         name: 'Amaretto',
-        price: '€5.00'
+        price: '€5.00',
       },
       {
         id: 152,
         name: 'Grappa',
-        price: '€5.00'
+        price: '€5.00',
       },
       {
         id: 153,
         name: 'Limoncello Crema',
-        price: '€7.00'
+        price: '€7.00',
       },
       {
         id: 154,
         name: 'Grand Marnier',
-        price: '€6.00'
+        price: '€6.00',
       },
       {
         id: 155,
         name: 'Cointreau',
-        price: '€6.00'
+        price: '€6.00',
       },
       {
         id: 156,
         name: 'Whisky',
-        price: '€5.00'
+        price: '€5.00',
       },
       {
         id: 157,
         name: 'Tia Maria',
-        price: '€6.00'
+        price: '€6.00',
       },
       {
         id: 158,
         name: 'Drambuie',
-        price: '€6.00'
+        price: '€6.00',
       },
       {
         id: 159,
         name: 'Liquor 43',
-        price: '€6.00'
+        price: '€6.00',
       },
       {
         id: 160,
         name: 'Amaro Ramazotti',
-        price: '€5.00'
+        price: '€5.00',
       },
       {
         id: 161,
         name: 'Averna',
-        price: '€5.00'
-      }
-    ]
-  }
+        price: '€5.00',
+      },
+    ],
+  },
 ];
 
 function App() {
@@ -2146,21 +2146,33 @@ function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
   // Scroll detection to update active section
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['hero', 'menu', 'reservations', 'about', 'reviews', 'contact'];
-      const menuCategories = ['antipasti', 'pizze', 'pasta', 'risotti', 'secondi', 'dolci', 'aperitivi', 'vini', 'birre', 'caffe', 'bibite', 'distillati'];
-      
+      const menuCategories = [
+        'antipasti',
+        'pizze',
+        'pasta',
+        'risotti',
+        'secondi',
+        'dolci',
+        'aperitivi',
+        'vini',
+        'birre',
+        'caffe',
+        'bibite',
+        'distillati',
+      ];
+
       const allSections = [...sections, ...menuCategories];
-      
+
       for (const section of allSections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
           const isVisible = rect.top <= 100 && rect.bottom >= 100;
-          
+
           if (isVisible) {
             setActiveSection(section);
             // If it's a menu category, also set it as active category
@@ -2201,7 +2213,7 @@ function App() {
     element?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
     setActiveSection(sectionId);
-    
+
     // If navigating to a menu category, set it as active
     if (menuCategories.find(cat => cat.id === sectionId)) {
       setActiveCategory(sectionId);
@@ -2222,8 +2234,6 @@ function App() {
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodedLocation}`, '_blank');
   };
 
-
-
   return (
     <div className="min-h-screen bg-gradient-hero">
       <StructuredData language={selectedLanguage} />
@@ -2238,12 +2248,14 @@ function App() {
               <ChefHat size={16} className="md:hidden text-primary-foreground" />
               <ChefHat size={20} className="hidden md:block text-primary-foreground" />
             </div>
-            <h1 className="font-heading text-lg md:text-xl lg:text-2xl font-bold text-gradient">Da Gino</h1>
+            <h1 className="font-heading text-lg md:text-xl lg:text-2xl font-bold text-gradient">
+              Da Gino
+            </h1>
           </div>
-          
+
           <div className="flex items-center gap-1 md:gap-3 flex-shrink-0">
             <div className="hidden sm:block">
-              <SearchSystem 
+              <SearchSystem
                 language={selectedLanguage}
                 menuCategories={menuCategories}
                 menuDescriptions={menuDescriptions}
@@ -2251,14 +2263,18 @@ function App() {
               />
             </div>
             <ThemeToggle size="md" className="mr-1" />
-            <LanguageSwitcher 
+            <LanguageSwitcher
               currentLanguage={selectedLanguage}
               onLanguageChange={setSelectedLanguage}
             />
-            
+
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden h-10 w-10 hover-lift flex-shrink-0">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden h-10 w-10 hover-lift flex-shrink-0"
+                >
                   <List size={20} />
                 </Button>
               </SheetTrigger>
@@ -2266,34 +2282,34 @@ function App() {
                 <nav className="flex flex-col space-y-2 mt-8">
                   {/* Add search for mobile */}
                   <div className="sm:hidden mb-4">
-                    <SearchSystem 
+                    <SearchSystem
                       language={selectedLanguage}
                       menuCategories={menuCategories}
                       menuDescriptions={menuDescriptions}
                       onNavigate={scrollToSection}
                     />
                   </div>
-                  
+
                   {[
                     { key: 'home', section: 'hero' },
                     { key: 'menu', section: 'menu' },
                     { key: 'reservations', section: 'reservations' },
                     { key: 'about', section: 'about' },
                     { key: 'reviews', section: 'reviews' },
-                    { key: 'contact', section: 'contact' }
-                  ].map((item) => (
-                    <Button 
+                    { key: 'contact', section: 'contact' },
+                  ].map(item => (
+                    <Button
                       key={item.key}
-                      variant="ghost" 
+                      variant="ghost"
                       className="justify-start text-base font-medium h-12 hover-lift"
                       onClick={() => scrollToSection(item.section)}
                     >
                       {t(item.key as TranslationKey)}
                     </Button>
                   ))}
-                  
+
                   <div className="pt-4">
-                    <Button 
+                    <Button
                       onClick={() => handleCall()}
                       className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 h-12 btn-modern"
                     >
@@ -2314,21 +2330,21 @@ function App() {
               { key: 'reservations', section: 'reservations' },
               { key: 'about', section: 'about' },
               { key: 'reviews', section: 'reviews' },
-              { key: 'contact', section: 'contact' }
-            ].map((item) => (
-              <Button 
+              { key: 'contact', section: 'contact' },
+            ].map(item => (
+              <Button
                 key={item.key}
-                variant="ghost" 
-                onClick={() => scrollToSection(item.section)} 
+                variant="ghost"
+                onClick={() => scrollToSection(item.section)}
                 className="text-sm lg:text-base hover-lift relative group px-2 lg:px-3 xl:px-4"
               >
                 {t(item.key as TranslationKey)}
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></div>
               </Button>
             ))}
-            
-            <Button 
-              onClick={() => handleCall()} 
+
+            <Button
+              onClick={() => handleCall()}
               className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-sm lg:text-base btn-modern ml-2 lg:ml-4 px-3 lg:px-4"
             >
               <Phone size={14} className="mr-1 lg:mr-2" />
@@ -2347,7 +2363,10 @@ function App() {
       />
 
       {/* Enhanced Hero Section */}
-      <section id="hero" className="relative min-h-[85vh] flex items-center justify-center text-center section-padding">
+      <section
+        id="hero"
+        className="relative min-h-[85vh] flex items-center justify-center text-center section-padding"
+      >
         <div className="container-responsive max-w-5xl mx-auto space-y-8 animate-fade-in">
           <div className="space-y-6">
             <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-foreground text-shadow-soft leading-tight text-balance">
@@ -2362,18 +2381,18 @@ function App() {
               </p>
             </div>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               onClick={() => scrollToSection('menu')}
               className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground w-full sm:w-auto h-14 text-lg px-8 btn-modern hover-lift"
             >
               <ChefHat size={24} className="mr-3" />
               {t('discoverMenu')}
             </Button>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="outline"
               onClick={() => scrollToSection('reservations')}
               className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto h-14 text-lg px-8 hover-lift"
@@ -2382,12 +2401,14 @@ function App() {
               {t('bookTable')}
             </Button>
           </div>
-          
+
           {/* Decorative elements */}
           <div className="flex justify-center gap-6 pt-12 opacity-60">
             <div className="flex items-center gap-2">
               <Star size={20} className="text-accent" />
-              <span className="font-body text-sm text-muted-foreground">{t('since2010' as TranslationKey)}</span>
+              <span className="font-body text-sm text-muted-foreground">
+                {t('since2010' as TranslationKey)}
+              </span>
             </div>
             <div className="w-px h-6 bg-border"></div>
             <div className="flex items-center gap-2">
@@ -2404,14 +2425,17 @@ function App() {
       </section>
 
       {/* Category Navigation Section */}
-      <CategoryNavigation 
+      <CategoryNavigation
         language={selectedLanguage}
         onNavigate={scrollToSection}
         activeSection={activeSection}
       />
 
       {/* Enhanced Menu Section */}
-      <section id="menu" className="section-padding bg-gradient-to-b from-background to-secondary/20">
+      <section
+        id="menu"
+        className="section-padding bg-gradient-to-b from-background to-secondary/20"
+      >
         <div className="container-responsive max-w-6xl mx-auto">
           <div className="text-center mb-16 space-y-6">
             <div className="inline-flex items-center gap-3 bg-primary/10 text-primary px-6 py-3 rounded-full">
@@ -2428,17 +2452,17 @@ function App() {
 
           {/* Enhanced Category Navigation */}
           <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-12 p-2">
-            {menuCategories.map((category) => (
+            {menuCategories.map(category => (
               <Button
                 key={category.id}
-                variant={activeCategory === category.id ? "default" : "outline"}
+                variant={activeCategory === category.id ? 'default' : 'outline'}
                 onClick={() => {
                   setActiveCategory(category.id);
                   setActiveSection(category.id);
                 }}
                 className={`flex items-center gap-2 md:gap-3 text-xs sm:text-sm md:text-base px-3 sm:px-4 md:px-6 py-2 md:py-3 h-auto hover-lift transition-all duration-300 min-w-0 ${
-                  activeCategory === category.id 
-                    ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground' 
+                  activeCategory === category.id
+                    ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground'
                     : 'hover:bg-primary/5 hover:border-primary'
                 }`}
               >
@@ -2455,8 +2479,8 @@ function App() {
             {menuCategories
               .find(cat => cat.id === activeCategory)
               ?.items.map((item, index) => (
-                <Card 
-                  key={item.id} 
+                <Card
+                  key={item.id}
                   className="card-modern hover-lift animate-slide-up group"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
@@ -2486,12 +2510,11 @@ function App() {
                     </div>
                   </CardContent>
                 </Card>
-              ))
-            }
+              ))}
           </div>
 
           {/* Add individual sections for each category */}
-          {menuCategories.map((category) => (
+          {menuCategories.map(category => (
             <div key={`section-${category.id}`} id={category.id} className="hidden">
               {/* This creates anchor points for direct navigation */}
             </div>
@@ -2500,7 +2523,10 @@ function App() {
       </section>
 
       {/* Enhanced Reservations Section */}
-      <section id="reservations" className="section-padding bg-gradient-to-b from-secondary/20 to-background">
+      <section
+        id="reservations"
+        className="section-padding bg-gradient-to-b from-secondary/20 to-background"
+      >
         <div className="container-responsive max-w-6xl mx-auto">
           <div className="text-center mb-16 space-y-6">
             <div className="inline-flex items-center gap-3 bg-primary/10 text-primary px-6 py-3 rounded-full">
@@ -2520,7 +2546,10 @@ function App() {
       </section>
 
       {/* Enhanced About Section */}
-      <section id="about" className="section-padding bg-gradient-to-b from-background to-secondary/20">
+      <section
+        id="about"
+        className="section-padding bg-gradient-to-b from-background to-secondary/20"
+      >
         <div className="container-responsive max-w-6xl mx-auto text-center">
           <div className="mb-16 space-y-6">
             <div className="inline-flex items-center gap-3 bg-accent/10 text-accent px-6 py-3 rounded-full">
@@ -2531,26 +2560,26 @@ function App() {
               {t('ourStory')}
             </h2>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             {[
               {
                 icon: <ChefHat size={48} className="text-primary" />,
                 title: t('tradition'),
-                description: t('traditionDesc')
+                description: t('traditionDesc'),
               },
               {
                 icon: <Heart size={48} className="text-accent" />,
                 title: t('passion'),
-                description: t('passionDesc')
+                description: t('passionDesc'),
               },
               {
                 icon: <Star size={48} className="text-primary" />,
                 title: t('quality'),
-                description: t('qualityDesc')
-              }
+                description: t('qualityDesc'),
+              },
             ].map((item, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="card-modern text-center hover-lift animate-slide-up group"
                 style={{ animationDelay: `${index * 0.2}s` }}
@@ -2575,7 +2604,10 @@ function App() {
       </section>
 
       {/* Enhanced Reviews Section with Automated TripAdvisor Integration */}
-      <section id="reviews" className="section-padding bg-gradient-to-b from-background to-secondary/20">
+      <section
+        id="reviews"
+        className="section-padding bg-gradient-to-b from-background to-secondary/20"
+      >
         <div className="container-responsive max-w-6xl mx-auto">
           <div className="text-center mb-16 space-y-6">
             <div className="inline-flex items-center gap-3 bg-primary/10 text-primary px-6 py-3 rounded-full">
@@ -2628,31 +2660,42 @@ function App() {
                 <div className="space-y-4">
                   {/* Phone Numbers Section */}
                   <div className="space-y-3">
-                    {t('phone').split(' / ').map((phone, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 rounded-xl bg-secondary/30">
-                        <div className="flex items-center gap-3">
-                          <Phone size={20} className="text-primary" />
-                          <span className="font-body text-base md:text-lg text-foreground">{phone}</span>
-                        </div>
-                        <Button 
-                          size="sm"
-                          onClick={() => handleCall(phone)}
-                          className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                    {t('phone')
+                      .split(' / ')
+                      .map((phone, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between p-3 rounded-xl bg-secondary/30"
                         >
-                          <Phone size={16} className="mr-1" />
-                          {t('call')}
-                        </Button>
-                      </div>
-                    ))}
+                          <div className="flex items-center gap-3">
+                            <Phone size={20} className="text-primary" />
+                            <span className="font-body text-base md:text-lg text-foreground">
+                              {phone}
+                            </span>
+                          </div>
+                          <Button
+                            size="sm"
+                            onClick={() => handleCall(phone)}
+                            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                          >
+                            <Phone size={16} className="mr-1" />
+                            {t('call')}
+                          </Button>
+                        </div>
+                      ))}
                   </div>
-                  
+
                   {/* Address Section */}
                   <div className="flex items-center justify-between p-3 rounded-xl bg-secondary/30">
                     <div className="flex items-center gap-3">
                       <MapPin size={20} className="text-primary" />
                       <div className="flex flex-col">
-                        <span className="font-body text-base md:text-lg text-foreground">{t('address')}</span>
-                        <span className="font-body text-xs text-muted-foreground">{t('walkingDistance' as TranslationKey)}</span>
+                        <span className="font-body text-base md:text-lg text-foreground">
+                          {t('address')}
+                        </span>
+                        <span className="font-body text-xs text-muted-foreground">
+                          {t('walkingDistance' as TranslationKey)}
+                        </span>
                       </div>
                     </div>
                     <Button
@@ -2664,28 +2707,56 @@ function App() {
                       {t('getDirections')}
                     </Button>
                   </div>
-                  
+
                   {/* Detailed Hours Section */}
                   <div className="p-4 rounded-xl bg-secondary/30 space-y-4">
                     <div className="flex items-center gap-3">
                       <Clock size={20} className="text-primary" />
-                      <span className="font-heading text-base font-semibold text-foreground">{t('openingHours')}</span>
+                      <span className="font-heading text-base font-semibold text-foreground">
+                        {t('openingHours')}
+                      </span>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 gap-2 text-sm">
                       {[
-                        { day: t('monday'), hours: t('restaurantHours'), delivery: t('deliverySchedule') },
-                        { day: t('tuesday'), hours: t('restaurantHours'), delivery: t('deliverySchedule') },
+                        {
+                          day: t('monday'),
+                          hours: t('restaurantHours'),
+                          delivery: t('deliverySchedule'),
+                        },
+                        {
+                          day: t('tuesday'),
+                          hours: t('restaurantHours'),
+                          delivery: t('deliverySchedule'),
+                        },
                         { day: t('wednesday'), hours: t('closed'), delivery: t('closed') },
-                        { day: t('thursday'), hours: t('restaurantHours'), delivery: t('deliverySchedule') },
-                        { day: t('friday'), hours: t('restaurantHours'), delivery: t('deliverySchedule') },
-                        { day: t('saturday'), hours: t('restaurantHours'), delivery: t('deliverySchedule') },
-                        { day: t('sunday'), hours: t('restaurantHours'), delivery: t('deliverySchedule') }
+                        {
+                          day: t('thursday'),
+                          hours: t('restaurantHours'),
+                          delivery: t('deliverySchedule'),
+                        },
+                        {
+                          day: t('friday'),
+                          hours: t('restaurantHours'),
+                          delivery: t('deliverySchedule'),
+                        },
+                        {
+                          day: t('saturday'),
+                          hours: t('restaurantHours'),
+                          delivery: t('deliverySchedule'),
+                        },
+                        {
+                          day: t('sunday'),
+                          hours: t('restaurantHours'),
+                          delivery: t('deliverySchedule'),
+                        },
                       ].map((dayInfo, index) => (
                         <div key={index} className="flex justify-between items-center py-1">
                           <span className="font-medium text-foreground">{dayInfo.day}:</span>
                           <div className="flex flex-col text-right">
-                            <span className={`text-sm ${dayInfo.hours === t('closed') ? 'text-destructive' : 'text-muted-foreground'}`}>
+                            <span
+                              className={`text-sm ${dayInfo.hours === t('closed') ? 'text-destructive' : 'text-muted-foreground'}`}
+                            >
                               {dayInfo.hours}
                             </span>
                             {dayInfo.hours !== t('closed') && (
@@ -2699,7 +2770,7 @@ function App() {
                     </div>
                   </div>
                 </div>
-                <Button 
+                <Button
                   onClick={() => handleCall()}
                   className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 h-12 text-base btn-modern"
                 >
@@ -2729,15 +2800,15 @@ function App() {
                 {t('tagline')}
               </p>
             </div>
-            
+
             <div className="flex justify-center gap-4">
-              <Button 
-                variant="outline" 
-                size="icon" 
+              <Button
+                variant="outline"
+                size="icon"
                 className="h-12 w-12 rounded-xl hover-lift bg-background/50 border-border/50"
                 asChild
               >
-                <a 
+                <a
                   href="https://www.instagram.com/ristorantepizzeriadagino?igsh=bTl6NDdsa3FldHZp"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -2746,13 +2817,13 @@ function App() {
                   <InstagramLogo size={20} />
                 </a>
               </Button>
-              <Button 
-                variant="outline" 
-                size="icon" 
+              <Button
+                variant="outline"
+                size="icon"
                 className="h-12 w-12 rounded-xl hover-lift bg-background/50 border-border/50"
                 asChild
               >
-                <a 
+                <a
                   href="https://www.facebook.com/DaGinoDenhelder/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -2762,18 +2833,16 @@ function App() {
                 </a>
               </Button>
             </div>
-            
+
             <Separator className="my-8" />
-            
+
             <div className="space-y-2">
               <p className="font-body text-sm md:text-base text-muted-foreground">
                 © 2024 {t('restaurantName')}. {t('allRightsReserved')}
               </p>
-              <p className="font-body text-xs text-muted-foreground/70">
-                {t('madeWithLove')}
-              </p>
+              <p className="font-body text-xs text-muted-foreground/70">{t('madeWithLove')}</p>
             </div>
-            
+
             {/* Important notices */}
             <div className="mt-8 pt-8 border-t border-border/50">
               <div className="space-y-6 text-left max-w-4xl mx-auto">
@@ -2782,19 +2851,23 @@ function App() {
                     <div className="h-6 w-6 rounded-full bg-accent/20 flex items-center justify-center">
                       <span className="text-xs">🥜</span>
                     </div>
-                    <h4 className="font-heading text-sm font-semibold text-foreground">{t('allergyTitle' as TranslationKey)}</h4>
+                    <h4 className="font-heading text-sm font-semibold text-foreground">
+                      {t('allergyTitle' as TranslationKey)}
+                    </h4>
                   </div>
                   <p className="font-body text-xs leading-relaxed text-muted-foreground">
                     {t('allergyNotice' as TranslationKey)}
                   </p>
                 </div>
-                
+
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <div className="h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center">
                       <span className="text-xs">🚚</span>
                     </div>
-                    <h4 className="font-heading text-sm font-semibold text-foreground">{t('deliveryTitle' as TranslationKey)}</h4>
+                    <h4 className="font-heading text-sm font-semibold text-foreground">
+                      {t('deliveryTitle' as TranslationKey)}
+                    </h4>
                   </div>
                   <p className="font-body text-xs leading-relaxed text-muted-foreground">
                     {t('deliveryInfo' as TranslationKey)}

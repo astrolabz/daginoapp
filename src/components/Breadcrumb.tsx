@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import { Button } from "@/components/ui/button";
-import { CaretRight, House } from "@/components/icons";
+import { Button } from '@/components/ui/button';
+import { CaretRight, House } from '@/components/icons';
 import { Language, TranslationKey, getTranslation } from '../translations';
 
 interface BreadcrumbProps {
@@ -9,11 +9,7 @@ interface BreadcrumbProps {
   onNavigate: (sectionId: string) => void;
 }
 
-const Breadcrumb = ({
-  language,
-  currentSection,
-  onNavigate
-}: BreadcrumbProps) => {
+const Breadcrumb = ({ language, currentSection, onNavigate }: BreadcrumbProps) => {
   // Translation helper
   const t = (key: TranslationKey): string => {
     return getTranslation(language, key);
@@ -38,14 +34,14 @@ const Breadcrumb = ({
     reservations: { name: t('reservations') },
     about: { name: t('ourStory') },
     reviews: { name: t('ourReviews') },
-    contact: { name: t('contacts') }
+    contact: { name: t('contacts') },
   };
 
   // Build breadcrumb path
   const buildBreadcrumb = (section: string): Array<{ id: string; name: string }> => {
     const breadcrumb: Array<{ id: string; name: string }> = [];
     const current = sectionMappings[section];
-    
+
     if (!current) return [{ id: 'hero', name: t('home') }];
 
     // Add parent if exists

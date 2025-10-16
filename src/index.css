@@ -1,17 +1,19 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @layer base {
   * {
     @apply border-border;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }
 
@@ -23,44 +25,44 @@
 
   --card: oklch(1 0 0); /* Pure white for cards with transparency */
   --card-foreground: oklch(0.09 0.02 40); /* Consistent with foreground */
-  
+
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.09 0.02 40);
 
   /* Sophisticated Italian terracotta with modern vibrancy */
   --primary: oklch(0.58 0.18 35); /* Rich terracotta-orange */
   --primary-foreground: oklch(0.99 0.005 80); /* Crisp white */
-  
+
   /* Elegant warm neutrals */
   --secondary: oklch(0.94 0.008 60); /* Subtle warm gray */
   --secondary-foreground: oklch(0.12 0.02 40); /* Dark for contrast */
-  
+
   /* Refined muted tones */
   --muted: oklch(0.96 0.006 70); /* Very light warm gray */
   --muted-foreground: oklch(0.45 0.01 50); /* Medium gray with warmth */
-  
+
   /* Golden accent with modern sophistication */
   --accent: oklch(0.72 0.15 85); /* Warm amber gold */
   --accent-foreground: oklch(0.08 0.02 40); /* Deep dark for contrast */
-  
+
   /* Refined destructive color */
-  --destructive: oklch(0.60 0.20 15); /* Modern red */
+  --destructive: oklch(0.6 0.2 15); /* Modern red */
   --destructive-foreground: oklch(0.99 0.005 80); /* Clean white */
 
   /* Sophisticated supporting colors */
   --border: oklch(0.92 0.006 65); /* Subtle warm border */
-  --input: oklch(0.90 0.008 65); /* Input border with slight warmth */
+  --input: oklch(0.9 0.008 65); /* Input border with slight warmth */
   --ring: oklch(0.58 0.18 35); /* Focus ring matches primary */
 
   /* Modern border radius system */
   --radius: 0.875rem;
-  
+
   /* Advanced shadows and effects */
   --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-large: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  
+
   /* Glassmorphism variables */
   --glass-bg: oklch(1 0 0 / 0.8);
   --glass-border: oklch(1 0 0 / 0.2);
@@ -138,52 +140,65 @@
 
   /* Enhanced font system */
   --font-heading: 'Playfair Display Variable', 'Playfair Display', 'Times New Roman', serif;
-  --font-body: 'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:
+    'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Modern utility classes inspired by contemporary design */
 @layer utilities {
   .font-heading {
     font-family: var(--font-heading);
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    font-feature-settings:
+      'kern' 1,
+      'liga' 1,
+      'calt' 1;
   }
-  
+
   .font-body {
     font-family: var(--font-body);
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    font-feature-settings:
+      'kern' 1,
+      'liga' 1,
+      'calt' 1;
   }
-  
+
   /* Enhanced text shadows with modern subtlety */
   .text-shadow-soft {
     text-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
   }
-  
+
   .text-shadow-warm {
     text-shadow: 0 2px 4px rgb(139 69 19 / 0.08);
   }
-  
+
   /* Modern gradient backgrounds */
   .bg-gradient-warm {
-    background: linear-gradient(135deg, 
-      var(--background) 0%, 
+    background: linear-gradient(
+      135deg,
+      var(--background) 0%,
       oklch(0.96 0.008 75) 50%,
-      var(--secondary) 100%);
+      var(--secondary) 100%
+    );
   }
-  
+
   .bg-gradient-hero {
-    background: linear-gradient(135deg,
+    background: linear-gradient(
+      135deg,
       oklch(0.98 0.005 80) 0%,
       oklch(0.96 0.008 75) 30%,
-      oklch(0.94 0.012 70) 100%);
+      oklch(0.94 0.012 70) 100%
+    );
   }
-  
+
   .dark .bg-gradient-hero {
-    background: linear-gradient(135deg,
+    background: linear-gradient(
+      135deg,
       oklch(0.08 0.005 80) 0%,
       oklch(0.06 0.008 75) 30%,
-      oklch(0.05 0.012 70) 100%);
+      oklch(0.05 0.012 70) 100%
+    );
   }
-  
+
   /* Glassmorphism effects */
   .glass-card {
     background: var(--glass-bg);
@@ -192,47 +207,55 @@
     -webkit-backdrop-filter: blur(16px);
     box-shadow: var(--glass-shadow);
   }
-  
+
   .glass-nav {
     background: oklch(1 0 0 / 0.85);
     border-bottom: 1px solid oklch(0 0 0 / 0.08);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
-  
+
   .dark .glass-nav {
     background: oklch(0.08 0 0 / 0.85);
     border-bottom: 1px solid oklch(1 0 0 / 0.12);
   }
-  
+
   @media (max-width: 768px) {
     .glass-nav {
       background: oklch(1 0 0 / 0.95);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
-    
+
     .dark .glass-nav {
       background: oklch(0.15 0 0 / 0.95);
     }
   }
-  
+
   /* Modern shadow system */
-  .shadow-soft { box-shadow: var(--shadow-soft); }
-  .shadow-medium { box-shadow: var(--shadow-medium); }
-  .shadow-large { box-shadow: var(--shadow-large); }
-  .shadow-xl { box-shadow: var(--shadow-xl); }
-  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  .shadow-large {
+    box-shadow: var(--shadow-large);
+  }
+  .shadow-xl {
+    box-shadow: var(--shadow-xl);
+  }
+
   /* Enhanced hover effects */
   .hover-lift {
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   .hover-lift:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-large);
   }
-  
+
   /* Modern card effects */
   .card-modern {
     background: var(--card);
@@ -241,12 +264,12 @@
     box-shadow: var(--shadow-soft);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   .card-modern:hover {
     box-shadow: var(--shadow-medium);
     border-color: oklch(0.88 0.008 65);
   }
-  
+
   /* Better mobile responsiveness */
   .container-responsive {
     max-width: 100%;
@@ -255,7 +278,7 @@
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
-  
+
   @media (min-width: 640px) {
     .container-responsive {
       max-width: 640px;
@@ -263,7 +286,7 @@
       padding-right: 1rem;
     }
   }
-  
+
   @media (min-width: 768px) {
     .container-responsive {
       max-width: 768px;
@@ -271,7 +294,7 @@
       padding-right: 1.5rem;
     }
   }
-  
+
   @media (min-width: 1024px) {
     .container-responsive {
       max-width: 1024px;
@@ -279,54 +302,54 @@
       padding-right: 2rem;
     }
   }
-  
+
   @media (min-width: 1280px) {
     .container-responsive {
       max-width: 1280px;
     }
   }
-  
+
   /* Modern section spacing */
   .section-padding {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
-  
+
   @media (min-width: 640px) {
     .section-padding {
       padding-top: 3rem;
       padding-bottom: 3rem;
     }
   }
-  
+
   @media (min-width: 768px) {
     .section-padding {
       padding-top: 4rem;
       padding-bottom: 4rem;
     }
   }
-  
+
   @media (min-width: 1024px) {
     .section-padding {
       padding-top: 6rem;
       padding-bottom: 6rem;
     }
   }
-  
+
   @media (min-width: 1280px) {
     .section-padding {
       padding-top: 8rem;
       padding-bottom: 8rem;
     }
   }
-  
+
   /* Enhanced button effects */
   .btn-modern {
     position: relative;
     overflow: hidden;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   .btn-modern::before {
     content: '';
     position: absolute;
@@ -334,19 +357,14 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      oklch(1 0 0 / 0.2),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.2), transparent);
     transition: left 0.5s;
   }
-  
+
   .btn-modern:hover::before {
     left: 100%;
   }
-  
+
   /* Typography improvements */
   .text-gradient {
     background: linear-gradient(135deg, var(--primary), var(--accent));
@@ -354,57 +372,62 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .text-balance {
     text-wrap: balance;
   }
-  
+
   /* Animation utilities */
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out;
   }
-  
+
   .animate-slide-up {
     animation: slideUp 0.6s ease-out;
   }
-  
+
   .animate-pulse-soft {
     animation: pulseSoft 2s ease-in-out infinite;
   }
-  
+
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  
+
   @keyframes slideUp {
-    from { 
+    from {
       opacity: 0;
       transform: translateY(20px);
     }
-    to { 
+    to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   @keyframes pulseSoft {
-    0%, 100% { 
+    0%,
+    100% {
       opacity: 1;
       transform: scale(1);
     }
-    50% { 
+    50% {
       opacity: 0.8;
       transform: scale(1.02);
     }
   }
-  
+
   /* Review card specific styles */
   .review-card {
     position: relative;
     overflow: hidden;
   }
-  
+
   .review-card::before {
     content: '';
     position: absolute;
@@ -416,15 +439,15 @@
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   .review-card:hover::before {
     opacity: 1;
   }
-  
+
   .review-stars {
     filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1));
   }
-  
+
   /* Line clamp utility for search results */
   .line-clamp-2 {
     display: -webkit-box;
@@ -432,7 +455,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   /* Enhanced search highlight */
   .search-highlight {
     background: linear-gradient(120deg, var(--accent) 0%, var(--primary) 100%);
@@ -441,12 +464,12 @@
     background-clip: text;
     font-weight: 600;
   }
-  
+
   /* Smooth category transitions */
   .category-transition {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   /* Enhanced focus states for accessibility */
   .focus-visible:focus-visible {
     outline: 2px solid var(--ring);
@@ -567,7 +590,7 @@
       padding: 6px 8px;
       font-size: 12px;
     }
-    
+
     /* Ensure category buttons don't overflow */
     .mobile-btn-category span {
       display: block;

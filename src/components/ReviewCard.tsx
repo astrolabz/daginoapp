@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "@/components/icons";
+import { Card, CardContent } from '@/components/ui/card';
+import { Star } from '@/components/icons';
 
 interface ReviewCardProps {
   rating: number;
@@ -16,10 +16,10 @@ export const ReviewCard = ({
   text,
   author,
   date,
-  animationDelay = '0s'
+  animationDelay = '0s',
 }: ReviewCardProps) => {
   return (
-    <Card 
+    <Card
       className="card-modern hover-lift animate-slide-up review-card"
       style={{ animationDelay }}
     >
@@ -29,19 +29,11 @@ export const ReviewCard = ({
             <Star key={`star-${title}-${i}`} size={16} className="text-accent" />
           ))}
         </div>
-        <h3 className="font-heading text-lg font-semibold text-foreground">
-          {title}
-        </h3>
-        <p className="font-body text-sm text-muted-foreground leading-relaxed">
-          "{text}"
-        </p>
+        <h3 className="font-heading text-lg font-semibold text-foreground">{title}</h3>
+        <p className="font-body text-sm text-muted-foreground leading-relaxed">"{text}"</p>
         <div className="flex justify-between items-center pt-2 border-t border-border/50">
-          <span className="font-body text-sm font-medium text-foreground">
-            {author}
-          </span>
-          <span className="font-body text-xs text-muted-foreground">
-            {date}
-          </span>
+          <span className="font-body text-sm font-medium text-foreground">{author}</span>
+          <span className="font-body text-xs text-muted-foreground">{date}</span>
         </div>
       </CardContent>
     </Card>

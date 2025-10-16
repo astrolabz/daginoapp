@@ -1,21 +1,21 @@
 import { useMemo, useState } from 'react';
 import { useKV } from '@/spark-polyfills/kv';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { 
-  MagnifyingGlass, 
-  X, 
-  ChefHat, 
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import {
+  MagnifyingGlass,
+  X,
+  ChefHat,
   Users,
-  Sparkle, 
-  MapPin, 
-  Phone, 
-  Clock, 
-  Star 
-} from "@/components/icons";
+  Sparkle,
+  MapPin,
+  Phone,
+  Clock,
+  Star,
+} from '@/components/icons';
 import { Language, TranslationKey, getTranslation } from '../translations';
 
 interface SearchItem {
@@ -41,7 +41,7 @@ const SearchSystem = ({
   language,
   menuCategories,
   menuDescriptions,
-  onNavigate
+  onNavigate,
 }: SearchSystemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -79,8 +79,8 @@ const SearchSystem = ({
             description.toLowerCase(),
             t(category.id as TranslationKey).toLowerCase(),
             item.price,
-            ...(item.popular ? [t('popular').toLowerCase()] : [])
-          ]
+            ...(item.popular ? [t('popular').toLowerCase()] : []),
+          ],
         });
       });
     });
@@ -91,26 +91,48 @@ const SearchSystem = ({
         id: 'hero',
         name: t('home'),
         description: t('description'),
-        keywords: [t('home'), t('restaurantName'), t('tagline'), t('description'), 'ristorante', 'pizzeria', 'da gino']
+        keywords: [
+          t('home'),
+          t('restaurantName'),
+          t('tagline'),
+          t('description'),
+          'ristorante',
+          'pizzeria',
+          'da gino',
+        ],
       },
       {
         id: 'about',
         name: t('ourStory'),
         description: t('traditionDesc'),
-        keywords: [t('ourStory'), t('tradition'), t('passion'), t('quality'), 'storia', 'tradizione', 'passione']
+        keywords: [
+          t('ourStory'),
+          t('tradition'),
+          t('passion'),
+          t('quality'),
+          'storia',
+          'tradizione',
+          'passione',
+        ],
       },
       {
         id: 'reservations',
         name: t('reservations'),
         description: t('reservationDescription'),
-        keywords: [t('reservations'), t('makeReservation'), t('bookTable'), 'prenotazione', 'tavolo']
+        keywords: [
+          t('reservations'),
+          t('makeReservation'),
+          t('bookTable'),
+          'prenotazione',
+          'tavolo',
+        ],
       },
       {
         id: 'reviews',
         name: t('ourReviews'),
         description: t('reviewsDescription'),
-        keywords: [t('ourReviews'), 'tripadvisor', 'recensioni', 'reviews']
-      }
+        keywords: [t('ourReviews'), 'tripadvisor', 'recensioni', 'reviews'],
+      },
     ];
 
     sections.forEach(section => {
@@ -120,7 +142,7 @@ const SearchSystem = ({
         name: section.name,
         description: section.description,
         section: section.id,
-        keywords: section.keywords.map(k => k.toLowerCase())
+        keywords: section.keywords.map(k => k.toLowerCase()),
       });
     });
 
@@ -131,7 +153,16 @@ const SearchSystem = ({
       name: t('whereWeAre'),
       description: t('address'),
       section: 'contact',
-      keywords: [t('address'), t('whereWeAre'), t('directions'), 'indirizzo', 'dove', 'siamo', 'beatrixstraat', 'den helder']
+      keywords: [
+        t('address'),
+        t('whereWeAre'),
+        t('directions'),
+        'indirizzo',
+        'dove',
+        'siamo',
+        'beatrixstraat',
+        'den helder',
+      ],
     });
 
     items.push({
@@ -140,7 +171,15 @@ const SearchSystem = ({
       name: t('contacts'),
       description: t('phone'),
       section: 'contact',
-      keywords: [t('phone'), t('contacts'), t('call'), 'telefono', 'chiamare', '0223610117', '0645069661']
+      keywords: [
+        t('phone'),
+        t('contacts'),
+        t('call'),
+        'telefono',
+        'chiamare',
+        '0223610117',
+        '0645069661',
+      ],
     });
 
     items.push({
@@ -149,7 +188,7 @@ const SearchSystem = ({
       name: t('openingHours'),
       description: t('restaurantHours'),
       section: 'contact',
-      keywords: [t('openingHours'), t('restaurantHours'), 'orari', 'apertura', 'ore', 'tempo']
+      keywords: [t('openingHours'), t('restaurantHours'), 'orari', 'apertura', 'ore', 'tempo'],
     });
 
     return items;
@@ -160,23 +199,24 @@ const SearchSystem = ({
     if (!searchQuery.trim()) return [];
 
     const query = searchQuery.toLowerCase().trim();
-    const results = searchableItems.filter(item => 
-      item.keywords.some(keyword => keyword.includes(query)) ||
-      item.name.toLowerCase().includes(query) ||
-      item.description.toLowerCase().includes(query)
+    const results = searchableItems.filter(
+      item =>
+        item.keywords.some(keyword => keyword.includes(query)) ||
+        item.name.toLowerCase().includes(query) ||
+        item.description.toLowerCase().includes(query)
     );
 
     // Sort results by relevance
     return results.sort((a, b) => {
       const aNameMatch = a.name.toLowerCase().includes(query);
       const bNameMatch = b.name.toLowerCase().includes(query);
-      
+
       if (aNameMatch && !bNameMatch) return -1;
       if (!aNameMatch && bNameMatch) return 1;
-      
+
       if (a.popular && !b.popular) return -1;
       if (!a.popular && b.popular) return 1;
-      
+
       return 0;
     });
   }, [searchQuery, searchableItems]);
@@ -192,9 +232,7 @@ const SearchSystem = ({
 
     setSearchHistory(prev => {
       const normalizedLower = normalizedQuery.toLowerCase();
-      const filteredHistory = prev.filter(
-        (entry) => entry.trim().toLowerCase() !== normalizedLower
-      );
+      const filteredHistory = prev.filter(entry => entry.trim().toLowerCase() !== normalizedLower);
 
       return [normalizedQuery, ...filteredHistory].slice(0, 5);
     });
@@ -247,16 +285,16 @@ const SearchSystem = ({
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button 
-          variant="outline" 
-          size="icon" 
+        <Button
+          variant="outline"
+          size="icon"
           className="h-8 w-8 md:h-10 md:w-10 hover-lift border-2 border-primary/20 hover:border-primary hover:bg-primary/5 flex-shrink-0"
         >
           <MagnifyingGlass size={16} className="md:hidden" />
           <MagnifyingGlass size={18} className="hidden md:block" />
         </Button>
       </SheetTrigger>
-      
+
       <SheetContent side="right" className="w-full sm:w-96 glass-card border-l">
         <SheetHeader className="pb-6">
           <SheetTitle className="font-heading text-xl flex items-center gap-3">
@@ -270,11 +308,14 @@ const SearchSystem = ({
           <Input
             placeholder={t('searchPlaceholder')}
             value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
+            onChange={e => handleSearch(e.target.value)}
             className="pl-10 pr-10 h-12 text-base border-2 focus:border-primary"
             autoFocus
           />
-          <MagnifyingGlass size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+          <MagnifyingGlass
+            size={20}
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"
+          />
           {searchQuery && (
             <Button
               variant="ghost"
@@ -294,7 +335,7 @@ const SearchSystem = ({
               {t('recentSearches')}
             </h3>
             <div className="flex flex-wrap gap-2">
-              {searchHistory.map((query) => (
+              {searchHistory.map(query => (
                 <Button
                   key={query}
                   variant="outline"
@@ -339,8 +380,8 @@ const SearchSystem = ({
               </Card>
             ) : (
               <div className="space-y-3 max-h-96 overflow-y-auto">
-                {searchResults.map((item) => (
-                  <Card 
+                {searchResults.map(item => (
+                  <Card
                     key={item.id}
                     className="card-modern hover-lift cursor-pointer group"
                     onClick={() => handleResultClick(item)}
@@ -365,9 +406,7 @@ const SearchSystem = ({
                               {item.name}
                             </h4>
                             {item.category && (
-                              <p className="text-xs text-muted-foreground">
-                                {item.category}
-                              </p>
+                              <p className="text-xs text-muted-foreground">{item.category}</p>
                             )}
                           </div>
                           {item.price && (
@@ -376,7 +415,7 @@ const SearchSystem = ({
                             </span>
                           )}
                         </div>
-                        
+
                         {item.description && (
                           <p className="font-body text-xs text-muted-foreground leading-relaxed line-clamp-2">
                             {item.description}
@@ -402,8 +441,8 @@ const SearchSystem = ({
                 { section: 'menu', label: t('menu'), icon: <ChefHat size={16} /> },
                 { section: 'reservations', label: t('reservations'), icon: <Users size={16} /> },
                 { section: 'contact', label: t('contacts'), icon: <Phone size={16} /> },
-                { section: 'reviews', label: t('ourReviews'), icon: <Star size={16} /> }
-              ].map((action) => (
+                { section: 'reviews', label: t('ourReviews'), icon: <Star size={16} /> },
+              ].map(action => (
                 <Button
                   key={action.section}
                   variant="outline"

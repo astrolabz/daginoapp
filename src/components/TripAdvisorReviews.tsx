@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Star, ArrowUpRight, PencilSimple } from "./icons";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Star, ArrowUpRight, PencilSimple } from './icons';
 import { Language, TranslationKey, getTranslation } from '../translations';
 
 interface TripAdvisorReviewsProps {
@@ -17,8 +17,8 @@ const realTripAdvisorReviews = [
     rating: 5,
     date: '2024-11-28',
     title: 'Autentica cucina italiana',
-    text: 'Ottima pizza e pasta, ingredienti freschi e servizio cordiale. Un vero pezzo d\'Italia in Olanda. Torneremo sicuramente!',
-    language: 'it'
+    text: "Ottima pizza e pasta, ingredienti freschi e servizio cordiale. Un vero pezzo d'Italia in Olanda. Torneremo sicuramente!",
+    language: 'it',
   },
   {
     id: 'ta_2',
@@ -27,7 +27,7 @@ const realTripAdvisorReviews = [
     date: '2024-11-15',
     title: 'Heerlijk Italiaans restaurant',
     text: 'Fantastisch eten en vriendelijke bediening. De sfeer is gezellig en het voelt echt authentiek Italiaans. Aanrader!',
-    language: 'nl'
+    language: 'nl',
   },
   {
     id: 'ta_3',
@@ -36,7 +36,7 @@ const realTripAdvisorReviews = [
     date: '2024-11-10',
     title: 'Great Italian food in Den Helder',
     text: 'Excellent pizza and pasta dishes. The atmosphere is warm and welcoming. Staff is very friendly and attentive.',
-    language: 'en'
+    language: 'en',
   },
   {
     id: 'ta_4',
@@ -44,8 +44,8 @@ const realTripAdvisorReviews = [
     rating: 5,
     date: '2024-10-22',
     title: 'Perfecte avond uit',
-    text: 'Geweldige ervaring! De pizza\'s zijn echt heerlijk en de pasta is authentiek Italiaans. Zeker een aanrader voor een gezellige avond uit.',
-    language: 'nl'
+    text: "Geweldige ervaring! De pizza's zijn echt heerlijk en de pasta is authentiek Italiaans. Zeker een aanrader voor een gezellige avond uit.",
+    language: 'nl',
   },
   {
     id: 'ta_5',
@@ -54,7 +54,7 @@ const realTripAdvisorReviews = [
     date: '2024-10-18',
     title: 'Come essere in Italia',
     text: 'Finalmente un ristorante italiano autentico! La pizza napoletana è eccezionale e il personale molto professionale.',
-    language: 'it'
+    language: 'it',
   },
   {
     id: 'ta_6',
@@ -63,8 +63,8 @@ const realTripAdvisorReviews = [
     date: '2024-10-05',
     title: 'Lovely dinner experience',
     text: 'Beautiful restaurant with authentic Italian cuisine. The risotto was particularly delicious. Will definitely return!',
-    language: 'en'
-  }
+    language: 'en',
+  },
 ];
 
 const TripAdvisorReviews = ({ language }: TripAdvisorReviewsProps) => {
@@ -79,7 +79,7 @@ const TripAdvisorReviews = ({ language }: TripAdvisorReviewsProps) => {
       <Star
         key={i}
         size={16}
-        className={i < rating ? "text-amber-500 fill-current" : "text-gray-300"}
+        className={i < rating ? 'text-amber-500 fill-current' : 'text-gray-300'}
       />
     ));
   };
@@ -89,11 +89,13 @@ const TripAdvisorReviews = ({ language }: TripAdvisorReviewsProps) => {
     return new Intl.DateTimeFormat(language, {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     }).format(date);
   };
 
-  const averageRating = realTripAdvisorReviews.reduce((sum, review) => sum + review.rating, 0) / realTripAdvisorReviews.length;
+  const averageRating =
+    realTripAdvisorReviews.reduce((sum, review) => sum + review.rating, 0) /
+    realTripAdvisorReviews.length;
   const reviewsToShow = realTripAdvisorReviews.slice(0, displayCount);
 
   return (
@@ -121,8 +123,8 @@ const TripAdvisorReviews = ({ language }: TripAdvisorReviewsProps) => {
       {/* Reviews List */}
       <div className="grid gap-6">
         {reviewsToShow.map((review, index) => (
-          <Card 
-            key={review.id} 
+          <Card
+            key={review.id}
             className="card-modern hover-lift animate-slide-up review-card"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
@@ -137,9 +139,7 @@ const TripAdvisorReviews = ({ language }: TripAdvisorReviewsProps) => {
                       {review.language.toUpperCase()}
                     </Badge>
                   </div>
-                  <CardTitle className="text-lg font-semibold">
-                    {review.title}
-                  </CardTitle>
+                  <CardTitle className="text-lg font-semibold">{review.title}</CardTitle>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <span className="font-medium">{review.author}</span>
                     <span>•</span>
@@ -149,9 +149,7 @@ const TripAdvisorReviews = ({ language }: TripAdvisorReviewsProps) => {
               </div>
             </CardHeader>
             <CardContent>
-              <p className="text-sm md:text-base text-foreground leading-relaxed">
-                {review.text}
-              </p>
+              <p className="text-sm md:text-base text-foreground leading-relaxed">{review.text}</p>
             </CardContent>
           </Card>
         ))}
@@ -162,7 +160,9 @@ const TripAdvisorReviews = ({ language }: TripAdvisorReviewsProps) => {
         <div className="text-center">
           <Button
             variant="outline"
-            onClick={() => setDisplayCount(prev => Math.min(prev + 3, realTripAdvisorReviews.length))}
+            onClick={() =>
+              setDisplayCount(prev => Math.min(prev + 3, realTripAdvisorReviews.length))
+            }
             className="hover-lift"
           >
             {t('showMoreReviews')}
@@ -186,7 +186,7 @@ const TripAdvisorReviews = ({ language }: TripAdvisorReviewsProps) => {
             {t('viewAllReviews')}
           </a>
         </Button>
-        
+
         <Button
           asChild
           variant="outline"

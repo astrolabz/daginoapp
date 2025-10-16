@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Globe, ArrowRight, Sparkle } from "@/components/icons";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Globe, ArrowRight, Sparkle } from '@/components/icons';
 import { Language, languages } from '../translations';
 
 interface LanguageSelectorProps {
@@ -25,18 +25,18 @@ const LanguageSelector = ({ onLanguageSelect }: LanguageSelectorProps) => {
               </div>
             </div>
           </div>
-          
+
           {/* Main title with enhanced typography */}
           <div className="space-y-4">
             <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl font-bold text-foreground text-shadow-soft leading-tight">
               Ristorante <span className="text-gradient">Dagino</span>
             </h1>
-            
+
             <p className="font-body text-xl sm:text-2xl md:text-3xl text-muted-foreground font-light tracking-wide">
               Autentica Cucina Italiana dal 1952
             </p>
           </div>
-          
+
           {/* Subtitle badge with modern styling */}
           <div className="flex justify-center pt-4">
             <Badge variant="secondary" className="glass-card text-base px-6 py-3 border-0">
@@ -59,7 +59,7 @@ const LanguageSelector = ({ onLanguageSelect }: LanguageSelectorProps) => {
                 <span>Seleziona Lingua</span>
               </CardTitle>
             </CardHeader>
-            
+
             <CardContent className="p-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {languages.map((language, index) => (
@@ -74,7 +74,7 @@ const LanguageSelector = ({ onLanguageSelect }: LanguageSelectorProps) => {
                     <div className="text-3xl transform group-hover:scale-110 transition-transform duration-300">
                       {language.flag}
                     </div>
-                    
+
                     {/* Language names with better typography */}
                     <div className="flex flex-col items-center gap-1">
                       <span className="font-heading text-sm font-semibold tracking-wide">
@@ -84,11 +84,11 @@ const LanguageSelector = ({ onLanguageSelect }: LanguageSelectorProps) => {
                         {language.name}
                       </span>
                     </div>
-                    
+
                     {/* Hover arrow effect */}
-                    <ArrowRight 
-                      size={16} 
-                      className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300" 
+                    <ArrowRight
+                      size={16}
+                      className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300"
                     />
                   </Button>
                 ))}
@@ -98,20 +98,31 @@ const LanguageSelector = ({ onLanguageSelect }: LanguageSelectorProps) => {
         </div>
 
         {/* Footer with enhanced styling */}
-        <div className="text-center pt-8 space-y-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+        <div
+          className="text-center pt-8 space-y-4 animate-slide-up"
+          style={{ animationDelay: '0.4s' }}
+        >
           <div className="glass-card rounded-2xl p-6 max-w-lg mx-auto">
             <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed text-balance">
-              <span className="font-medium text-foreground">Click on your preferred language to continue</span>
+              <span className="font-medium text-foreground">
+                Click on your preferred language to continue
+              </span>
               <br />
               <span className="italic">Fai clic sulla tua lingua preferita per continuare</span>
             </p>
           </div>
-          
+
           {/* Decorative elements */}
           <div className="flex justify-center gap-2 opacity-30">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-            <div className="w-2 h-2 rounded-full bg-accent animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div
+              className="w-2 h-2 rounded-full bg-accent animate-pulse"
+              style={{ animationDelay: '0.5s' }}
+            ></div>
+            <div
+              className="w-2 h-2 rounded-full bg-primary animate-pulse"
+              style={{ animationDelay: '1s' }}
+            ></div>
           </div>
         </div>
       </div>

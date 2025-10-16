@@ -14,13 +14,13 @@ export function ThemeToggle({ className, size = 'md' }: ThemeToggleProps) {
   const sizeClasses = {
     sm: 'h-8 w-8',
     md: 'h-9 w-9',
-    lg: 'h-10 w-10'
+    lg: 'h-10 w-10',
   };
 
   const iconSizes = {
     sm: 14,
     md: 16,
-    lg: 18
+    lg: 18,
   };
 
   return (
@@ -37,22 +37,18 @@ export function ThemeToggle({ className, size = 'md' }: ThemeToggleProps) {
       )}
       title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
     >
-      <Sun 
-        size={iconSizes[size]} 
+      <Sun
+        size={iconSizes[size]}
         className={cn(
           'transition-all duration-300',
-          theme === 'light' 
-            ? 'rotate-0 scale-100' 
-            : '-rotate-90 scale-0'
+          theme === 'light' ? 'rotate-0 scale-100' : '-rotate-90 scale-0'
         )}
       />
-      <Moon 
-        size={iconSizes[size]} 
+      <Moon
+        size={iconSizes[size]}
         className={cn(
           'absolute transition-all duration-300',
-          theme === 'dark' 
-            ? 'rotate-0 scale-100' 
-            : 'rotate-90 scale-0'
+          theme === 'dark' ? 'rotate-0 scale-100' : 'rotate-90 scale-0'
         )}
       />
       <span className="sr-only">Toggle theme</span>
