@@ -1,0 +1,40 @@
+# Gitleaks Configuration
+# https://github.com/gitleaks/gitleaks
+
+title = "Dagino App - Gitleaks Configuration"
+
+[extend]
+# useDefault will extend the base configuration with the default gitleaks config:
+# https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml
+useDefault = true
+
+[allowlist]
+description = "Allowlist for false positives"
+
+# Allow specific patterns that are safe
+paths = [
+  '''node_modules/''',
+  '''package-lock\.json''',
+  '''\.env\.example''',
+  '''docs/.*\.md''',
+]
+
+# Allow specific commits (if needed)
+# commits = ["commit-hash-here"]
+
+# Allow specific regexes
+regexes = [
+  # Example placeholder values
+  '''INSERISCI_.*''',
+  '''G-XXXXXXXXXX''',
+  '''tuoindirizzo@example\.com''',
+  '''example\.com''',
+  '''primary''',  # Google Calendar ID placeholder
+]
+
+# Custom rules can be added here if needed
+# [[rules]]
+# id = "custom-rule-1"
+# description = "Custom rule for specific pattern"
+# regex = '''your-regex-here'''
+# tags = ["custom"]
