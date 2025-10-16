@@ -2753,7 +2753,7 @@ function App() {
                 asChild
               >
                 <a 
-                  href="https://www.facebook.com/ristorantepizzeriadagino"
+                  href="https://www.facebook.com/DaGinoDenhelder/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook Ristorante Pizzeria Da Gino"
